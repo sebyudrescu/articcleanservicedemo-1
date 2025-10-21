@@ -78,9 +78,69 @@ const ServizioLocaleDynamic = () => {
     return <Navigate to="/servizi" replace />;
   }
 
+  const serviceUseCasesMap: Record<string, string[]> = {
+    'pulizie-uffici': [
+      'Pulizia quotidiana di uffici direzionali e studi professionali',
+      'Sanificazione sale riunioni e postazioni condivise con protocolli HACCP',
+      'Gestione materiali di consumo e raccolta differenziata per aziende e coworking'
+    ],
+    'pulizie-condomini': [
+      'Pulizia scale, ascensori e aree comuni con interventi programmati',
+      'Gestione carrellati e raccolta rifiuti differenziata per condomini a Brescia',
+      'Cura aiuole, cortili e ingressi per valorizzare il condominio'
+    ],
+    'pulizie-industriali': [
+      'Trattamento pavimentazioni industriali e rimozione residui di produzione',
+      'Pulizia reparti produttivi e magazzini logistici a ciclo continuo',
+      'Sanificazione spogliatoi, mense e uffici interni a stabilimenti bresciani'
+    ],
+    'sanificazione-ambienti': [
+      'Sanificazioni certificate con nebulizzazione e ozono',
+      'Protocollo di disinfezione per studi medici, scuole e palestre',
+      'Interventi straordinari per emergenze igieniche in provincia di Brescia'
+    ],
+    'pulizie-vetri': [
+      'Lavaggio vetrate di negozi, showroom e uffici con piattaforme aeree',
+      'Pulizia vetri in altezza e facciate continue a Brescia e provincia',
+      'Trattamenti anticalcare per infissi e serramenti'
+    ],
+    'pulizie-post-cantiere': [
+      'Rimozione polveri sottili e residui di cantiere da nuovi immobili',
+      'Trattamento pavimenti e superfici delicate post ristrutturazione',
+      'Preparazione alla consegna di appartamenti, negozi e uffici'
+    ],
+    giardinaggio: [
+      'Manutenzione aree verdi condominiali e aziendali con personale qualificato',
+      'Potatura stagionale di siepi, alberature e aiuole decorative',
+      'Gestione irrigazione e pulizia esterna per immobili commerciali'
+    ],
+    'gestione-carrellati': [
+      'Lavaggio e sanificazione carrellati condominiali e aziendali',
+      'Movimentazione programmata dei bidoni nei giorni di raccolta',
+      'Monitoraggio odori e igiene in cortili e aree carico/scarico'
+    ]
+  };
+
   const { service, location } = pageData;
   const sectionOrder = pageData.section_order || ['whyChoose', 'coverage', 'problems', 'detailed', 'standards'];
   const h2Titles = pageData.h2_titles || {};
+  const serviceUseCases = serviceUseCasesMap[service.slug] || [
+    `Servizio professionale di ${service.name.toLowerCase()} a ${location.name}`,
+    `Interventi programmati in tutto il comune di ${location.name} e provincia di Brescia`,
+    'Prodotti certificati, personale formato e controllo qualità costante'
+  ];
+  const formattedNearby = nearbyLocations
+    .slice(0, 2)
+    .map(name => name.replace(/-/g, ' '))
+    .join(' e ');
+  const coverageHighlight = formattedNearby
+    ? `Servizio attivo a ${location.name} e nei comuni vicini di ${formattedNearby}.`
+    : `Servizio attivo a ${location.name} e in tutta la provincia di Brescia.`;
+  const localSeoHighlights = [
+    `Impresa di pulizie a ${location.name} specializzata in ${service.name.toLowerCase()}.`,
+    coverageHighlight,
+    'Preventivo gratuito entro 24 ore, sanificazioni certificate e personale con DPI aggiornati.'
+  ];
 
   const structuredData = [
     {
@@ -268,7 +328,7 @@ const ServizioLocaleDynamic = () => {
       <SEO
         title={pageData.meta_title}
         description={pageData.meta_description}
-        keywords={`${service.name.toLowerCase()} ${location.name}, impresa pulizie ${location.name}, pulizie professionali ${location.name}`}
+        keywords={`${service.name.toLowerCase()} ${location.name}, impresa pulizie ${location.name}, pulizie professionali ${location.name}, sanificazione ${location.name}, servizi di pulizia ${location.name}`}
         canonical={buildCanonicalUrl(`/servizi/${servizio}/${localita}`)}
         structuredData={structuredData}
       />
@@ -313,6 +373,39 @@ const ServizioLocaleDynamic = () => {
                 height={540}
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white border-b border-slate-200/70">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-6 md:grid-cols-3">
+            {localSeoHighlights.map((highlight, index) => (
+              <div
+                key={index}
+                className="bg-slate-50 rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg transition"
+              >
+                <p className="text-slate-700 leading-relaxed text-sm md:text-base">{highlight}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-3xl border border-slate-200 p-10 shadow-sm">
+            <h2 className="text-3xl font-bold text-slate-900 mb-6 text-center">
+              Dove fa la differenza il servizio {service.name.toLowerCase()} a {location.name}
+            </h2>
+            <ul className="space-y-4">
+              {serviceUseCases.map((useCase, index) => (
+                <li key={index} className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-sky-500 mt-1 flex-shrink-0" />
+                  <p className="text-slate-700 leading-relaxed">{useCase}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
