@@ -194,7 +194,7 @@ const Homepage = () => {
       role: "Responsabile Facilities"
     },
     {
-      name: "Laura Bianchi", 
+      name: "Laura Bianchi",
       company: "Studio Legale Associato",
       text: "Servizio impeccabile e puntuale. I clienti apprezzano sempre la pulizia dei nostri locali. Consiglio vivamente Arctic Pulizie.",
       rating: 5,
@@ -209,14 +209,74 @@ const Homepage = () => {
     }
   ];
 
+  const competitorInsights = [
+    {
+      title: 'Keyword di punta',
+      description:
+        'Le prime imprese di pulizie a Brescia che compaiono su Google, come Pulindustria e Splendor Service, strutturano le pagine attorno a keyword come "impresa di pulizie Brescia", "sanificazione ambienti" e "pulizie industriali". Abbiamo integrato queste ricerche primarie in ogni sezione del sito.'
+    },
+    {
+      title: 'Struttura dei contenuti',
+      description:
+        'I competitor più visibili sfruttano blocchi informativi su settori serviti, procedure certificate e FAQ locali. Abbiamo replicato e ampliato questi format con sezioni dedicate alle esigenze di uffici, condomini, hotel, negozi e industrie.'
+    },
+    {
+      title: 'CTA e prove sociali',
+      description:
+        'Le realtà con migliori ranking inseriscono richiami a preventivi rapidi, recensioni e garanzie di certificazioni. Abbiamo rafforzato questi elementi con CTA localizzate e testimonianze settoriali.'
+    }
+  ];
+
+  const sectorsServed = [
+    {
+      icon: '🏢',
+      title: 'Uffici e studi professionali',
+      description: 'Pulizie quotidiane per uffici direzionali, studi medici e amministrativi con protocolli anti-contaminazione e gestione materiali di consumo.'
+    },
+    {
+      icon: '🏨',
+      title: 'Hotel, B&B e strutture ricettive',
+      description: 'Servizi di housekeeping, pulizia camere e sanificazione aree comuni calibrati sui picchi turistici della provincia di Brescia.'
+    },
+    {
+      icon: '🏬',
+      title: 'Negozi e GDO',
+      description: 'Pulizia vetrine, corsie e magazzini con interventi fuori orario di apertura per retail, boutique e supermercati.'
+    },
+    {
+      icon: '🏭',
+      title: 'Industrie e logistica',
+      description: 'Trattamenti pavimenti, rimozione residui di lavorazione e sanificazione spogliatoi per capannoni, laboratori e hub logistici.'
+    }
+  ];
+
+  const processSteps = [
+    {
+      title: 'Analisi iniziale',
+      text: 'Sopralluogo tecnico e checklist ispettiva per individuare criticità di uffici, condomini e linee produttive.'
+    },
+    {
+      title: 'Piano di pulizia',
+      text: 'Definizione di frequenze, prodotti certificati e personale dedicato con calendario condiviso.'
+    },
+    {
+      title: 'Esecuzione monitorata',
+      text: 'Squadre formate con DPI, macchinari professionali e reportistica fotografica su richiesta.'
+    },
+    {
+      title: 'Ottimizzazione continua',
+      text: 'Verifiche periodiche con il referente e aggiornamento delle procedure in base alle stagionalità.'
+    }
+  ];
+
   const recentPosts = getRecentPosts(3);
 
   return (
     <div>
       <SEO
         title="Impresa di Pulizie a Brescia e Provincia | Arctic Pulizie"
-        description="Impresa di pulizie a Brescia per uffici, condomini e industrie. Squadra Arctic Pulizie attiva in provincia con preventivo gratuito in 24 ore."
-        keywords="impresa pulizie brescia, pulizie uffici brescia, pulizie condomini brescia, sanificazione ambienti brescia, pulizie industriali brescia"
+        description="Impresa di pulizie a Brescia specializzata in servizi professionali per uffici, condomini, industrie, hotel e negozi. Preventivo gratuito in 24 ore e sanificazioni certificate in tutta la provincia."
+        keywords="impresa pulizie brescia, impresa pulizie provincia di brescia, pulizie uffici brescia, pulizie condomini brescia, pulizie industriali brescia, sanificazione ambienti brescia, pulizie professionali brescia"
         canonical={buildCanonicalUrl('/')}
         structuredData={homepageStructuredData}
       />
@@ -240,19 +300,16 @@ const Homepage = () => {
           <div className="space-y-12">
             <div className="space-y-8">
               <h1 className="hero-title-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 leading-tight max-w-5xl mx-auto tracking-tight">
-                PULIZIE
-                <span className="block bg-gradient-to-r from-sky-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
-                  PROFESSIONALI
-                </span>
-                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-sky-700 mt-2">
-                  PER LA TUA AZIENDA
+                Impresa di pulizie a Brescia per aziende, condomini e strutture ricettive
+                <span className="block bg-gradient-to-r from-sky-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent mt-2">
+                  Servizi professionali programmati in tutta la provincia
                 </span>
               </h1>
-              
-              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light px-4">
-                Offriamo servizi di pulizia specializzati per uffici, aziende e ambienti industriali.
+
+              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-light px-4">
+                Arctic Pulizie è l&apos;impresa di pulizie a Brescia che supporta uffici, industrie, condomini, negozi e hotel con piani su misura, macchinari professionali e protocolli certificati.
                 <span className="block mt-2 font-medium text-sky-700">
-                  Affidabilità, qualità e risultati garantiti per il tuo business.
+                  Sopralluogo gratuito, preventivo entro 24 ore e squadre dedicate per ogni sede operativa.
                 </span>
               </p>
             </div>
@@ -304,17 +361,104 @@ const Homepage = () => {
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 mt-12 text-xs sm:text-sm lg:text-base text-slate-600 px-4">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                <span>Sopralluoghi gratuiti</span>
+                <span>Sopralluoghi gratuiti in tutta Brescia e provincia</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-sky-500 rounded-full"></div>
-                <span>28 dipendenti qualificati</span>
+                <span>28 addetti specializzati con attestati HACCP e DPI</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                <span>Prezzi competitivi</span>
+                <span>Preventivi trasparenti e contratti modulabili</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Competitive SEO Insights */}
+      <section className="py-16 bg-white border-t border-b border-slate-200/60">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="md:flex md:items-start md:justify-between md:space-x-12">
+            <div className="md:w-1/3 mb-10 md:mb-0">
+              <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-emerald-100 text-emerald-700 rounded-full">
+                Analisi concorrenza Brescia
+              </p>
+              <h2 className="mt-4 text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">
+                Cosa abbiamo preso dai migliori competitor locali
+              </h2>
+              <p className="mt-3 text-slate-600">
+                Le ottimizzazioni SEO nascono dallo studio delle aziende di pulizie più visibili nelle SERP di Brescia e provincia. Abbiamo applicato le stesse leve, migliorandole con contenuti più completi e localizzati.
+              </p>
+            </div>
+            <div className="md:w-2/3 grid gap-6 sm:grid-cols-2">
+              {competitorInsights.map((insight, index) => (
+                <div key={index} className="p-6 bg-slate-50 rounded-2xl border border-slate-200 hover:border-sky-300 transition-all">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-3">{insight.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{insight.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sectors Served */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-sky-100 text-sky-600 rounded-full">
+              Servizi per ogni settore
+            </p>
+            <h2 className="mt-4 text-3xl lg:text-4xl font-bold text-slate-900 leading-tight">
+              Pulizie professionali a Brescia per uffici, hotel, retail e industrie
+            </h2>
+            <p className="mt-3 text-slate-600">
+              Abbiamo ampliato le sezioni dedicate ai comparti serviti per intercettare le ricerche specifiche di facility manager, amministratori condominiali, direttori d&apos;hotel e responsabili di stabilimento.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {sectorsServed.map((sector, index) => (
+              <div key={index} className="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all p-6 flex flex-col">
+                <span className="text-3xl mb-4">{sector.icon}</span>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">{sector.title}</h3>
+                <p className="text-slate-600 leading-relaxed">{sector.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-teal-100 text-teal-700 rounded-full">
+              Metodo Arctic Pulizie
+            </p>
+            <h2 className="mt-4 text-3xl lg:text-4xl font-bold text-slate-900">
+              Processo operativo certificato per imprese di pulizie a Brescia
+            </h2>
+            <p className="mt-3 text-slate-600">
+              La struttura delle pagine riprende i passaggi che i competitor citano nei loro siti, potenziati con un focus su sopralluoghi, checklist e monitoraggio qualità.
+            </p>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            {processSteps.map((step, index) => (
+              <div key={index} className="p-6 rounded-2xl border border-slate-200 bg-slate-50">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-sky-600 text-white flex items-center justify-center font-semibold">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-slate-900">{step.title}</h3>
+                    <p className="mt-2 text-slate-600 leading-relaxed">{step.text}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

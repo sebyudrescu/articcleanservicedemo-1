@@ -223,18 +223,60 @@ const Servizi = () => {
   const whyChooseUs = [
     {
       icon: CheckCircle,
-      title: "Attrezzature Professionali",
-      description: "Utilizziamo solo macchinari e strumenti professionali per risultati superiori."
+      title: "Attrezzature professionali a norma",
+      description:
+        "Impieghiamo macchinari a vapore, lavasciuga e monospazzole certificati per le pulizie civili e industriali richieste dalle aziende di Brescia."
     },
     {
       icon: Shield,
-      title: "Prodotti Professionali",
-      description: "Prodotti professionali ad alta efficacia sgrassante per risultati impeccabili."
+      title: "Prodotti e protocolli certificati",
+      description:
+        "Utilizziamo detergenti con schede tecniche aggiornate, procedure HACCP e sanificazioni conformi alle linee guida richieste da uffici, condomini e strutture sanitarie."
     },
     {
       icon: Building2,
-      title: "Esperienza Multisettoriale",
-      description: "Competenze specifiche per uffici, industrie, cliniche e strutture commerciali."
+      title: "Esperienza multisede",
+      description:
+        "Coordinamento centralizzato per imprese con più sedi nella provincia di Brescia, con reportistica digitale e referente unico."
+    }
+  ];
+
+  const serviceBundles = [
+    {
+      title: 'Pacchetto uffici performante',
+      description:
+        'Pulizie quotidiane, sanificazione periodica, servizio vetri mensile e gestione materiali di consumo per uffici direzionali e coworking.',
+      cta: 'Richiedi il piano uffici'
+    },
+    {
+      title: 'Formula condomini smart',
+      description:
+        'Scale, ascensori, aree verdi e gestione carrellati con interventi programmati e hotline dedicata agli amministratori.',
+      cta: 'Scopri l’offerta condomini'
+    },
+    {
+      title: 'Soluzione industria sicura',
+      description:
+        'Pulizie produttive, spogliatoi, mense e pavimentazioni industriali con interventi straordinari post-fermo impianti.',
+      cta: 'Progetta il piano industria'
+    }
+  ];
+
+  const faqs = [
+    {
+      question: 'In quali comuni della provincia di Brescia operate?',
+      answer:
+        'Copriamo Brescia città e oltre 25 comuni tra cui Desenzano, Montichiari, Ghedi, Rovato e Sarezzo con squadre dedicate e mezzi propri.'
+    },
+    {
+      question: 'Come vengono gestite le emergenze di pulizia?',
+      answer:
+        'Abbiamo un servizio reperibile che interviene entro 12 ore per sanificazioni urgenti, allagamenti o esigenze straordinarie.'
+    },
+    {
+      question: 'Potete combinare più servizi nella stessa sede?',
+      answer:
+        'Sì, creiamo pacchetti personalizzati che includono pulizie, giardinaggio e gestione rifiuti con un unico referente contrattuale.'
     }
   ];
 
@@ -242,8 +284,8 @@ const Servizi = () => {
     <div className="pt-24 pb-20">
       <SEO
         title="Servizi di Pulizia Professionali a Brescia | Arctic Pulizie"
-        description="Pulizie uffici, condomini, industrie, vetrate, post-cantiere e giardinaggio a Brescia. Arctic Pulizie prepara preventivi in 24 ore con squadre dedicate."
-        keywords="servizi pulizie brescia, pulizie professionali brescia, pulizie uffici arctic pulizie, pulizie condomini brescia"
+        description="Catalogo servizi dell’impresa di pulizie Arctic a Brescia: uffici, condomini, sanificazioni certificate, pulizie industriali, vetri, post-cantiere e gestione rifiuti. Preventivi in 24 ore."
+        keywords="servizi pulizie brescia, impresa di pulizie brescia servizi, sanificazione ambienti brescia, pulizie industriali brescia, gestione carrellati brescia"
         canonical={buildCanonicalUrl('/servizi')}
         structuredData={servicesPageStructuredData}
       />
@@ -251,11 +293,11 @@ const Servizi = () => {
       <section className="py-20 bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            I Nostri <span className="text-sky-500">Servizi</span>
+            Servizi dell&apos;impresa di pulizie Arctic a Brescia
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
-            Soluzioni complete per aziende e privati a Brescia e provincia.
-            28 dipendenti qualificati, contratti singoli o periodici programmati.
+            Soluzioni professionali per uffici, condomini, industrie, hotel e negozi in tutta la provincia.
+            <span className="block mt-2">Contratti flessibili, sopralluogo gratuito e personale con attestati di sicurezza.</span>
           </p>
         </div>
       </section>
@@ -265,7 +307,7 @@ const Servizi = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {services.map((service, index) => (
-              <div 
+              <div
                 key={service.id}
                 id={service.id}
                 className={`grid lg:grid-cols-2 gap-12 items-center ${
@@ -335,6 +377,48 @@ const Servizi = () => {
         </div>
       </section>
 
+      {/* Bundled Solutions */}
+      <section className="py-20 bg-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 gap-8">
+            <div className="max-w-2xl">
+              <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-white/10 text-white rounded-full uppercase tracking-wide">
+                Pacchetti combinati
+              </p>
+              <h2 className="mt-4 text-3xl lg:text-4xl font-bold leading-tight">
+                Offerte integrate per le aziende di Brescia
+              </h2>
+              <p className="mt-3 text-slate-200">
+                Abbiamo creato bundle ispirati alle offerte dei competitor locali più visibili per offrire soluzioni complete che uniscono pulizie, sanificazioni e servizi accessori.
+              </p>
+            </div>
+            <Link
+              to="/richiedi-preventivo"
+              className="inline-flex items-center space-x-2 bg-white text-slate-900 font-semibold px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition"
+            >
+              <span>Richiedi preventivo rapido</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {serviceBundles.map((bundle, index) => (
+              <div key={index} className="bg-white/10 border border-white/20 rounded-2xl p-8 backdrop-blur">
+                <h3 className="text-2xl font-semibold mb-4">{bundle.title}</h3>
+                <p className="text-slate-100 leading-relaxed mb-6">{bundle.description}</p>
+                <Link
+                  to="/richiedi-preventivo"
+                  className="inline-flex items-center space-x-2 text-white font-semibold hover:text-sky-200 transition"
+                >
+                  <span>{bundle.cta}</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -374,7 +458,7 @@ const Servizi = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-8">
             Settori che Serviamo
           </h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               "Uffici e Coworking",
@@ -386,11 +470,34 @@ const Servizi = () => {
               "Hotel e Ristoranti",
               "Edifici Residenziali"
             ].map((sector, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-slate-50 rounded-lg p-4 hover:bg-sky-50 transition-colors duration-300"
               >
                 <p className="font-semibold text-slate-700">{sector}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-sky-100 text-sky-600 rounded-full">
+              Domande frequenti sulle pulizie a Brescia
+            </p>
+            <h2 className="mt-4 text-3xl lg:text-4xl font-bold text-slate-900">
+              Tutte le informazioni prima di richiedere il servizio
+            </h2>
+          </div>
+
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                <h3 className="text-xl font-semibold text-slate-900">{faq.question}</h3>
+                <p className="mt-3 text-slate-600 leading-relaxed">{faq.answer}</p>
               </div>
             ))}
           </div>
