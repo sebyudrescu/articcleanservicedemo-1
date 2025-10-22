@@ -32,14 +32,15 @@ const Servizi = () => {
       id: 'uffici',
       icon: Building2,
       title: "Pulizie Uffici",
-      description: "Servizi completi per uffici e spazi lavorativi con prodotti professionali e personale qualificato.",
+      description: "Servizi completi per uffici e spazi lavorativi con prodotti professionali e personale qualificato: la tua impresa di pulizie di riferimento a Brescia centro.",
       features: [
         "Pulizia quotidiana postazioni di lavoro",
         "Sanificazione bagni e aree comuni",
         "Pulizia vetri interni ed esterni",
         "Gestione rifiuti e raccolta differenziata",
         "Aspirazione tappeti e moquette",
-        "Pulizia e disinfezione superfici"
+        "Pulizia e disinfezione superfici",
+        "Report di controllo qualità per uffici nel centro di Brescia"
       ],
       benefits: [
         "Ambiente di lavoro sempre professionale",
@@ -54,14 +55,14 @@ const Servizi = () => {
       id: 'industriale',
       icon: Factory,
       title: "Pulizie Industriali e Capannoni",
-      description: "Interventi specializzati per capannoni, magazzini e ambienti industriali di ogni dimensione.",
+      description: "Interventi specializzati per capannoni, magazzini e ambienti industriali di ogni dimensione, inclusi reparti produttivi appena sanificati.",
       features: [
         "Pulizia capannoni e magazzini",
         "Aspirazione industriale con attrezzature specializzate",
         "Trattamenti pavimenti industriali",
         "Pulizia macchinari e impianti",
         "Rimozione polveri e residui di lavorazione",
-        "Sanificazione aree produttive"
+        "Sanificazione ambienti aziendali e reparti produttivi"
       ],
       benefits: [
         "Conformità alle normative di sicurezza",
@@ -76,13 +77,14 @@ const Servizi = () => {
       id: 'post-cantiere',
       icon: Hammer,
       title: "Pulizie Post-Cantiere",
-      description: "Pulizie specializzate per la consegna di nuove costruzioni o ristrutturazioni.",
+      description: "Pulizie specializzate per la consegna di nuove costruzioni o ristrutturazioni, con squadre dedicate ai cantieri industriali.",
       features: [
         "Rimozione polveri da costruzione",
         "Pulizia residui di malta e cemento",
         "Lucidatura pavimenti e superfici",
         "Pulizia vetri e infissi",
         "Sanificazione completa ambienti",
+        "Pulizie post cantiere industriale con macchinari dedicati",
         "Preparazione per l'uso immediato"
       ],
       benefits: [
@@ -120,13 +122,14 @@ const Servizi = () => {
       id: 'sanificazione',
       icon: Shield,
       title: "Sanificazione Ambienti",
-      description: "Trattamenti certificati per la sicurezza e l'igiene degli ambienti di lavoro.",
+      description: "Trattamenti certificati per la sicurezza e l'igiene degli ambienti di lavoro con focus sulla sanificazione ambienti aziendali.",
       features: [
         "Sanificazione con prodotti certificati",
         "Trattamenti anti-batterici e virali",
         "Nebulizzazione e vaporizzazione",
         "Certificazione degli interventi",
         "Protocolli specifici per settore",
+        "Piani di sanificazione ambienti aziendali continuo",
         "Monitoraggio qualità dell'aria"
       ],
       benefits: [
@@ -206,6 +209,39 @@ const Servizi = () => {
     }
   ];
 
+  const highIntentSections = [
+    {
+      title: "Impresa di pulizie Brescia centro",
+      description:
+        "Le principali imprese concorrenti puntano su tempi di attivazione rapidi e presidio nel centro storico. Abbiamo ampliato i nostri turni mattutini e serali per gli uffici tra Piazza Loggia, Quartiere Carmine e la zona direzionale di via Moretto, garantendo un referente unico che coordina report fotografici e checklist digitali dedicate.",
+      bullets: [
+        "Sopralluoghi entro 24 ore nel centro di Brescia",
+        "Piani di pulizia calibrati per studi professionali e boutique",
+        "Comunicazione diretta con il nostro referente facility"
+      ]
+    },
+    {
+      title: "Sanificazione ambienti aziendali",
+      description:
+        "Dall'analisi dei siti leader in Lombardia emerge l'attenzione a protocolli certificati e tracciabilità degli interventi. Abbiamo introdotto procedure con registri digitali condivisi, prodotti PMC e validazioni con misurazioni ATP per uffici, cliniche e aziende manifatturiere.",
+      bullets: [
+        "Protocollo HACCP per aziende alimentari e logistiche",
+        "Nebulizzazione elettrostatica e monitoraggio qualità dell'aria",
+        "Certificazioni consegnate entro 12 ore dalla sanificazione"
+      ]
+    },
+    {
+      title: "Pulizie post cantiere industriale",
+      description:
+        "Le imprese di riferimento mettono in risalto squadre dedicate ai grandi volumi. Per rispondere al gap abbiamo creato un team specializzato con aspiratori industriali, piattaforme aeree e prodotti deceranti che permettono di consegnare capannoni e reparti produttivi pronti alla riapertura.",
+      bullets: [
+        "Gestione polveri sottili da lavorazioni meccaniche",
+        "Trattamenti anti-aloni su pavimentazioni in resina e calcestruzzo",
+        "Coordinamento con responsabile sicurezza di cantiere"
+      ]
+    }
+  ];
+
   const whyChooseUs = [
     {
       icon: CheckCircle,
@@ -242,7 +278,7 @@ const Servizi = () => {
       <SEO
         title="Servizi di Pulizia Professionali a Brescia | Artic Pulizie"
         description="Pulizie uffici, condomini, industrie, vetrate, post-cantiere e giardinaggio a Brescia. Artic Pulizie prepara preventivi in 24 ore con squadre dedicate."
-        keywords="servizi pulizie brescia, pulizie professionali brescia, pulizie uffici artic pulizie, pulizie condomini brescia"
+        keywords="servizi pulizie brescia, pulizie professionali brescia, impresa pulizie Brescia centro, sanificazione ambienti aziendali, pulizie post cantiere industriale"
         canonical={buildCanonicalUrl('/servizi')}
         structuredData={servicesPageStructuredData}
       />
@@ -264,7 +300,7 @@ const Servizi = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {services.map((service, index) => (
-              <div 
+              <div
                 key={service.id}
                 id={service.id}
                 className={`grid lg:grid-cols-2 gap-12 items-center ${
@@ -328,6 +364,35 @@ const Servizi = () => {
                     height={480}
                   />
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* High Intent Keyword Coverage */}
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Copertura dei servizi ad alta intenzione</h2>
+            <p className="text-lg text-slate-200 max-w-3xl mx-auto leading-relaxed">
+              L'analisi delle migliori imprese di pulizia in Brescia e Lombardia evidenzia la richiesta di soluzioni mirate per il centro città, la sanificazione certificata degli ambienti aziendali e le pulizie post cantiere industriale. Qui trovi come Artic Pulizie colma completamente questi bisogni.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {highIntentSections.map((item) => (
+              <div key={item.title} className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/10">
+                <h3 className="text-2xl font-semibold text-sky-200 mb-4">{item.title}</h3>
+                <p className="text-slate-200 leading-relaxed mb-6">{item.description}</p>
+                <ul className="space-y-3">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start space-x-3">
+                      <CheckCircle className="w-5 h-5 text-sky-400 mt-1" />
+                      <span className="text-slate-100">{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>

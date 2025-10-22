@@ -21,14 +21,15 @@ export const services: Service[] = [
     name: 'Pulizie Uffici',
     slug: 'pulizie-uffici',
     icon: 'Building2',
-    shortDescription: 'Servizi professionali di pulizia per uffici, studi e spazi aziendali',
+    shortDescription: 'Impresa di pulizie per uffici nel centro di Brescia, studi e spazi aziendali',
     features: [
       'Pulizia quotidiana postazioni di lavoro',
       'Sanificazione bagni e aree comuni',
       'Pulizia vetri interni ed esterni',
       'Gestione rifiuti e raccolta differenziata',
       'Aspirazione tappeti e moquette',
-      'Pulizia sale riunioni e aree break'
+      'Pulizia sale riunioni e aree break',
+      'Report digitali dedicati per uffici a Brescia centro'
     ]
   },
   {
@@ -51,14 +52,15 @@ export const services: Service[] = [
     name: 'Pulizie Industriali',
     slug: 'pulizie-industriali',
     icon: 'Factory',
-    shortDescription: 'Servizi specializzati per capannoni industriali e aree produttive',
+    shortDescription: 'Servizi specializzati per capannoni industriali e aree produttive con sanificazione ambienti aziendali',
     features: [
       'Pulizia capannoni e aree produttive',
       'Lavaggio pavimenti industriali',
       'Pulizia macchinari e impianti',
       'Rimozione polveri e residui industriali',
       'Sanificazione spogliatoi e servizi',
-      'Gestione rifiuti industriali'
+      'Gestione rifiuti industriali',
+      'Piani certificati di sanificazione ambienti aziendali'
     ]
   },
   {
@@ -66,14 +68,15 @@ export const services: Service[] = [
     name: 'Pulizie Post Cantiere',
     slug: 'pulizie-post-cantiere',
     icon: 'HardHat',
-    shortDescription: 'Pulizia finale dopo lavori di costruzione e ristrutturazione',
+    shortDescription: 'Pulizia finale dopo lavori di costruzione e ristrutturazione con team per cantieri industriali',
     features: [
       'Rimozione detriti e materiali residui',
       'Pulizia profonda pavimenti e superfici',
       'Lavaggio vetri e infissi',
       'Aspirazione polveri da cantiere',
       'Pulizia finale pre-consegna',
-      'Sanificazione completa ambienti'
+      'Sanificazione completa ambienti',
+      'Pulizie post cantiere industriale con macchinari dedicati'
     ]
   },
   {
@@ -81,14 +84,15 @@ export const services: Service[] = [
     name: 'Sanificazione Ambienti',
     slug: 'sanificazione-ambienti',
     icon: 'Shield',
-    shortDescription: 'Sanificazione professionale con prodotti certificati e sicuri',
+    shortDescription: 'Sanificazione ambienti aziendali professionale con prodotti certificati e sicuri',
     features: [
       'Sanificazione con prodotti certificati',
       'Disinfezione profonda superfici',
       'Trattamenti antibatterici',
       'Sanificazione aria condizionata',
       'Certificazione intervento eseguito',
-      'Protocolli anti COVID-19'
+      'Protocolli anti COVID-19',
+      'Monitoraggio con registri digitali condivisi'
     ]
   },
   {
