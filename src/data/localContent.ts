@@ -151,6 +151,38 @@ const contentDatabase: Record<string, Record<string, any>> = {
       area: 'Operiamo su tutto il comune di Travagliato, con particolare attenzione alla zona industriale ovest e all\'area del centro fiera. I nostri servizi raggiungono Torbole Casaglia, Roncadelle, Ospitaletto e tutta la bassa ovest. La conoscenza della viabilità ci permette di ottimizzare i percorsi e garantire puntualità.',
       cta: 'La vostra azienda opera a Travagliato o nella zona industriale? Scriveteci per un preventivo dettagliato. Interveniamo nell\'area fiera, zona logistica e in tutto il territorio comunale con soluzioni su misura.'
     }
+  },
+  'pulizie-post-cantiere': {
+    'brescia': {
+      h1: 'Pulizie post cantiere industriale a Brescia – Consegna pronta in tempi record',
+      metaTitle: 'Pulizie Post Cantiere Brescia | Squadre Industriali Specializzate',
+      metaDescription:
+        'Pulizie post cantiere industriale a Brescia e provincia. Squadre dedicate con macchinari professionali per capannoni, negozi e uffici. Preventivo in 24 ore.',
+      intro:
+        'A Brescia supportiamo imprese di costruzione, property manager e aziende manifatturiere nella fase cruciale di chiusura cantiere. Dal quartiere finanziario di via San Rocchino alle aree industriali di Chiesanuova e Sant’Eufemia, le nostre squadre rimuovono polveri sottili, residui di silicone e vernici, ripristinando ambienti pronti alla riapertura.',
+      whyChoose:
+        'Le principali imprese di pulizie del territorio puntano sul noleggio esterno dei macchinari. Noi disponiamo internamente di aspiratori trifase, piattaforme aeree e lavasciuga che ci permettono di gestire cantieri industriali fino a 10.000 mq. Coordiniamo le attività con il direttore lavori, forniamo report fotografici e ci occupiamo della certificazione finale di sanificazione laddove richiesta.',
+      area:
+        'Operiamo in tutta Brescia, con interventi giornalieri nelle zone industriali di Via Orzinuovi, Sant’Eufemia, Fornaci, Chiesanuova e nella cintura di Castelmella, Roncadelle e Rezzato. Possiamo mobilitare squadre anche su turni notturni per rispettare le tempistiche di consegna.',
+      cta:
+        'State consegnando un capannone o un complesso direzionale a Brescia? Contattateci per un piano di pulizie post cantiere industriale completo di trattamenti pavimenti, lavaggio vetrate in quota e smaltimento controllato dei rifiuti.'
+    }
+  },
+  'sanificazione-ambienti': {
+    'brescia': {
+      h1: 'Sanificazione ambienti aziendali a Brescia – Procedure certificate e monitorate',
+      metaTitle: 'Sanificazione Ambienti Aziendali Brescia | Protocolli Certificati',
+      metaDescription:
+        'Sanificazione ambienti aziendali a Brescia: protocolli HACCP, report digitali e certificazioni rapide per uffici, cliniche, industrie. Prenota il sopralluogo gratuito.',
+      intro:
+        'Le aziende bresciane richiedono oggi protocolli documentabili e continui. Offriamo sanificazioni programmate per uffici direzionali, cliniche private, logistiche alimentari e reparti produttivi, utilizzando prodotti a presidio medico chirurgico e sistemi di nebulizzazione elettrostatica per coprire superfici, aria e impianti HVAC.',
+      whyChoose:
+        'Rispetto ai maggiori competitor lombardi, integriamo ogni intervento con misurazioni ATP pre e post trattamento, registri digitali condivisi con RSPP e consulenza sui protocolli HACCP. I nostri operatori sono certificati per lavorare in ambienti ospedalieri e industriali con procedure di accesso controllate.',
+      area:
+        'Serviamo Brescia centro, il polo ospedaliero di Poliambulanza, le zone industriali di Via Serenissima e Via del Mella, oltre alle sedi direzionali di San Polo, Lamarmora e Noce. Copriamo anche i comuni limitrofi con contratti programmati o interventi straordinari.',
+      cta:
+        'Avete bisogno di sanificare ambienti aziendali a Brescia con documentazione completa? Prenotate un sopralluogo: predisponiamo un piano personalizzato con protocolli certificati e rilascio digitale degli attestati.'
+    }
   }
 };
 
