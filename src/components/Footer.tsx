@@ -1,25 +1,24 @@
 import { Phone, Mail, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import logo from '../../immagini/Logo-artic-clean-service-real.webp';
+
 const Footer = () => {
   return (
     <footer className="bg-slate-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Link to="/" className="flex items-center space-x-3">
-              <div className="w-10 h-10 flex items-center justify-center">
+            <Link to="/" className="flex items-center justify-center md:justify-start">
+              <div className="w-28 h-28 md:w-32 md:h-32 flex items-center justify-center">
                 <img
-                  src="https://i.imgur.com/ks6yQn1.png"
+                  src={logo}
                   alt="Artic Clean logo"
                   className="w-full h-full object-contain"
-                  width={40}
-                  height={40}
+                  width={160}
+                  height={160}
                   loading="lazy"
                 />
-              </div>
-              <div>
-                <h1 className="text-lg font-bold">Artic Clean</h1>
               </div>
             </Link>
             <p className="text-slate-300 leading-relaxed">
