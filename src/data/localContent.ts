@@ -18,7 +18,7 @@ const contentDatabase: Record<string, Record<string, any>> = {
   'pulizie-uffici': {
     'brescia': {
       h1: 'Pulizie Uffici a Brescia Centro – Professionisti della Pulizia Aziendale',
-      metaTitle: 'Pulizie Uffici Brescia | Servizi per Aziende e Professionisti',
+      metaTitle: 'Pulizie Uffici Brescia | Servizi per Aziende',
       metaDescription: 'Pulizie uffici Brescia centro e provincia. Team di 28 operatori per aziende e studi. Interventi quotidiani o programmati. Preventivo gratuito!',
       intro: 'Nel cuore di Brescia, dalla zona di Piazza Loggia fino a Lamarmora e Poliambulanza, forniamo servizi di pulizia uffici completi per ogni realtà aziendale. La nostra squadra opera quotidianamente negli uffici del centro città garantendo ambienti sempre impeccabili. Serviamo società, studi legali, cliniche private e attività commerciali con un team specializzato che conosce perfettamente le esigenze del tessuto imprenditoriale bresciano.',
       whyChoose: 'Affidarci la pulizia dei vostri uffici nel centro di Brescia significa scegliere un partner locale affidabile. Conosciamo bene la città, dagli edifici storici del centro alle moderne palazzine di Urago Mella. I nostri operatori utilizzano prodotti ecologici certificati e seguono protocolli precisi per ogni tipologia di ufficio. Offriamo massima flessibilità negli orari: interveniamo prima dell\'apertura, durante la pausa pranzo o dopo la chiusura, secondo le vostre necessità operative.',
@@ -155,7 +155,7 @@ const contentDatabase: Record<string, Record<string, any>> = {
   'pulizie-post-cantiere': {
     'brescia': {
       h1: 'Pulizie post cantiere industriale a Brescia – Consegna pronta in tempi record',
-      metaTitle: 'Pulizie Post Cantiere Brescia | Squadre Industriali Specializzate',
+      metaTitle: 'Pulizie Post Cantiere Brescia | Squadre Industriali',
       metaDescription:
         'Pulizie post cantiere industriale a Brescia e provincia. Squadre dedicate con macchinari professionali per capannoni, negozi e uffici. Preventivo in 24 ore.',
       intro:
@@ -171,7 +171,7 @@ const contentDatabase: Record<string, Record<string, any>> = {
   'sanificazione-ambienti': {
     'brescia': {
       h1: 'Sanificazione ambienti aziendali a Brescia – Procedure certificate e monitorate',
-      metaTitle: 'Sanificazione Ambienti Aziendali Brescia | Protocolli Certificati',
+      metaTitle: 'Sanificazione Ambienti Brescia | Protocolli Certificati',
       metaDescription:
         'Sanificazione ambienti aziendali a Brescia: protocolli HACCP, report digitali e certificazioni rapide per uffici, cliniche, industrie. Prenota il sopralluogo gratuito.',
       intro:
