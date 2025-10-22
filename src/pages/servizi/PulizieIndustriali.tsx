@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Quali ambienti industriali pulisce Artic Pulizie?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Puliamo capannoni, magazzini, stabilimenti produttivi, linee di produzione e impianti industriali in tutta la provincia di Brescia."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Che attrezzature utilizzate per le pulizie industriali?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Usiamo lavasciuga industriali, aspiratori ad alta potenza, idropulitrici e macchinari dedicati alle superfici continue."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "È possibile programmare interventi notturni?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, pianifichiamo anche interventi in orario notturno o nei weekend per non fermare la produzione."
-        }
-      }
-    ]
+    question: 'Quali ambienti industriali pulisce Artic Pulizie?',
+    answer:
+      'Puliamo capannoni, magazzini, stabilimenti produttivi, linee di produzione e impianti industriali in tutta la provincia di Brescia.'
+  },
+  {
+    question: 'Che attrezzature utilizzate per le pulizie industriali?',
+    answer:
+      'Usiamo lavasciuga industriali, aspiratori ad alta potenza, idropulitrici e macchinari dedicati alle superfici continue.'
+  },
+  {
+    question: 'È possibile programmare interventi notturni?',
+    answer:
+      'Sì, pianifichiamo anche interventi in orario notturno o nei weekend per non fermare la produzione.'
   }
 ];
 
@@ -106,6 +92,23 @@ const PulizieIndustriali = () => {
     "Macchinari per trattamento pavimenti"
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Pulizie industriali a Brescia',
+      serviceType: 'Pulizie Industriali',
+      description:
+        'Pulizie industriali e manutenzione capannoni a Brescia con macchinari professionali, protocolli certificati e personale specializzato.',
+      url: '/servizi/pulizie-industriali',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Pulizie Industriali', path: '/servizi/pulizie-industriali' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -113,7 +116,7 @@ const PulizieIndustriali = () => {
         description="Pulizie industriali e manutenzione capannoni a Brescia con macchinari professionali e protocolli certificati. Artic Pulizie garantisce sicurezza e continuità produttiva."
         keywords="pulizie industriali brescia, pulizia capannoni brescia, pulizie fabbriche artic pulizie, manutenzione industriale brescia"
         canonical={buildCanonicalUrl('/servizi/pulizie-industriali')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">

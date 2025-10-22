@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "In quanto tempo completate una pulizia post-cantiere?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dopo il sopralluogo definiamo durata e squadre: piccoli appartamenti in 1 giorno, grandi cantieri in pochi giorni lavorativi."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Vi occupate anche della rimozione dei detriti?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, Artic Pulizie rimuove detriti, adesivi, polveri e coordina la gestione dei materiali di scarto secondo normativa."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "È prevista la sanificazione finale degli ambienti?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Al termine della pulizia effettuiamo sanificazione e deodorazione per consegnare ambienti pronti all’uso."
-        }
-      }
-    ]
+    question: 'In quanto tempo completate una pulizia post-cantiere?',
+    answer:
+      'Dopo il sopralluogo definiamo durata e squadre: piccoli appartamenti in 1 giorno, grandi cantieri in pochi giorni lavorativi.'
+  },
+  {
+    question: 'Vi occupate anche della rimozione dei detriti?',
+    answer:
+      'Sì, Artic Pulizie rimuove detriti, adesivi, polveri e coordina la gestione dei materiali di scarto secondo normativa.'
+  },
+  {
+    question: 'È prevista la sanificazione finale degli ambienti?',
+    answer:
+      'Al termine della pulizia effettuiamo sanificazione e deodorazione per consegnare ambienti pronti all’uso.'
   }
 ];
 
@@ -123,6 +109,23 @@ const PuliziePostCantiere = () => {
     }
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Pulizie post cantiere a Brescia',
+      serviceType: 'Pulizie Post Cantiere',
+      description:
+        "Pulizie post-cantiere a Brescia con rimozione detriti, lucidatura e sanificazione finale per consegne pronte all'uso.",
+      url: '/servizi/pulizie-post-cantiere',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Pulizie Post Cantiere', path: '/servizi/pulizie-post-cantiere' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -130,7 +133,7 @@ const PuliziePostCantiere = () => {
         description="Pulizie post-cantiere a Brescia con rimozione detriti, lucidatura e sanificazione finale. Artic Pulizie consegna ambienti pronti all'uso."
         keywords="pulizie post cantiere brescia, pulizia fine lavori brescia, sanificazione post cantiere artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-post-cantiere')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">

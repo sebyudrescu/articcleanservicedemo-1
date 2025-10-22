@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Quali servizi di giardinaggio offrite a Brescia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Artic Pulizie cura taglio erba, potature, manutenzione aiuole, irrigazione e trattamenti stagionali per aree verdi aziendali e condominiali."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Posso abbinare il giardinaggio alle pulizie condominiali?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, offriamo pacchetti combinati pulizie + giardinaggio con condizioni dedicate ai condomini gestiti da Artic Pulizie."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Effettuate interventi straordinari su richiesta?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Interveniamo su richiesta per potature importanti, sistemazione stagionale e rifacimento aree verdi."
-        }
-      }
-    ]
+    question: 'Quali servizi di giardinaggio offrite a Brescia?',
+    answer:
+      "Artic Pulizie cura taglio erba, potature, manutenzione aiuole, irrigazione e trattamenti stagionali per aree verdi aziendali e condominiali."
+  },
+  {
+    question: 'Posso abbinare il giardinaggio alle pulizie condominiali?',
+    answer:
+      'Sì, offriamo pacchetti combinati pulizie + giardinaggio con condizioni dedicate ai condomini gestiti da Artic Pulizie.'
+  },
+  {
+    question: 'Effettuate interventi straordinari su richiesta?',
+    answer:
+      'Interveniamo su richiesta per potature importanti, sistemazione stagionale e rifacimento aree verdi.'
   }
 ];
 
@@ -121,6 +107,23 @@ const Giardinaggio = () => {
     "Cortili e terrazzi"
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Giardinaggio e manutenzione verde a Brescia',
+      serviceType: 'Giardinaggio',
+      description:
+        'Cura professionale di giardini condominiali e aree verdi aziendali a Brescia con contratti periodici e interventi straordinari.',
+      url: '/servizi/giardinaggio',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Giardinaggio', path: '/servizi/giardinaggio' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -128,7 +131,7 @@ const Giardinaggio = () => {
         description="Cura professionale di giardini condominiali e aree verdi aziendali a Brescia. Artic Pulizie offre contratti periodici e interventi straordinari su richiesta."
         keywords="giardinaggio brescia, manutenzione verde brescia, cura giardini artic pulizie"
         canonical={buildCanonicalUrl('/servizi/giardinaggio')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
 
       {/* Hero Section */}

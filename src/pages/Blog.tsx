@@ -6,6 +6,7 @@ import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { blogPosts } from '@/data/blogPosts';
 import { services } from '@/data/servicesData';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema } from '@/utils/structuredData';
 
 const Blog = () => {
   const posts = [...blogPosts].sort(
@@ -25,8 +26,9 @@ const Blog = () => {
         datePublished: post.publishedAt,
         url: buildCanonicalUrl(`/blog/${post.slug}`)
       }))
-    }
-  ];
+    },
+    buildBreadcrumbSchema([{ name: 'Blog', path: '/blog' }])
+  ].filter(Boolean) as Record<string, unknown>[];
 
   return (
     <main className="pt-24 pb-20 bg-slate-50 min-h-screen">

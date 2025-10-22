@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import { buildCanonicalUrl, siteMetadata } from '@/data/siteMetadata';
+import { buildBreadcrumbSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const Recensioni = () => {
   const reviews = [
@@ -115,25 +116,20 @@ const Recensioni = () => {
   ];
 
   const reviewStructuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": siteMetadata.siteName,
-      "url": siteMetadata.baseUrl,
-      "aggregateRating": siteMetadata.aggregateRating,
-      "review": reviews.slice(0, 5).map((review) => ({
-        "@type": "Review",
-        "author": review.name,
-        "reviewBody": review.text,
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": review.rating,
-          "bestRating": "5",
-          "worstRating": "1"
-        }
+    buildServiceSchema({
+      name: 'Servizi Artic Pulizie',
+      serviceType: 'Servizi di Pulizia Professionali',
+      description: 'Recensioni dei clienti di Artic Pulizie a Brescia e provincia.',
+      url: '/recensioni',
+      aggregateRating: siteMetadata.aggregateRating,
+      reviews: reviews.slice(0, 8).map((review) => ({
+        author: review.name,
+        reviewBody: review.text,
+        ratingValue: review.rating
       }))
-    }
-  ];
+    }),
+    buildBreadcrumbSchema([{ name: 'Recensioni', path: '/recensioni' }])
+  ].filter(Boolean) as Record<string, unknown>[];
 
   const renderStars = (rating: number) => {
     return (

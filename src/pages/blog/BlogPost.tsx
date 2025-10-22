@@ -7,6 +7,7 @@ import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { getPostBySlug, getPostsByService } from '@/data/blogPosts';
 import { services } from '@/data/servicesData';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema } from '@/utils/structuredData';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -51,8 +52,12 @@ const BlogPost = () => {
         }
       },
       description: post.metaDescription
-    }
-  ];
+    },
+    buildBreadcrumbSchema([
+      { name: 'Blog', path: '/blog' },
+      { name: post.title, path: `/blog/${post.slug}` }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
 
   return (
     <main className="pt-24 pb-20 bg-white">

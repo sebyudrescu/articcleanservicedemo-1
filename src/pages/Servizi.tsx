@@ -6,37 +6,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const servicesPageStructuredData = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Quali servizi di pulizia offrite a Brescia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Artic Pulizie offre servizi di pulizia professionale per uffici, condomini, industrie, vetrate, post-cantiere, giardinaggio e gestione carrellati in tutta la provincia di Brescia."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Posso richiedere un servizio di pulizia personalizzato?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, creiamo piani di pulizia su misura in base al tipo di struttura, alla metratura e alla frequenza richiesta."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quanto tempo impiegate per organizzare il servizio?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Dopo il preventivo e il sopralluogo gratuito, attiviamo il servizio entro pochi giorni con personale dedicato."
-        }
-      }
-    ]
+    question: 'Quali servizi di pulizia offrite a Brescia?',
+    answer:
+      'Artic Pulizie offre servizi di pulizia professionale per uffici, condomini, industrie, vetrate, post-cantiere, giardinaggio e gestione carrellati in tutta la provincia di Brescia.'
+  },
+  {
+    question: 'Posso richiedere un servizio di pulizia personalizzato?',
+    answer:
+      'Sì, creiamo piani di pulizia su misura in base al tipo di struttura, alla metratura e alla frequenza richiesta.'
+  },
+  {
+    question: 'Quanto tempo impiegate per organizzare il servizio?',
+    answer:
+      'Dopo il preventivo e il sopralluogo gratuito, attiviamo il servizio entro pochi giorni con personale dedicato.'
   }
 ];
 
@@ -237,6 +223,19 @@ const Servizi = () => {
       description: "Competenze specifiche per uffici, industrie, cliniche e strutture commerciali."
     }
   ];
+
+  const servicesPageStructuredData = [
+    buildServiceSchema({
+      name: 'Servizi di pulizia professionali a Brescia',
+      serviceType: 'Servizi di Pulizia Professionali',
+      description:
+        'Pulizie uffici, condomini, industrie, vetrate, post-cantiere, giardinaggio e gestione carrellati per Brescia e provincia.',
+      url: '/servizi',
+      offers: services.map((service) => service.title)
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([{ name: 'Servizi', path: '/servizi' }])
+  ].filter(Boolean) as Record<string, unknown>[];
 
   return (
     <div className="pt-24 pb-20">

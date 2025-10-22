@@ -21,7 +21,11 @@ const SEO = ({
   structuredData
 }: SEOProps) => {
   const fullTitle = title.includes(siteMetadata.siteName) ? title : `${title} | ${siteMetadata.siteName}`;
-  const canonicalUrl = canonical ? canonical : buildCanonicalUrl(typeof window !== 'undefined' ? window.location.pathname : '/');
+  const canonicalUrl = canonical
+    ? canonical.startsWith('http')
+      ? canonical
+      : buildCanonicalUrl(canonical)
+    : buildCanonicalUrl(typeof window !== 'undefined' ? window.location.pathname : '/');
   const baseStructuredData: Record<string, unknown>[] = [
     {
       '@context': 'https://schema.org',
@@ -58,7 +62,9 @@ const SEO = ({
     }
   ];
 
-  const schemaToRender = structuredData ? [...baseStructuredData, ...structuredData] : baseStructuredData;
+  const schemaToRender = structuredData
+    ? [...baseStructuredData, ...structuredData].filter(Boolean) as Record<string, unknown>[]
+    : baseStructuredData;
 
   return (
     <Helmet>
@@ -68,6 +74,8 @@ const SEO = ({
       <meta name="robots" content="index, follow" />
       <meta name="author" content={siteMetadata.legalName} />
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="it" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="it-IT" href={canonicalUrl} />
 
       <meta property="og:type" content={type} />
       <meta property="og:title" content={fullTitle} />

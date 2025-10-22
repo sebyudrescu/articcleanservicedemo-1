@@ -7,8 +7,9 @@ import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { getLocalServicePage, LocalServicePage, getAllServices, getAllLocations } from '@/lib/supabase';
-import { buildCanonicalUrl, siteMetadata } from '@/data/siteMetadata';
+import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const ServizioLocaleDynamic = () => {
   const { servizio, localita } = useParams<{ servizio: string; localita: string }>();
@@ -83,31 +84,19 @@ const ServizioLocaleDynamic = () => {
   const h2Titles = pageData.h2_titles || {};
 
   const structuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": `${service.name} a ${location.name}`,
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": siteMetadata.siteName,
-        "url": siteMetadata.baseUrl
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": location.name
-      },
-      "serviceType": service.name,
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "itemListElement": (pageData.detailed_services ? Object.keys(pageData.detailed_services) : []).map((detail) => ({
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": detail
-          }
-        }))
-      }
-    }
+    buildServiceSchema({
+      name: `${service.name} a ${location.name}`,
+      serviceType: service.name,
+      description: pageData.meta_description ?? pageData.intro_text,
+      url: `/servizi/${servizio}/${localita}`,
+      areaServed: location.name,
+      offers: pageData.detailed_services ? Object.keys(pageData.detailed_services) : undefined
+    }),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: service.name, path: `/servizi/${servizio}` },
+      { name: location.name, path: `/servizi/${servizio}/${localita}` }
+    ])
   ];
 
   const benefits = [
