@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Come funziona il servizio di pulizie uffici a Brescia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Effettuiamo un sopralluogo gratuito, definiamo un piano personalizzato e programmiamo gli interventi con personale dedicato Artic Pulizie."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Utilizzate prodotti certificati per gli uffici?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, impieghiamo detergenti professionali certificati e protocolli conformi alle norme igienico-sanitarie."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quali orari sono disponibili per la pulizia degli uffici?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Programmiamo interventi serali, mattutini o nel weekend per non interferire con l’attività lavorativa."
-        }
-      }
-    ]
+    question: 'Come funziona il servizio di pulizie uffici a Brescia?',
+    answer:
+      'Effettuiamo un sopralluogo gratuito, definiamo un piano personalizzato e programmiamo gli interventi con personale dedicato Artic Pulizie.'
+  },
+  {
+    question: 'Utilizzate prodotti certificati per gli uffici?',
+    answer:
+      'Sì, impieghiamo detergenti professionali certificati e protocolli conformi alle norme igienico-sanitarie.'
+  },
+  {
+    question: 'Quali orari sono disponibili per la pulizia degli uffici?',
+    answer:
+      'Programmiamo interventi serali, mattutini o nel weekend per non interferire con l’attività lavorativa.'
   }
 ];
 
@@ -76,6 +62,23 @@ const PulizieUffici = () => {
     }
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Pulizie uffici a Brescia',
+      serviceType: 'Pulizie Uffici',
+      description:
+        'Servizi completi di pulizia e sanificazione uffici a Brescia e provincia con personale qualificato e prodotti certificati.',
+      url: '/servizi/pulizie-uffici',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Pulizie Uffici', path: '/servizi/pulizie-uffici' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -83,7 +86,7 @@ const PulizieUffici = () => {
         description="Pulizia uffici a Brescia e provincia con team dedicato, prodotti certificati e orari flessibili. Artic Pulizie offre preventivo gratuito in 24 ore."
         keywords="pulizie uffici brescia, impresa pulizie uffici brescia, pulizia uffici aziende brescia, sanificazione uffici artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-uffici')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
 
       {/* Hero Section */}

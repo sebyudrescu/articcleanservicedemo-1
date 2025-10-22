@@ -2,6 +2,7 @@ import { Award, Users, MapPin, Calendar, Target, Heart, Shield, Zap } from 'luci
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
+import { buildBreadcrumbSchema, buildServiceSchema } from '@/utils/structuredData';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import { cdnImage } from '@/utils/image';
@@ -55,6 +56,16 @@ const ChiSiamo = () => {
     }
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Impresa di pulizie Artic Pulizie',
+      serviceType: 'Servizi di Pulizia Professionali',
+      description: 'Artic Pulizie opera a Brescia con un team di 28 professionisti qualificati per aziende, condomini e industrie.',
+      url: '/chi-siamo'
+    }),
+    buildBreadcrumbSchema([{ name: 'Chi Siamo', path: '/chi-siamo' }])
+  ];
+
   return (
     <>
       <SEO
@@ -62,6 +73,7 @@ const ChiSiamo = () => {
         description="Conosci Artic Pulizie: impresa di pulizie a Brescia con 15 anni di esperienza, 28 professionisti qualificati e servizi certificati per aziende e condomini."
         keywords="artic pulizie chi siamo, impresa pulizie brescia team, azienda pulizie artic pulizie"
         canonical={buildCanonicalUrl('/chi-siamo')}
+        structuredData={structuredData}
       />
 
       <main className="flex-grow pt-16">

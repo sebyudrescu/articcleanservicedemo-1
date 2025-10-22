@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Cosa include il servizio di gestione carrellati?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Artic Pulizie si occupa di posizionamento, ritiro, pulizia e sanificazione dei carrellati seguendo il calendario della raccolta differenziata."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quanto spesso vengono puliti i bidoni?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La frequenza di pulizia viene definita nel contratto: da mensile a settimanale in base alle esigenze del condominio o dell’azienda."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Il servizio è disponibile anche per le aziende?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, gestiamo carrellati e cassonetti aziendali, coordinandoci con i referenti interni per la gestione dei rifiuti."
-        }
-      }
-    ]
+    question: 'Cosa include il servizio di gestione carrellati?',
+    answer:
+      'Artic Pulizie si occupa di posizionamento, ritiro, pulizia e sanificazione dei carrellati seguendo il calendario della raccolta differenziata.'
+  },
+  {
+    question: 'Quanto spesso vengono puliti i bidoni?',
+    answer:
+      'La frequenza di pulizia viene definita nel contratto: da mensile a settimanale in base alle esigenze del condominio o dell’azienda.'
+  },
+  {
+    question: 'Il servizio è disponibile anche per le aziende?',
+    answer:
+      'Sì, gestiamo carrellati e cassonetti aziendali, coordinandoci con i referenti interni per la gestione dei rifiuti.'
   }
 ];
 
@@ -124,6 +110,23 @@ const GestioneCarrellati = () => {
     }
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Gestione carrellati a Brescia',
+      serviceType: 'Gestione Carrellati',
+      description:
+        'Gestione professionale dei carrellati per condomini e aziende a Brescia con posizionamento, ritiro, pulizia e sanificazione dei bidoni.',
+      url: '/servizi/gestione-carrellati',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Gestione Carrellati', path: '/servizi/gestione-carrellati' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -131,7 +134,7 @@ const GestioneCarrellati = () => {
         description="Gestione professionale dei carrellati per condomini e aziende a Brescia: posizionamento, ritiro, pulizia e sanificazione dei bidoni della raccolta differenziata."
         keywords="gestione carrellati brescia, pulizia bidoni raccolta differenziata, gestione rifiuti condomini brescia"
         canonical={buildCanonicalUrl('/servizi/gestione-carrellati')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
 
       {/* Hero Section */}

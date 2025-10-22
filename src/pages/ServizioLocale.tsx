@@ -10,6 +10,7 @@ import { buildCanonicalUrl } from '@/data/siteMetadata';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const ServizioLocale = () => {
   const { servizio, localita } = useParams<{ servizio: string; localita: string }>();
@@ -52,6 +53,22 @@ const ServizioLocale = () => {
     }
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: `${service.name} a ${location.name}`,
+      serviceType: service.name,
+      description: content.metaDescription,
+      url: `/servizi/${servizio}/${localita}`,
+      areaServed: location.name,
+      offers: service.features
+    }),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: service.name, path: `/servizi/${servizio}` },
+      { name: location.name, path: `/servizi/${servizio}/${localita}` }
+    ])
+  ];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -59,6 +76,7 @@ const ServizioLocale = () => {
         description={content.metaDescription}
         keywords={`${service.name.toLowerCase()} ${location.name}, impresa pulizie ${location.name}, ${service.slug} ${location.slug}, pulizie professionali ${location.name}`}
         canonical={buildCanonicalUrl(`/servizi/${servizio}/${localita}`)}
+        structuredData={structuredData}
       />
 
       <Breadcrumb

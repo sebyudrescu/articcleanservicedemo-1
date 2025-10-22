@@ -2,6 +2,7 @@ import { CheckCircle, ClipboardList, Users, Sparkles, Shield, Phone, Calendar, A
 import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
+import { buildBreadcrumbSchema, buildServiceSchema } from '@/utils/structuredData';
 import InternalLinkSection from '@/components/InternalLinkSection';
 
 const ComeLavoriamo = () => {
@@ -111,6 +112,16 @@ const ComeLavoriamo = () => {
     }
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Come lavora Artic Pulizie',
+      serviceType: 'Servizi di Pulizia Professionali',
+      description: 'Metodo Artic Pulizie: sopralluogo gratuito, piano su misura, squadra dedicata e controllo qualità continuo a Brescia.',
+      url: '/come-lavoriamo'
+    }),
+    buildBreadcrumbSchema([{ name: 'Come Lavoriamo', path: '/come-lavoriamo' }])
+  ];
+
   return (
     <>
       <SEO
@@ -118,6 +129,7 @@ const ComeLavoriamo = () => {
         description="Scopri il metodo Artic Pulizie: sopralluogo gratuito, squadra dedicata e controllo qualità continuo per servizi di pulizia professionale a Brescia."
         keywords="come lavora artic pulizie, processo pulizie brescia, metodo lavoro impresa pulizie, sopralluogo gratuito artic pulizie"
         canonical={buildCanonicalUrl('/come-lavoriamo')}
+        structuredData={structuredData}
       />
 
       <main className="flex-grow pt-16">

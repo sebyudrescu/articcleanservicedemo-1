@@ -5,6 +5,7 @@ import SEO from '@/components/SEO';
 import Breadcrumb from '@/components/Breadcrumb';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
+import { buildBreadcrumbSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const DoveOperiamo = () => {
   const sortedLocations = [...locations].sort((a, b) => {
@@ -13,6 +14,17 @@ const DoveOperiamo = () => {
     return a.name.localeCompare(b.name);
   });
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Servizi di pulizia a Brescia e provincia',
+      serviceType: 'Servizi di Pulizia Professionali',
+      description: 'Copertura dei servizi di pulizia Artic Pulizie nelle principali località di Brescia e provincia.',
+      url: '/dove-operiamo',
+      areaServed: sortedLocations.map((location) => location.name)
+    }),
+    buildBreadcrumbSchema([{ name: 'Dove Operiamo', path: '/dove-operiamo' }])
+  ];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -20,6 +32,7 @@ const DoveOperiamo = () => {
         description="Servizi di pulizia Artic Pulizie attivi a Brescia, Desenzano, Montichiari, Chiari e in oltre 15 località della provincia. Scopri le zone servite."
         keywords="dove operiamo artic pulizie, pulizie provincia brescia, località servite artic pulizie"
         canonical={buildCanonicalUrl('/dove-operiamo')}
+        structuredData={structuredData}
       />
 
       <Breadcrumb

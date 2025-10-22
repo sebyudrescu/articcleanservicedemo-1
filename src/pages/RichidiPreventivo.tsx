@@ -3,6 +3,7 @@ import { Send, CheckCircle, AlertCircle, FileText, Building2, Mail, Phone, User 
 import SEO from '@/components/SEO';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import { buildCanonicalUrl, siteMetadata } from '@/data/siteMetadata';
+import { buildBreadcrumbSchema } from '@/utils/structuredData';
 
 const RichidiPreventivo = () => {
   const [formData, setFormData] = useState({
@@ -35,8 +36,9 @@ const RichidiPreventivo = () => {
         name: `${siteMetadata.siteName} - Richiedi Preventivo`,
         url: canonicalUrl,
         description: 'Modulo per richiedere un preventivo gratuito ai consulenti Artic Pulizie.'
-      }
-    ] as Record<string, unknown>[]
+      },
+      buildBreadcrumbSchema([{ name: 'Richiedi Preventivo', path: '/richiedi-preventivo' }])
+    ].filter(Boolean) as Record<string, unknown>[]
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {

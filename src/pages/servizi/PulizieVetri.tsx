@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Con che frequenza consigliate la pulizia delle vetrate?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Per uffici e negozi consigliamo interventi mensili o bimestrali, valutando esposizione e traffico."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Effettuate pulizie di vetri in altezza?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, i nostri operatori sono abilitati ai lavori in quota e utilizzano sistemi di sicurezza certificati."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Utilizzate prodotti che non lasciano aloni?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Utilizziamo sistemi ad acqua osmotizzata e detergenti professionali per garantire vetri brillanti senza aloni."
-        }
-      }
-    ]
+    question: 'Con che frequenza consigliate la pulizia delle vetrate?',
+    answer:
+      'Per uffici e negozi consigliamo interventi mensili o bimestrali, valutando esposizione e traffico.'
+  },
+  {
+    question: 'Effettuate pulizie di vetri in altezza?',
+    answer:
+      'Sì, i nostri operatori sono abilitati ai lavori in quota e utilizzano sistemi di sicurezza certificati.'
+  },
+  {
+    question: 'Utilizzate prodotti che non lasciano aloni?',
+    answer:
+      'Utilizziamo sistemi ad acqua osmotizzata e detergenti professionali per garantire vetri brillanti senza aloni.'
   }
 ];
 
@@ -129,6 +115,23 @@ const PulizieVetri = () => {
     "Capannoni industriali"
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Pulizia vetri e vetrate a Brescia',
+      serviceType: 'Pulizie Vetri',
+      description:
+        'Pulizia professionale di vetri, vetrate e facciate continue a Brescia con sistemi ad acqua pura e personale qualificato per lavori in quota.',
+      url: '/servizi/pulizie-vetri',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Pulizie Vetri', path: '/servizi/pulizie-vetri' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -136,7 +139,7 @@ const PulizieVetri = () => {
         description="Pulizia professionale di vetri, vetrate e facciate continue a Brescia. Artic Pulizie opera in quota con sistemi ad acqua pura e prodotti anti-aloni."
         keywords="pulizie vetri brescia, pulizia vetrate brescia, lavaggio vetri in quota artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-vetri')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">

@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Quali aree del condominio pulite?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Gestiamo scale, pianerottoli, ingressi, cortili, ascensori e carrellati con interventi programmati su Brescia e provincia."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Offrite contratti flessibili per i condomini?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, Artic Pulizie propone interventi singoli o contratti settimanali e mensili su misura per il condominio."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "È possibile abbinare i servizi di giardinaggio?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Possiamo integrare la manutenzione del verde condominiale con condizioni vantaggiose insieme alla pulizia ordinaria."
-        }
-      }
-    ]
+    question: 'Quali aree del condominio pulite?',
+    answer:
+      'Gestiamo scale, pianerottoli, ingressi, cortili, ascensori e carrellati con interventi programmati su Brescia e provincia.'
+  },
+  {
+    question: 'Offrite contratti flessibili per i condomini?',
+    answer:
+      'Sì, Artic Pulizie propone interventi singoli o contratti settimanali e mensili su misura per il condominio.'
+  },
+  {
+    question: 'È possibile abbinare i servizi di giardinaggio?',
+    answer:
+      'Possiamo integrare la manutenzione del verde condominiale con condizioni vantaggiose insieme alla pulizia ordinaria.'
   }
 ];
 
@@ -97,6 +83,23 @@ const PulizieCondomini = () => {
     }
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Pulizie condomini a Brescia',
+      serviceType: 'Pulizie Condomini',
+      description:
+        'Pulizia scale, ingressi e aree comuni dei condomini a Brescia e provincia con gestione carrellati e servizi complementari.',
+      url: '/servizi/pulizie-condomini',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Pulizie Condomini', path: '/servizi/pulizie-condomini' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -104,7 +107,7 @@ const PulizieCondomini = () => {
         description="Pulizia scale, ingressi e aree comuni dei condomini a Brescia e provincia. Artic Pulizie offre gestione carrellati, giardinaggio e contratti flessibili."
         keywords="pulizie condomini brescia, pulizia scale condominio brescia, gestione carrellati artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-condomini')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
 
       {/* Hero Section */}

@@ -7,37 +7,23 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
-const faqSchema = [
+const faqItems = [
   {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Che differenza c’è tra pulizia e sanificazione?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La sanificazione elimina virus, batteri e agenti patogeni con prodotti certificati e protocolli professionali, garantendo ambienti sicuri."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Rilasciate certificati dopo la sanificazione?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, Artic Pulizie rilascia report e certificazioni con i dettagli dell’intervento e dei prodotti utilizzati."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Ogni quanto è consigliata la sanificazione?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "La frequenza dipende dal settore: settimanale per ambienti sanitari, mensile per uffici e negozi con alto afflusso."
-        }
-      }
-    ]
+    question: 'Che differenza c’è tra pulizia e sanificazione?',
+    answer:
+      'La sanificazione elimina virus, batteri e agenti patogeni con prodotti certificati e protocolli professionali, garantendo ambienti sicuri.'
+  },
+  {
+    question: 'Rilasciate certificati dopo la sanificazione?',
+    answer:
+      "Sì, Artic Pulizie rilascia report e certificazioni con i dettagli dell’intervento e dei prodotti utilizzati."
+  },
+  {
+    question: 'Ogni quanto è consigliata la sanificazione?',
+    answer:
+      'La frequenza dipende dal settore: settimanale per ambienti sanitari, mensile per uffici e negozi con alto afflusso.'
   }
 ];
 
@@ -132,6 +118,23 @@ const SanificazioneAmbienti = () => {
     "Sistemi di vaporizzazione"
   ];
 
+  const structuredData = [
+    buildServiceSchema({
+      name: 'Sanificazione ambienti a Brescia',
+      serviceType: 'Sanificazione Ambienti',
+      description:
+        'Sanificazione certificata di uffici, cliniche e ambienti industriali a Brescia con protocolli virucidi e documentazione ufficiale.',
+      url: '/servizi/sanificazione-ambienti',
+      areaServed: 'Brescia',
+      offers: features
+    }),
+    buildFAQSchema(faqItems),
+    buildBreadcrumbSchema([
+      { name: 'Servizi', path: '/servizi' },
+      { name: 'Sanificazione Ambienti', path: '/servizi/sanificazione-ambienti' }
+    ])
+  ].filter(Boolean) as Record<string, unknown>[];
+
   return (
     <div className="pt-24 pb-20">
       <SEO
@@ -139,7 +142,7 @@ const SanificazioneAmbienti = () => {
         description="Sanificazione certificata di uffici, cliniche e ambienti industriali a Brescia. Artic Pulizie utilizza protocolli virucidi e rilascia certificazioni ufficiali."
         keywords="sanificazione ambienti brescia, sanificazione uffici brescia, sanificazione certificata artic pulizie"
         canonical={buildCanonicalUrl('/servizi/sanificazione-ambienti')}
-        structuredData={faqSchema}
+        structuredData={structuredData}
       />
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">

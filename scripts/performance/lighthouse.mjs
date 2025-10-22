@@ -14,24 +14,37 @@ const TARGET_URL = process.argv[2] ?? 'http://localhost:4173';
 const REPORT_DIR = path.resolve('reports/performance');
 const TIMESTAMP = new Date().toISOString().split('T')[0];
 const JSON_PATH = path.join(REPORT_DIR, `lighthouse-${TIMESTAMP}.json`);
-const HTML_PATH = path.join(REPORT_DIR, `lighthouse-${TIMESTAMP}.html`);
 
 const ensureDir = async () => {
   await fs.mkdir(REPORT_DIR, { recursive: true });
 };
 
+const buildChromeArgs = () => {
+  const flags = [
+    '--headless=new',
+    '--no-sandbox',
+    '--disable-gpu',
+    '--disable-dev-shm-usage'
+  ];
+
+  return `--chrome-flags=${flags.join(' ')}`;
+};
+
 const runLighthouse = () => {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     const args = [
       'lighthouse',
       TARGET_URL,
       '--preset=desktop',
-      `--output-path=${JSON_PATH}`,
       '--output=json',
-      '--output=html',
-      `--output-path=${HTML_PATH}`,
-      '--quiet'
+      `--output-path=${JSON_PATH}`,
+      '--quiet',
+      buildChromeArgs()
     ];
+
+    if (process.env.CHROME_PATH) {
+      args.push(`--chrome-path=${process.env.CHROME_PATH}`);
+    }
 
     const proc = spawn('npx', args, { stdio: 'inherit' });
 

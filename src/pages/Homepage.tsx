@@ -5,103 +5,55 @@ import SEO from '@/components/SEO';
 import LazyImage from '@/components/LazyImage';
 import { siteMetadata, buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
+import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const homepageStructuredData = [
   {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${siteMetadata.baseUrl}#website`,
-    "name": siteMetadata.siteName,
-    "url": siteMetadata.baseUrl,
-    "publisher": {
-      "@type": "Organization",
-      "name": siteMetadata.legalName
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteMetadata.baseUrl}#website`,
+    name: siteMetadata.siteName,
+    url: siteMetadata.baseUrl,
+    publisher: {
+      '@type': 'Organization',
+      name: siteMetadata.legalName
     },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": `${siteMetadata.baseUrl}/ricerca?q={search_term_string}`,
-      "query-input": "required name=search_term_string"
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${siteMetadata.baseUrl}/ricerca?q={search_term_string}`,
+      'query-input': 'required name=search_term_string'
     }
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "serviceType": "Pulizie Professionali",
-    "provider": {
-      "@type": "LocalBusiness",
-      "name": siteMetadata.siteName,
-      "url": siteMetadata.baseUrl
+  buildServiceSchema({
+    name: 'Servizi di pulizia professionale Artic Pulizie',
+    serviceType: 'Pulizie Professionali',
+    description: 'Impresa di pulizie a Brescia e provincia per uffici, condomini, industrie e sanificazioni specialistiche.',
+    url: '/',
+    areaServed: siteMetadata.locality,
+    offers: [
+      'Pulizie Uffici a Brescia',
+      'Pulizie Condomini Brescia e Provincia',
+      'Sanificazione Ambienti Professionale',
+      'Pulizie Industriali e Capannoni'
+    ],
+    aggregateRating: siteMetadata.aggregateRating
+  }),
+  buildFAQSchema([
+    {
+      question: 'Offrite pulizie uffici a Brescia?',
+      answer: 'Sì, Artic Pulizie gestisce pulizie uffici a Brescia e provincia con turni programmati e personale selezionato.'
     },
-    "areaServed": {
-      "@type": "City",
-      "name": siteMetadata.locality
+    {
+      question: 'Quanto tempo impiegate per inviare un preventivo?',
+      answer: 'Invieremo un preventivo personalizzato entro 24 ore dalla richiesta, con possibilità di sopralluogo gratuito.'
     },
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Servizi di Pulizia per Aziende e Condomini",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pulizie Uffici a Brescia"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pulizie Condomini Brescia e Provincia"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Sanificazione Ambienti Professionale"
-          }
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Pulizie Industriali e Capannoni"
-          }
-        }
-      ]
+    {
+      question: 'Disponete di certificazioni e prodotti professionali?',
+      answer: 'Utilizziamo esclusivamente prodotti professionali certificati e protocolli di sanificazione aggiornati.'
     }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Offrite pulizie uffici a Brescia?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì, Artic Pulizie gestisce pulizie uffici a Brescia e provincia con turni programmati e personale selezionato."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quanto tempo impiegate per inviare un preventivo?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Invieremo un preventivo personalizzato entro 24 ore dalla richiesta, con possibilità di sopralluogo gratuito."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Disponete di certificazioni e prodotti professionali?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Utilizziamo esclusivamente prodotti professionali certificati e protocolli di sanificazione aggiornati."
-        }
-      }
-    ]
-  }
-];
+  ]),
+  buildBreadcrumbSchema([])
+].filter(Boolean) as Record<string, unknown>[];
 
 const Homepage = () => {
   const services = [
