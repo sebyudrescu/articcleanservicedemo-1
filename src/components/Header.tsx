@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
+import logo from '../../immagini/Logo-artic-clean-service-real.webp';
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -36,21 +38,18 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-slate-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center">
-              <img 
-                src="https://i.imgur.com/ks6yQn1.png" 
-                alt="Artic Clean logo" 
+          <Link to="/" className="flex items-center">
+            <div className="w-28 h-28 md:w-36 md:h-36 flex items-center justify-center">
+              <img
+                src={logo}
+                alt="Artic Clean logo"
                 className="w-full h-full object-contain"
-                width={56}
-                height={56}
+                width={144}
+                height={144}
                 loading="lazy"
               />
-            </div>
-            <div>
-              <h1 className="text-lg md:text-xl font-bold text-slate-900">Artic Clean</h1>
             </div>
           </Link>
 
