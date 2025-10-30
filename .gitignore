@@ -1,11 +1,15 @@
 # deps & build
 node_modules/
+**/node_modules/**
 dist/
 .vite/
 .vscode/
 .vercel/
+build/
+coverage/
 *.log
 
 # env
 .env*
 path/to/id_ed25519
+node_modules
