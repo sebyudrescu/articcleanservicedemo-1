@@ -8,16 +8,12 @@ const Header = () => {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
-  const activeStyles = {
-    color: 'var(--accent-color-strong)',
-    backgroundColor: 'var(--accent-surface)'
-  };
 
   const navigationItems = [
     { name: 'Home', path: '/' },
     { name: 'Chi Siamo', path: '/chi-siamo' },
-    {
-      name: 'Servizi',
+    { 
+      name: 'Servizi', 
       path: '/servizi',
       hasDropdown: true,
       dropdownItems: [
@@ -61,16 +57,19 @@ const Header = () => {
               <div key={item.name} className="relative group">
                 {item.hasDropdown ? (
                   <div className="relative">
-                    <button
-                      className="flex items-center space-x-1 px-4 py-2 rounded-lg font-medium transition-all duration-200 text-slate-600 accent-hover"
-                      style={isActive(item.path) ? activeStyles : undefined}
+                    <button 
+                      className={`flex items-center space-x-1 px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                        isActive(item.path) 
+                          ? 'text-sky-600 bg-sky-50' 
+                          : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'
+                      }`}
                       onMouseEnter={() => setIsServicesOpen(true)}
                       onMouseLeave={() => setIsServicesOpen(false)}
                     >
                       <span>{item.name}</span>
                       <ChevronDown className="w-4 h-4" />
                     </button>
-
+                    
                     {/* Dropdown */}
                     <div
                       className={`absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-lg border border-slate-100 py-2 transition-all duration-200 ${
@@ -83,14 +82,11 @@ const Header = () => {
                         <Link
                           key={dropdownItem.name}
                           to={dropdownItem.path}
-                          className={`block px-4 py-3 text-sm transition-colors accent-hover ${
-                            dropdownItem.isHighlighted ? 'font-semibold' : 'text-slate-600'
-                          } ${dropdownItem.isHighlighted ? 'border-t border-slate-100 mt-1 pt-3' : ''}`}
-                          style={
+                          className={`block px-4 py-3 text-sm transition-colors ${
                             dropdownItem.isHighlighted
-                              ? { color: 'var(--accent-color-strong)' }
-                              : undefined
-                          }
+                              ? 'font-semibold text-sky-600 hover:text-sky-700 hover:bg-sky-50 border-t border-slate-100 mt-1 pt-3'
+                              : 'text-slate-600 hover:text-sky-600 hover:bg-sky-50'
+                          }`}
                         >
                           {dropdownItem.name}
                         </Link>
@@ -100,30 +96,31 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    className="px-4 py-2 rounded-lg font-medium transition-all duration-200 text-slate-600 accent-hover"
-                    style={isActive(item.path) ? activeStyles : undefined}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
+                      isActive(item.path) 
+                        ? 'text-sky-600 bg-sky-50' 
+                        : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'
+                    }`}
                   >
                     {item.name}
                   </Link>
                 )}
               </div>
             ))}
-
+            
             {/* CTA Button */}
             <Link
               to="/richiedi-preventivo"
-              className="ml-4 text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 shadow-md hover:shadow-lg accent-focus"
-              style={{ backgroundImage: 'var(--accent-gradient)' }}
+              className="ml-4 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-6 py-2 rounded-lg font-semibold hover:from-sky-600 hover:to-cyan-600 transition-all duration-300 shadow-md hover:shadow-lg"
             >
               Richiedi Preventivo
             </Link>
           </nav>
 
           {/* Mobile menu button */}
-          <button
+          <button 
             className="md:hidden p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? 'Chiudi menu' : 'Apri menu'}
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -137,8 +134,11 @@ const Header = () => {
                 <div key={item.name}>
                   <Link
                     to={item.path}
-                    className="block px-4 py-3 rounded-lg font-medium transition-colors accent-hover text-slate-600"
-                    style={isActive(item.path) ? activeStyles : undefined}
+                    className={`block px-4 py-3 rounded-lg font-medium transition-colors ${
+                      isActive(item.path) 
+                        ? 'text-sky-600 bg-sky-50' 
+                        : 'text-slate-600 hover:text-sky-600 hover:bg-slate-50'
+                    }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.name}
@@ -149,14 +149,11 @@ const Header = () => {
                         <Link
                           key={dropdownItem.name}
                           to={dropdownItem.path}
-                          className={`block px-4 py-2 text-sm rounded-lg transition-colors accent-hover ${
-                            dropdownItem.isHighlighted ? 'font-semibold' : 'text-slate-500'
-                          } ${dropdownItem.isHighlighted ? 'mt-2 border-t border-slate-200 pt-3' : ''}`}
-                          style={
+                          className={`block px-4 py-2 text-sm rounded-lg transition-colors ${
                             dropdownItem.isHighlighted
-                              ? { color: 'var(--accent-color-strong)' }
-                              : undefined
-                          }
+                              ? 'font-semibold text-sky-600 hover:text-sky-700 hover:bg-sky-50 mt-2 border-t border-slate-200 pt-3'
+                              : 'text-slate-500 hover:text-sky-600 hover:bg-sky-50'
+                          }`}
                           onClick={() => setIsMenuOpen(false)}
                         >
                           {dropdownItem.name}
@@ -166,12 +163,11 @@ const Header = () => {
                   )}
                 </div>
               ))}
-
+              
               {/* Mobile CTA Button */}
               <Link
                 to="/richiedi-preventivo"
-                className="mx-4 mt-4 text-white px-6 py-3 rounded-lg font-semibold text-center transition-all duration-300 shadow-md hover:shadow-lg accent-focus"
-                style={{ backgroundImage: 'var(--accent-gradient)' }}
+                className="mx-4 mt-4 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold text-center hover:from-sky-600 hover:to-cyan-600 transition-all duration-300"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Richiedi Preventivo

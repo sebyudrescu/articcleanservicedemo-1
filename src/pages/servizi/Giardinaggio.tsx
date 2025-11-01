@@ -5,7 +5,6 @@ import LocationsGrid from '@/components/LocationsGrid';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
-import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
@@ -185,21 +184,15 @@ const Giardinaggio = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <ScrollReveal
+              <div
                 key={index}
-                delay={index * 70}
-                as="article"
-                className="group relative flex h-full flex-col rounded-2xl border border-emerald-200/60 bg-white/95 p-6 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl"
+                className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg hover:bg-emerald-50 transition-colors duration-300"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 shadow-inner group-hover:bg-emerald-200 transition-colors">
-                  <CheckCircle className="w-6 h-6" />
-                </div>
-                <p className="text-base font-semibold leading-relaxed text-slate-800">
-                  {feature}
-                </p>
-              </ScrollReveal>
+                <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                <span className="text-slate-700 font-medium">{feature}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -217,24 +210,22 @@ const Giardinaggio = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <ScrollReveal
+              <div
                 key={index}
-                delay={index * 80}
-                as="article"
-                className="group flex h-full flex-col items-center rounded-2xl border border-emerald-200 bg-white/95 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl"
+                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 text-center"
               >
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600 shadow-inner group-hover:bg-emerald-200 transition-colors">
-                  <benefit.icon className="w-8 h-8" />
+                <div className="w-16 h-16 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                  <benefit.icon className="w-8 h-8 text-emerald-600" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
+                <p className="text-slate-600 leading-relaxed">
                   {benefit.description}
                 </p>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
         </div>
@@ -252,39 +243,31 @@ const Giardinaggio = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
+          <div className="grid md:grid-cols-3 gap-8">
             {serviceTypes.map((type, index) => (
-              <ScrollReveal
+              <div
                 key={index}
-                delay={index * 90}
-                as="article"
-                className="group flex h-full flex-col justify-between rounded-2xl border border-emerald-200/70 bg-white/95 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:shadow-xl"
+                className="bg-slate-50 rounded-xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300"
               >
-                <div>
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600 shadow-inner group-hover:bg-emerald-200 transition-colors">
-                    <Scissors className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-1">{type.title}</h3>
-                  <p className="text-sm font-medium uppercase tracking-[0.3em] text-emerald-500 mb-4">
-                    {type.description}
-                  </p>
+                <Scissors className="w-10 h-10 text-emerald-500 mb-4" />
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{type.title}</h3>
+                <p className="text-slate-600 mb-4">{type.description}</p>
 
-                  <ul className="space-y-2 mb-6">
-                    {type.features.map((feature, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
-                        <span className="text-slate-600 text-sm leading-relaxed">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="space-y-2 mb-6">
+                  {type.features.map((feature, i) => (
+                    <li key={i} className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-emerald-500" />
+                      <span className="text-slate-600 text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <div className="border-t border-emerald-200 pt-4">
+                <div className="border-t border-slate-200 pt-4">
                   <p className="text-emerald-600 font-semibold text-sm">
                     Frequenza: {type.frequency}
                   </p>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
         </div>
@@ -302,16 +285,14 @@ const Giardinaggio = () => {
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 [grid-auto-rows:1fr]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {areas.map((area, index) => (
-              <ScrollReveal
+              <div
                 key={index}
-                delay={index * 60}
-                as="div"
-                className="group flex h-full items-center justify-center rounded-xl border border-emerald-200 bg-white/95 p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-emerald-300 hover:bg-emerald-50 hover:shadow-md"
+                className="bg-white rounded-lg p-4 text-center hover:bg-emerald-50 transition-colors duration-300"
               >
-                <p className="font-semibold text-slate-700 capitalize tracking-wide">{area}</p>
-              </ScrollReveal>
+                <p className="font-semibold text-slate-700">{area}</p>
+              </div>
             ))}
           </div>
         </div>

@@ -1,12 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import AccentThemeManager from './components/AccentThemeManager';
-import Footer from './components/Footer';
 import Header from './components/Header';
-import MouseGlow from './components/MouseGlow';
+import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import ScrollToTopButton from './components/ScrollToTopButton';
-import StickyCtaBanner from './components/StickyCtaBanner';
 
 const Homepage = lazy(() => import('./pages/Homepage'));
 const ChiSiamo = lazy(() => import('./pages/ChiSiamo'));
@@ -28,7 +24,6 @@ const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/blog/BlogPost'));
 const FAQ = lazy(() => import('./pages/FAQ'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const NotFound = lazy(() => import('./pages/NotFound'));
 
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
@@ -40,39 +35,32 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
-      <AccentThemeManager />
-      <MouseGlow />
       <Header />
-      <main className="flex-1 pb-32">
-        <Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/chi-siamo" element={<ChiSiamo />} />
-            <Route path="/come-lavoriamo" element={<ComeLavoriamo />} />
-            <Route path="/recensioni" element={<Recensioni />} />
-            <Route path="/servizi" element={<Servizi />} />
-            <Route path="/dove-operiamo" element={<DoveOperiamo />} />
-            <Route path="/servizi/pulizie-uffici" element={<PulizieUffici />} />
-            <Route path="/servizi/pulizie-condomini" element={<PulizieCondomini />} />
-            <Route path="/servizi/pulizie-industriali" element={<PulizieIndustriali />} />
-            <Route path="/servizi/pulizie-post-cantiere" element={<PuliziePostCantiere />} />
-            <Route path="/servizi/pulizie-vetri" element={<PulizieVetri />} />
-            <Route path="/servizi/sanificazione-ambienti" element={<SanificazioneAmbienti />} />
-            <Route path="/servizi/giardinaggio" element={<Giardinaggio />} />
-            <Route path="/servizi/gestione-carrellati" element={<GestioneCarrellati />} />
-            <Route path="/servizi/:servizio/:localita" element={<ServizioLocaleDynamic />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/richiedi-preventivo" element={<RichidiPreventivo />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </main>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/chi-siamo" element={<ChiSiamo />} />
+          <Route path="/come-lavoriamo" element={<ComeLavoriamo />} />
+          <Route path="/recensioni" element={<Recensioni />} />
+          <Route path="/servizi" element={<Servizi />} />
+          <Route path="/dove-operiamo" element={<DoveOperiamo />} />
+          <Route path="/servizi/pulizie-uffici" element={<PulizieUffici />} />
+          <Route path="/servizi/pulizie-condomini" element={<PulizieCondomini />} />
+          <Route path="/servizi/pulizie-industriali" element={<PulizieIndustriali />} />
+          <Route path="/servizi/pulizie-post-cantiere" element={<PuliziePostCantiere />} />
+          <Route path="/servizi/pulizie-vetri" element={<PulizieVetri />} />
+          <Route path="/servizi/sanificazione-ambienti" element={<SanificazioneAmbienti />} />
+          <Route path="/servizi/giardinaggio" element={<Giardinaggio />} />
+          <Route path="/servizi/gestione-carrellati" element={<GestioneCarrellati />} />
+          <Route path="/servizi/:servizio/:localita" element={<ServizioLocaleDynamic />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/richiedi-preventivo" element={<RichidiPreventivo />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Routes>
+      </Suspense>
       <Footer />
-      <ScrollToTopButton />
-      <StickyCtaBanner />
     </div>
   );
 }

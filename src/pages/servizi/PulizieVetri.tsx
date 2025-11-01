@@ -5,7 +5,6 @@ import LocationsGrid from '@/components/LocationsGrid';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
-import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
@@ -194,21 +193,15 @@ const PulizieVetri = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <ScrollReveal
+              <div 
                 key={index}
-                delay={index * 70}
-                as="article"
-                className="group relative flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
+                className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg hover:bg-sky-50 transition-colors duration-300"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
-                  <CheckCircle className="w-6 h-6" />
-                </div>
-                <p className="text-base font-semibold leading-relaxed text-slate-800">
-                  {feature}
-                </p>
-              </ScrollReveal>
+                <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
+                <span className="text-slate-700 font-medium">{feature}</span>
+              </div>
             ))}
           </div>
         </div>
@@ -227,24 +220,22 @@ const PulizieVetri = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
-              <ScrollReveal
+              <div 
                 key={index}
-                delay={index * 80}
-                as="article"
-                className="group flex h-full flex-col items-center rounded-2xl border border-sky-200 bg-white/95 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
+                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 text-center"
               >
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
-                  <benefit.icon className="w-8 h-8" />
+                <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+                  <benefit.icon className="w-8 h-8 text-sky-600" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed text-sm">
+                <p className="text-slate-600 leading-relaxed">
                   {benefit.description}
                 </p>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
         </div>
@@ -263,44 +254,40 @@ const PulizieVetri = () => {
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
+          <div className="grid md:grid-cols-3 gap-8">
             {serviceTypes.map((type, index) => (
-              <ScrollReveal
+              <div 
                 key={index}
-                delay={index * 90}
-                as="article"
-                className="group flex h-full flex-col justify-between rounded-2xl border border-sky-200/70 bg-white/95 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
+                className="bg-slate-50 rounded-xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300"
               >
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-1">{type.title}</h3>
-                  <p className="text-sm font-medium uppercase tracking-[0.3em] text-sky-500 mb-4">{type.description}</p>
-
-                  <div className="space-y-3 mb-6">
-                    <div>
-                      <h4 className="font-semibold text-slate-900 mb-2">Caratteristiche</h4>
-                      <ul className="space-y-2">
-                        {type.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <CheckCircle className="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0" />
-                            <span className="text-slate-600 text-sm leading-relaxed">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2">{type.title}</h3>
+                <p className="text-slate-600 mb-4">{type.description}</p>
+                
+                <div className="space-y-4 mb-6">
+                  <div>
+                    <h4 className="font-semibold text-slate-900 mb-2">Caratteristiche:</h4>
+                    <ul className="space-y-1">
+                      {type.features.map((feature, i) => (
+                        <li key={i} className="flex items-center space-x-2">
+                          <CheckCircle className="w-4 h-4 text-sky-500" />
+                          <span className="text-slate-600 text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-
+                
                 <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="rounded-lg border border-sky-200 bg-white p-3">
-                    <p className="text-slate-500 text-xs uppercase tracking-[0.2em]">Frequenza</p>
+                  <div className="bg-white p-3 rounded-lg">
+                    <p className="text-slate-500 text-xs">Frequenza</p>
                     <p className="font-semibold text-slate-900 text-sm">{type.frequency}</p>
                   </div>
-                  <div className="rounded-lg border border-sky-200 bg-white p-3">
-                    <p className="text-slate-500 text-xs uppercase tracking-[0.2em]">Complessità</p>
+                  <div className="bg-white p-3 rounded-lg">
+                    <p className="text-slate-500 text-xs">Complessità</p>
                     <p className="font-semibold text-slate-900 text-sm">{type.difficulty}</p>
                   </div>
                 </div>
-              </ScrollReveal>
+              </div>
             ))}
           </div>
         </div>
