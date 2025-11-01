@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" role="img" aria-label="Checklist pulizie uffici">
+  <rect width="600" height="320" fill="#eef2ff"/>
+  <rect x="60" y="40" width="480" height="240" rx="16" fill="#ffffff" stroke="#6366f1" stroke-width="4"/>
+  <circle cx="110" cy="100" r="10" fill="#22c55e"/><rect x="140" y="92" width="340" height="16" fill="#94a3b8"/>
+  <circle cx="110" cy="150" r="10" fill="#22c55e"/><rect x="140" y="142" width="300" height="16" fill="#94a3b8"/>
+  <circle cx="110" cy="200" r="10" fill="#22c55e"/><rect x="140" y="192" width="360" height="16" fill="#94a3b8"/>
+</svg>

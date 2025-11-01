@@ -5,6 +5,7 @@ import LocationsGrid from '@/components/LocationsGrid';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
+import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
@@ -170,15 +171,21 @@ const PulizieIndustriali = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {features.map((feature, index) => (
-              <div 
+              <ScrollReveal
                 key={index}
-                className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg hover:bg-sky-50 transition-colors duration-300"
+                delay={index * 70}
+                as="article"
+                className="group relative flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
-                <span className="text-slate-700 font-medium">{feature}</span>
-              </div>
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                  <CheckCircle className="w-6 h-6" />
+                </div>
+                <p className="text-base font-semibold leading-relaxed text-slate-800">
+                  {feature}
+                </p>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -196,22 +203,24 @@ const PulizieIndustriali = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {benefits.map((benefit, index) => (
-              <div 
+              <ScrollReveal
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 text-center"
+                delay={index * 80}
+                as="article"
+                className="group flex h-full flex-col items-center rounded-2xl border border-sky-200 bg-white/95 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <benefit.icon className="w-8 h-8 text-sky-600" />
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                  <benefit.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed text-sm">
                   {benefit.description}
                 </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -230,38 +239,42 @@ const PulizieIndustriali = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {industrialTypes.map((type, index) => (
-              <div 
+              <ScrollReveal
                 key={index}
-                className="bg-slate-50 rounded-xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300"
+                delay={index * 90}
+                as="article"
+                className="group flex h-full flex-col justify-between rounded-2xl border border-sky-200/70 bg-white/95 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{type.title}</h3>
-                <p className="text-slate-600 mb-4">{type.description}</p>
-                
-                <div className="mb-6">
-                  <h4 className="font-semibold text-slate-900 mb-2">Servizi Inclusi:</h4>
-                  <ul className="space-y-1">
-                    {type.features.map((feature, i) => (
-                      <li key={i} className="flex items-center space-x-2">
-                        <CheckCircle className="w-4 h-4 text-sky-500" />
-                        <span className="text-slate-600 text-sm">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-1">{type.title}</h3>
+                  <p className="text-sm font-medium uppercase tracking-[0.3em] text-sky-500 mb-4">{type.description}</p>
+
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-slate-900 mb-2">Servizi inclusi</h4>
+                    <ul className="space-y-2">
+                      {type.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0" />
+                          <span className="text-slate-600 text-sm leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-                
-                <div className="border-t border-slate-200 pt-4">
-                  <h4 className="font-semibold text-slate-900 mb-2">Settori:</h4>
-                  <div className="flex flex-wrap gap-1">
+
+                <div className="border-t border-sky-200 pt-4">
+                  <h4 className="font-semibold text-slate-900 mb-2">Settori serviti</h4>
+                  <div className="flex flex-wrap gap-2">
                     {type.sectors.map((sector, i) => (
-                      <span key={i} className="bg-sky-100 text-sky-700 px-2 py-1 rounded text-xs">
+                      <span key={i} className="rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">
                         {sector}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -280,43 +293,47 @@ const PulizieIndustriali = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 [grid-auto-rows:1fr]">
             {equipment.map((item, index) => (
-              <div 
+              <ScrollReveal
                 key={index}
-                className="flex items-center space-x-4 p-4 bg-white rounded-lg shadow-sm"
+                delay={index * 70}
+                as="article"
+                className="group flex h-full items-center gap-4 rounded-2xl border border-sky-200 bg-white/95 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-md"
               >
-                <Wrench className="w-6 h-6 text-sky-500 flex-shrink-0" />
-                <span className="text-slate-700 font-medium">{item}</span>
-              </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                  <Wrench className="w-5 h-5" />
+                </div>
+                <span className="text-slate-700 font-semibold leading-relaxed">{item}</span>
+              </ScrollReveal>
             ))}
           </div>
 
-          <div className="mt-12 bg-sky-50 rounded-xl p-8">
+          <ScrollReveal as="div" className="mt-12 rounded-3xl border border-sky-200 bg-white/95 p-10 shadow-lg">
             <h3 className="text-xl font-bold text-slate-900 mb-4">
-              Sicurezza e Certificazioni
+              Sicurezza e certificazioni
             </h3>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <h4 className="font-semibold text-slate-900 mb-2">Formazione del Personale:</h4>
-                <ul className="space-y-1 text-slate-600">
-                  <li>• Corso sicurezza sui luoghi di lavoro</li>
-                  <li>• Formazione su sostanze chimiche</li>
-                  <li>• Utilizzo DPI specifici per industria</li>
-                  <li>• Procedure di emergenza</li>
+                <h4 className="font-semibold text-slate-900 mb-2">Formazione del personale</h4>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  <li>• Sicurezza sul lavoro e uso DPI specifici</li>
+                  <li>• Gestione sostanze chimiche industriali</li>
+                  <li>• Procedure emergenza e lavoro in quota</li>
+                  <li>• Coordinamento con responsabili HSE</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-slate-900 mb-2">Certificazioni:</h4>
-                <ul className="space-y-1 text-slate-600">
-                  <li>• ISO 45001 Sicurezza sul Lavoro</li>
-                  <li>• Certificazione ambientale ISO 14001</li>
-                  <li>• Abilitazioni per spazi confinati</li>
-                  <li>• Autorizzazioni trasporto rifiuti</li>
+                <h4 className="font-semibold text-slate-900 mb-2">Certificazioni e abilitazioni</h4>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  <li>• ISO 45001 e ISO 14001 per sicurezza e ambiente</li>
+                  <li>• Abilitazioni spazi confinati e lavori in quota</li>
+                  <li>• Autorizzazioni trasporto e smaltimento rifiuti</li>
+                  <li>• Macchine certificate CE per uso industriale</li>
                 </ul>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 

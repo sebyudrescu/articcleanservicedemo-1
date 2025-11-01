@@ -5,6 +5,7 @@ import LocationsGrid from '@/components/LocationsGrid';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
+import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
@@ -187,15 +188,21 @@ const PuliziePostCantiere = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {features.map((feature, index) => (
-              <div 
+              <ScrollReveal
                 key={index}
-                className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg hover:bg-sky-50 transition-colors duration-300"
+                delay={index * 70}
+                as="article"
+                className="group relative flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
-                <span className="text-slate-700 font-medium">{feature}</span>
-              </div>
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                  <CheckCircle className="w-6 h-6" />
+                </div>
+                <p className="text-base font-semibold leading-relaxed text-slate-800">
+                  {feature}
+                </p>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -213,22 +220,24 @@ const PuliziePostCantiere = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {benefits.map((benefit, index) => (
-              <div 
+              <ScrollReveal
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 text-center"
+                delay={index * 80}
+                as="article"
+                className="group flex h-full flex-col items-center rounded-2xl border border-sky-200 bg-white/95 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <benefit.icon className="w-8 h-8 text-sky-600" />
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                  <benefit.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed text-sm">
                   {benefit.description}
                 </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -247,40 +256,44 @@ const PuliziePostCantiere = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {projectTypes.map((type, index) => (
-              <div 
+              <ScrollReveal
                 key={index}
-                className="bg-slate-50 rounded-xl p-8 hover:bg-white hover:shadow-lg transition-all duration-300"
+                delay={index * 90}
+                as="article"
+                className="group flex h-full flex-col justify-between rounded-2xl border border-sky-200/70 bg-white/95 p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <h3 className="text-xl font-bold text-slate-900 mb-2">{type.title}</h3>
-                <p className="text-slate-600 mb-4">{type.description}</p>
-                
-                <div className="space-y-4 mb-6">
-                  <div>
-                    <h4 className="font-semibold text-slate-900 mb-2">Servizi Inclusi:</h4>
-                    <ul className="space-y-1">
-                      {type.features.map((feature, i) => (
-                        <li key={i} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-sky-500" />
-                          <span className="text-slate-600 text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-1">{type.title}</h3>
+                  <p className="text-sm font-medium uppercase tracking-[0.3em] text-sky-500 mb-4">{type.description}</p>
+
+                  <div className="space-y-3 mb-6">
+                    <div>
+                      <h4 className="font-semibold text-slate-900 mb-2">Servizi inclusi</h4>
+                      <ul className="space-y-2">
+                        {type.features.map((feature, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <CheckCircle className="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0" />
+                            <span className="text-slate-600 text-sm leading-relaxed">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4 text-center">
-                  <div className="bg-white p-3 rounded-lg">
-                    <p className="text-slate-500 text-xs">Durata</p>
+                  <div className="rounded-lg border border-sky-200 bg-white p-3">
+                    <p className="text-slate-500 text-xs uppercase tracking-[0.2em]">Durata</p>
                     <p className="font-semibold text-slate-900">{type.duration}</p>
                   </div>
-                  <div className="bg-white p-3 rounded-lg">
-                    <p className="text-slate-500 text-xs">Superficie</p>
+                  <div className="rounded-lg border border-sky-200 bg-white p-3">
+                    <p className="text-slate-500 text-xs uppercase tracking-[0.2em]">Superficie</p>
                     <p className="font-semibold text-slate-900">{type.scope}</p>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -300,48 +313,53 @@ const PuliziePostCantiere = () => {
 
           <div className="space-y-8">
             {phases.map((phase, index) => (
-              <div key={index} className="flex items-start space-x-6">
-                <div className="w-12 h-12 bg-sky-500 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
-                  {index + 1}
+              <ScrollReveal
+                key={phase.title}
+                delay={index * 90}
+                as="article"
+                className="group flex items-start gap-6 rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-500 text-white font-semibold text-lg shadow-sm">
+                  {String(index + 1).padStart(2, '0')}
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="mb-2 flex items-center justify-between">
                     <h3 className="text-xl font-bold text-slate-900">{phase.title}</h3>
-                    <span className="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-700">
                       {phase.time}
                     </span>
                   </div>
-                  <p className="text-slate-600">{phase.description}</p>
+                  <p className="text-slate-600 leading-relaxed text-sm">{phase.description}</p>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
 
-          <div className="mt-12 bg-sky-50 rounded-xl p-8">
+          <ScrollReveal as="div" className="mt-12 rounded-3xl border border-sky-200 bg-white/95 p-10 shadow-lg">
             <h3 className="text-xl font-bold text-slate-900 mb-4">
-              Tempistiche e Coordinamento
+              Tempistiche e coordinamento
             </h3>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid gap-6 md:grid-cols-2">
               <div>
-                <h4 className="font-semibold text-slate-900 mb-2">Pianificazione:</h4>
-                <ul className="space-y-1 text-slate-600">
-                  <li>• Coordinamento con direttore lavori</li>
-                  <li>• Programmazione post-completamento</li>
-                  <li>• Intervento nei tempi di consegna</li>
-                  <li>• Flessibilità per urgenze</li>
+                <h4 className="font-semibold text-slate-900 mb-2">Pianificazione</h4>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  <li>• Coordinamento con direttore lavori e imprese in sito</li>
+                  <li>• Interventi programmati subito dopo la consegna lavori</li>
+                  <li>• Squadre aggiuntive per rispettare scadenze strette</li>
+                  <li>• Disponibilità per urgenze e ritocchi pre-consegna</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-slate-900 mb-2">Sicurezza:</h4>
-                <ul className="space-y-1 text-slate-600">
-                  <li>• Valutazione rischi residui</li>
-                  <li>• DPI specifici per cantiere</li>
-                  <li>• Gestione sicura detriti</li>
-                  <li>• Coordinamento con altre ditte</li>
+                <h4 className="font-semibold text-slate-900 mb-2">Sicurezza</h4>
+                <ul className="space-y-2 text-sm text-slate-600">
+                  <li>• Analisi rischi residui e gestione accessi in sicurezza</li>
+                  <li>• DPI specifici per cantieri e personale formato</li>
+                  <li>• Smaltimento controllato di polveri e materiali residui</li>
+                  <li>• Coordinamento con eventuali altre squadre presenti</li>
                 </ul>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 

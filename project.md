@@ -79,7 +79,7 @@ Copy code
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Artic Pulizie",
-  "image": "https://www.articpulizie.it/assets/logo.webp",
+  "image": "https://www.articpulizie.it/assets/logo.png",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via [INDIRIZZO]",

@@ -6,6 +6,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
+import ScrollReveal from '@/components/ScrollReveal';
 import { getLocalServicePage, LocalServicePage, getAllServices, getAllLocations } from '@/lib/supabase';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
@@ -121,130 +122,200 @@ const ServizioLocaleDynamic = () => {
     switch (sectionKey) {
       case 'whyChoose':
         return (
-          <section key="whyChoose" className="py-16 bg-white">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8">
-                {h2Titles.whyChoose || `Perché sceglierci a ${location.name}`}
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
+          <ScrollReveal
+            key="whyChoose"
+            className="relative py-20 bg-gradient-to-br from-white via-sky-50/50 to-white"
+            as="section"
+          >
+            <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-sky-100/30 to-transparent" aria-hidden="true" />
+            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+                <div>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-sm font-semibold text-sky-600 shadow-sm ring-1 ring-sky-100">
+                    <Sparkles className="w-4 h-4" /> Team locale certificato
+                  </span>
+                  <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+                    {h2Titles.whyChoose || `Perché sceglierci a ${location.name}`}
+                  </h2>
+                </div>
+                <p className="text-slate-600 max-w-2xl text-base sm:text-lg">
+                  Ogni intervento è progettato per il tessuto urbano di {location.name}, con squadre dedicate e protocolli flessibili per aziende, studi e strutture locali.
+                </p>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2">
                 {pageData.why_choose_us.map((reason, index) => (
-                  <div
+                  <ScrollReveal
                     key={index}
-                    className="flex items-start space-x-4 p-6 bg-slate-50 rounded-xl hover:bg-sky-50 transition-all duration-300"
+                    as="article"
+                    delay={index * 120}
+                    className="group flex items-start gap-4 rounded-2xl border border-slate-200/70 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300/80 hover:shadow-xl"
                   >
-                    <CheckCircle className="w-6 h-6 text-sky-500 mt-1 flex-shrink-0" />
-                    <p className="text-slate-700 leading-relaxed">{reason}</p>
-                  </div>
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                      <CheckCircle className="w-6 h-6" />
+                    </div>
+                    <p className="text-slate-600 leading-relaxed text-base">
+                      {reason}
+                    </p>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
-          </section>
+          </ScrollReveal>
         );
 
       case 'coverage':
         return (
-          <section key="coverage" className="py-16 bg-slate-50">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="bg-white rounded-xl p-8 shadow-md">
-                <div className="flex items-center space-x-3 mb-6">
-                  <MapPin className="w-6 h-6 text-sky-500" />
-                  <h2 className="text-2xl font-bold text-slate-900">
-                    {h2Titles.coverage || `Aree coperte a ${location.name}`}
-                  </h2>
+          <ScrollReveal key="coverage" as="section" className="py-20 bg-white">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-slate-50 p-8 sm:p-12 shadow-lg">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-sky-600 shadow-inner">
+                      <MapPin className="w-6 h-6" />
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
+                      {h2Titles.coverage || `Aree coperte a ${location.name}`}
+                    </h2>
+                  </div>
+                  <span className="text-sm font-medium uppercase tracking-[0.3em] text-slate-400">
+                    Provincia di Brescia
+                  </span>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {pageData.coverage_areas.map((area, index) => (
                     <span
                       key={index}
-                      className="px-4 py-2 bg-sky-50 text-sky-700 rounded-lg text-sm font-medium"
+                      className="inline-flex items-center gap-2 rounded-full border border-sky-200/70 bg-white px-4 py-2 text-sm font-semibold text-sky-700 shadow-sm transition hover:border-sky-300 hover:bg-sky-50"
                     >
-                      {area}
+                      <span className="h-1.5 w-1.5 rounded-full bg-sky-500" />
+                      <span>{area}</span>
                     </span>
                   ))}
                 </div>
               </div>
             </div>
-          </section>
+          </ScrollReveal>
         );
 
       case 'problems':
         return (
-          <section key="problems" className="py-16 bg-white">
+          <ScrollReveal key="problems" as="section" className="py-20 bg-gradient-to-br from-rose-50/40 via-white to-rose-50/20">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8">
-                {h2Titles.problems || `Problemi tipici a ${location.name}`}
-              </h2>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+                  {h2Titles.problems || `Sfide tipiche a ${location.name}`}
+                </h2>
+                <p className="max-w-2xl text-base sm:text-lg text-slate-600">
+                  Analizziamo criticità locali e organizziamo protocolli dedicati per risolverle rapidamente, con una squadra reperibile in tutta la zona.
+                </p>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2">
                 {pageData.typical_problems.map((problem, index) => (
-                  <div
+                  <ScrollReveal
                     key={index}
-                    className="flex items-start space-x-4 p-6 bg-red-50 rounded-xl border border-red-100"
+                    as="article"
+                    delay={index * 120}
+                    className="group relative overflow-hidden rounded-2xl border border-rose-200/80 bg-white/90 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0" />
-                    <p className="text-slate-700 leading-relaxed">{problem}</p>
-                  </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-rose-100/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
+                    <div className="relative flex items-start gap-4">
+                      <div className="mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-rose-100 text-rose-500">
+                        <Sparkles className="w-4 h-4" />
+                      </div>
+                      <p className="text-slate-600 leading-relaxed text-base">
+                        {problem}
+                      </p>
+                    </div>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
-          </section>
+          </ScrollReveal>
         );
 
       case 'detailed':
         return (
-          <section key="detailed" className="py-16 bg-slate-50">
+          <ScrollReveal key="detailed" as="section" className="py-20 bg-slate-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-                {h2Titles.detailed || 'Cosa facciamo nel dettaglio'}
-              </h2>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="text-center mb-12">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.4em] text-slate-500 shadow-sm">
+                  Dettaglio interventi
+                </span>
+                <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+                  {h2Titles.detailed || 'Cosa facciamo nel dettaglio'}
+                </h2>
+                <p className="mt-3 text-base sm:text-lg text-slate-600 max-w-3xl mx-auto">
+                  Pacchetti modulabili per aziende, retail e strutture sanitarie. Ogni attività è documentata nel report finale e supervisionata da un referente dedicato.
+                </p>
+              </div>
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {Object.entries(pageData.detailed_services).map(([title, description], index) => (
-                  <div
+                  <ScrollReveal
                     key={index}
-                    className="bg-white rounded-xl p-6 hover:shadow-lg transition-all duration-300"
+                    as="article"
+                    delay={index * 100}
+                    className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <h3 className="text-lg font-bold text-slate-900 mb-3">{title}</h3>
-                    <p className="text-slate-600 leading-relaxed text-sm">{description}</p>
-                  </div>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="h-10 w-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center shadow-inner">
+                        <Sparkles className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-700 transition-colors">
+                        {title}
+                      </h3>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed text-sm">
+                      {description}
+                    </p>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
-          </section>
+          </ScrollReveal>
         );
 
       case 'standards':
         return (
-          <section key="standards" className="py-16 bg-white">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
-                {h2Titles.standards || 'Standard e garanzie'}
-              </h2>
+          <ScrollReveal key="standards" as="section" className="relative py-20 bg-white">
+            <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-slate-100/40 to-transparent" aria-hidden="true" />
+            <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.45em]">
+                  Standard &amp; Garanzie
+                </span>
+                <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
+                  {h2Titles.standards || 'Standard e garanzie'}
+                </h2>
+              </div>
               <div className="max-w-3xl mx-auto">
-                <div className="bg-slate-50 rounded-xl p-8">
-                  <p className="text-slate-700 leading-relaxed text-center">
+                <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-slate-50 to-white p-10 text-center shadow-xl">
+                  <p className="text-lg leading-relaxed text-slate-600">
                     {pageData.standards_guarantees}
                   </p>
                 </div>
               </div>
               <div className="grid md:grid-cols-3 gap-8 mt-12">
                 {benefits.map((benefit, index) => (
-                  <div
+                  <ScrollReveal
                     key={index}
-                    className="bg-slate-50 rounded-xl p-6 hover:bg-sky-50 transition-all duration-300 text-center"
+                    as="article"
+                    delay={index * 100}
+                    className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-                      <benefit.icon className="w-8 h-8 text-sky-600" />
+                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                      <benefit.icon className="w-8 h-8" />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-3">
+                    <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-700 transition-colors">
                       {benefit.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed text-sm">
                       {benefit.description}
                     </p>
-                  </div>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
-          </section>
+          </ScrollReveal>
         );
 
       default:
@@ -309,7 +380,7 @@ const ServizioLocaleDynamic = () => {
       {sectionOrder.map(sectionKey => renderSection(sectionKey))}
 
       {otherServices.length > 0 && (
-        <section className="py-16 bg-white">
+        <ScrollReveal as="section" className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
@@ -342,11 +413,11 @@ const ServizioLocaleDynamic = () => {
               ))}
             </div>
           </div>
-        </section>
+        </ScrollReveal>
       )}
 
       {nearbyLocations.length > 0 && (
-        <section className="py-16 bg-slate-50">
+        <ScrollReveal as="section" className="py-16 bg-slate-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
@@ -373,7 +444,7 @@ const ServizioLocaleDynamic = () => {
               ))}
             </div>
           </div>
-        </section>
+        </ScrollReveal>
       )}
 
       <RelatedBlogPosts serviceIds={[service.id]} />

@@ -48,7 +48,7 @@ const BlogPost = () => {
         name: 'Artic Pulizie',
         logo: {
           '@type': 'ImageObject',
-          url: buildCanonicalUrl('/assets/logo.svg')
+          url: buildCanonicalUrl('/assets/logo.png')
         }
       },
       description: post.metaDescription

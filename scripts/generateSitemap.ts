@@ -1,11 +1,10 @@
 import fs from 'fs';
-import path from 'path';
-import { dirname, resolve } from 'path';
+import path, { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { createClient } from '@supabase/supabase-js';
 import { siteMetadata } from '../src/data/siteMetadata';
-import { services, locations } from '../src/data/servicesData';
-import { getAllLocalPages } from '../src/data/localContent';
-import blogPosts from '../content/blog/posts.json' assert { type: 'json' };
+import { services } from '../src/data/servicesData';
+import blogPosts from '../content/blog/posts.json' with { type: 'json' };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -20,6 +19,13 @@ type SitemapUrl = {
 type BlogPost = {
   slug: string;
   publishedAt?: string;
+};
+
+type LocalServiceRow = {
+  slug: string;
+  updated_at?: string;
+  service?: { slug: string | null } | null;
+  location?: { slug: string | null } | null;
 };
 
 const DOMAIN = siteMetadata.baseUrl.replace(/\/$/, '');
@@ -59,37 +65,73 @@ const buildBlogPages = (): SitemapUrl[] =>
     priority: '0.6'
   }));
 
-const buildLocalServicePages = (): SitemapUrl[] => {
-  const serviceSlugById = new Map(services.map((service) => [service.id, service.slug]));
-  const locationSlugById = new Map(locations.map((location) => [location.id, location.slug]));
+const createSupabaseClient = () => {
+  const url = process.env.VITE_SUPABASE_URL ?? process.env.SUPABASE_URL;
+  const anonKey = process.env.VITE_SUPABASE_ANON_KEY ?? process.env.SUPABASE_ANON_KEY;
 
-  return getAllLocalPages()
-    .map((page) => {
-      const serviceSlug = serviceSlugById.get(page.serviceId);
-      const locationSlug = locationSlugById.get(page.locationId);
+  if (!url || !anonKey) {
+    return null;
+  }
+
+  return createClient(url, anonKey);
+};
+
+const buildLocalServicePages = async (): Promise<SitemapUrl[]> => {
+  const supabase = createSupabaseClient();
+
+  if (!supabase) {
+    console.warn('ℹ️  Supabase credentials not provided: skipping local service URLs in sitemap.');
+    return [];
+  }
+
+  const { data, error } = await supabase
+    .from('local_service_pages')
+    .select('slug, updated_at, service:services(slug), location:locations(slug)')
+    .eq('published', true)
+    .returns<LocalServiceRow[]>();
+
+  if (error) {
+    console.warn(`⚠️  Unable to fetch local service pages from Supabase (${error.message}). Skipping these URLs.`);
+    return [];
+  }
+
+  const seen = new Set<string>();
+
+  return data
+    .map((row) => {
+      const serviceSlug = row.service?.slug ?? null;
+      const locationSlug = row.location?.slug ?? null;
 
       if (!serviceSlug || !locationSlug) {
         return null;
       }
 
+      const fullSlug = row.slug || `${serviceSlug}/${locationSlug}`;
+
+      if (seen.has(fullSlug)) {
+        return null;
+      }
+
+      seen.add(fullSlug);
+
       return {
-        loc: `${DOMAIN}/servizi/${serviceSlug}/${locationSlug}`,
-        lastmod: today,
+        loc: `${DOMAIN}/servizi/${fullSlug}`,
+        lastmod: (row.updated_at ?? today).split('T')[0],
         changefreq: 'monthly',
         priority: '0.7'
       };
     })
-    .filter((entry): entry is SitemapUrl => entry !== null);
+    .filter((entry): entry is SitemapUrl => Boolean(entry));
 };
 
-const generateSitemap = () => {
+const generateSitemap = async () => {
   console.log('📍 Generating sitemap.xml...');
 
   const urls = [
     ...buildStaticPages(),
     ...buildServicePages(),
     ...buildBlogPages(),
-    ...buildLocalServicePages()
+    ...(await buildLocalServicePages())
   ];
 
   const uniqueUrls = Array.from(
@@ -122,4 +164,4 @@ ${uniqueUrls
   console.log(`📊 Total URLs: ${uniqueUrls.length}`);
 };
 
-generateSitemap();
+await generateSitemap();

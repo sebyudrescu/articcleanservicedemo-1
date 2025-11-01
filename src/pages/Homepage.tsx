@@ -170,7 +170,12 @@ const Homepage = () => {
         structuredData={homepageStructuredData}
       />
       {/* Hero Section */}
-      <section className="pt-24 pb-20 relative overflow-hidden min-h-screen bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">
+      <section
+        id="homepage-hero"
+        data-cta-anchor="hero"
+        data-theme-accent="sky"
+        className="pt-24 pb-20 relative overflow-hidden min-h-screen bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20"
+      >
         {/* Animated Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="wave-container">
@@ -269,7 +274,7 @@ const Homepage = () => {
       </section>
 
       {/* Services Overview */}
-      <section className="py-20 bg-white">
+      <section data-cta-anchor="cta-hotspot" data-theme-accent="emerald" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
@@ -332,7 +337,7 @@ const Homepage = () => {
       </section>
 
       {/* Advantages */}
-      <section className="py-20 bg-slate-50">
+      <section data-theme-accent="cyan" className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
@@ -365,7 +370,7 @@ const Homepage = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
+      <section data-cta-anchor="cta-hotspot" data-theme-accent="blue" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
