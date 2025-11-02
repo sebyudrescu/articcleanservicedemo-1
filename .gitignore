@@ -13,3 +13,5 @@ coverage/
 .env*
 path/to/id_ed25519
 node_modules
+dist/
+articclean-bolt/
