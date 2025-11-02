@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-900 text-white">
+    <footer id="site-footer" className="bg-slate-900 text-white" aria-label="Informazioni di contatto Artic Pulizie">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 py-16">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">

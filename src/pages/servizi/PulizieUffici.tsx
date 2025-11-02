@@ -5,6 +5,7 @@ import LocationsGrid from '@/components/LocationsGrid';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
+import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
@@ -169,15 +170,21 @@ const PulizieUffici = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {features.map((feature, index) => (
-              <div
+              <ScrollReveal
                 key={index}
-                className="flex items-start space-x-3 p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300"
+                delay={index * 70}
+                as="article"
+                className="group relative flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
-                <span className="text-slate-700 font-medium">{feature}</span>
-              </div>
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                  <CheckCircle className="w-6 h-6" />
+                </div>
+                <p className="text-base font-semibold leading-relaxed text-slate-800">
+                  {feature}
+                </p>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -195,22 +202,24 @@ const PulizieUffici = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3 [grid-auto-rows:1fr]">
             {benefits.map((benefit, index) => (
-              <div
+              <ScrollReveal
                 key={index}
-                className="bg-slate-50 rounded-xl p-6 hover:bg-sky-50 transition-all duration-300 text-center"
+                delay={index * 80}
+                as="article"
+                className="group flex h-full flex-col items-center rounded-2xl border border-sky-200 bg-white/95 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <benefit.icon className="w-8 h-8 text-sky-600" />
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                  <benefit.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
                   {benefit.title}
                 </h3>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-slate-600 leading-relaxed text-sm">
                   {benefit.description}
                 </p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -219,7 +228,7 @@ const PulizieUffici = () => {
       {/* Service Area */}
       <section className="py-16 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-xl p-8 shadow-md">
+          <ScrollReveal as="div" className="bg-white rounded-2xl border border-sky-200/70 p-8 shadow-lg">
             <div className="flex items-center space-x-3 mb-6">
               <MapPin className="w-6 h-6 text-sky-500" />
               <h2 className="text-2xl font-bold text-slate-900">
@@ -231,41 +240,56 @@ const PulizieUffici = () => {
               puntualità e professionalità in ogni intervento. I nostri servizi di pulizia uffici sono disponibili
               sia per piccoli studi professionali che per grandi aziende in tutta la <strong>provincia di Brescia</strong>.
             </p>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Why Choose Us */}
       <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">
             Perché Scegliere i Nostri Servizi di Pulizia Uffici
           </h2>
-          <div className="space-y-6">
-            <div className="bg-slate-50 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">✓ Esperienza e Professionalità</h3>
-              <p className="text-slate-600 leading-relaxed">
-                28 dipendenti qualificati con esperienza consolidata nel settore delle pulizie professionali per uffici e aziende a Brescia
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">✓ Attrezzature Professionali</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Utilizziamo solo macchinari certificati e prodotti ad alta efficacia sgrassante per risultati superiori
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">✓ Flessibilità e Puntualità</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Interventi programmati negli orari più comodi per la tua attività, senza interferire con il lavoro quotidiano
-              </p>
-            </div>
-            <div className="bg-slate-50 rounded-lg p-6">
-              <h3 className="text-xl font-bold text-slate-900 mb-3">✓ Prezzi Competitivi</h3>
-              <p className="text-slate-600 leading-relaxed">
-                Tariffe trasparenti e convenienti con preventivi gratuiti e personalizzati per ogni esigenza
-              </p>
-            </div>
+          <div className="grid gap-6 sm:grid-cols-2 [grid-auto-rows:1fr]">
+            {[
+              {
+                title: 'Esperienza e Professionalità',
+                body:
+                  '28 operatori specializzati con protocolli consolidati per aziende, studi professionali e sedi corporate in tutta Brescia.'
+              },
+              {
+                title: 'Attrezzature Certificate',
+                body:
+                  'Macchinari HEPA, prodotti sanificanti e detergenti a bassa emissione selezionati per ambienti di lavoro moderni.'
+              },
+              {
+                title: 'Flessibilità Totale',
+                body:
+                  'Turni serali, mattutini o nel weekend programmati con il tuo referente Artic per garantire continuità operativa.'
+              },
+              {
+                title: 'Preventivi Trasparenti',
+                body:
+                  'Piani su misura con reportistica, KPI e sopralluoghi gratuiti per monitorare qualità e ottimizzare costi.'
+              }
+            ].map((item, index) => (
+              <ScrollReveal
+                key={item.title}
+                delay={index * 90}
+                as="article"
+                className="group flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
+              >
+                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-500 mb-3">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 leading-relaxed text-sm">
+                  {item.body}
+                </p>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
