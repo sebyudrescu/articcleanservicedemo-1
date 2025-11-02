@@ -157,9 +157,9 @@ const SanificazioneAmbienti = () => {
                 Sanificazione <span className="text-sky-500">Ambienti</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Trattamenti certificati per la sicurezza e l'igiene degli ambienti di lavoro. 
-                Protocolli professionali e prodotti certificati per garantire la massima 
-                protezione da virus, batteri e agenti patogeni.
+                Trattamenti certificati <strong>a Brescia e provincia</strong> per la sicurezza e l'igiene degli ambienti di lavoro.
+                Supportiamo uffici, cliniche, scuole e impianti produttivi con protocolli professionali
+                e prodotti riconosciuti dal Ministero della Salute per eliminare virus, batteri e agenti patogeni.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -170,13 +170,15 @@ const SanificazioneAmbienti = () => {
               </Link>
             </div>
             <div>
-              <LazyImage 
+              <LazyImage
                 src={cdnImage('https://images.pexels.com/photos/4099471/pexels-photo-4099471.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1280, quality: 70, fit: 'cover' })}
                 fallbackSrc="https://images.pexels.com/photos/4099471/pexels-photo-4099471.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 alt="Sanificazione ambienti a Brescia con Artic Pulizie"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
+                sizes="(min-width: 1024px) 540px, 90vw"
+                priority
               />
             </div>
           </div>

@@ -30,6 +30,9 @@ const BlogPost = () => {
     getPostsByService(serviceId)
   ).filter((item) => item.slug !== post.slug);
 
+  const lastUpdated = post.lastUpdated ?? post.publishedAt;
+  const hasBeenUpdated = lastUpdated !== post.publishedAt;
+
   const structuredData = [
     {
       '@context': 'https://schema.org',
@@ -38,7 +41,7 @@ const BlogPost = () => {
       headline: post.title,
       image: cdnImage(post.heroImage, { width: 1280, quality: 70, fit: 'cover' }),
       datePublished: post.publishedAt,
-      dateModified: post.publishedAt,
+      dateModified: lastUpdated,
       author: {
         '@type': 'Organization',
         name: 'Artic Pulizie'
@@ -96,6 +99,19 @@ const BlogPost = () => {
                 }).format(new Date(post.publishedAt))}
               </span>
             </span>
+            {hasBeenUpdated && (
+              <span className="inline-flex items-center space-x-1">
+                <span className="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true"></span>
+                <span>
+                  Aggiornato il{' '}
+                  {new Intl.DateTimeFormat('it-IT', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric'
+                  }).format(new Date(lastUpdated))}
+                </span>
+              </span>
+            )}
             <span className="inline-flex items-center space-x-1">
               <Clock className="w-4 h-4" />
               <span>{post.readingTimeMinutes} minuti</span>
@@ -163,7 +179,9 @@ const BlogPost = () => {
                       day: '2-digit',
                       month: 'short',
                       year: 'numeric'
-                    }).format(new Date(relatedPost.publishedAt))}
+                    }).format(
+                      new Date(relatedPost.lastUpdated ?? relatedPost.publishedAt)
+                    )}
                   </div>
                 </Link>
               ))}

@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { type ComponentType, lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import AccentThemeManager from './components/AccentThemeManager';
 import Footer from './components/Footer';
@@ -7,28 +7,78 @@ import MouseGlow from './components/MouseGlow';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import StickyCtaBanner from './components/StickyCtaBanner';
+import SanificazioneAmbienti from './pages/servizi/SanificazioneAmbienti';
 
-const Homepage = lazy(() => import('./pages/Homepage'));
-const ChiSiamo = lazy(() => import('./pages/ChiSiamo'));
-const ComeLavoriamo = lazy(() => import('./pages/ComeLavoriamo'));
-const Recensioni = lazy(() => import('./pages/Recensioni'));
-const Servizi = lazy(() => import('./pages/Servizi'));
-const DoveOperiamo = lazy(() => import('./pages/DoveOperiamo'));
-const PulizieUffici = lazy(() => import('./pages/servizi/PulizieUffici'));
-const PulizieCondomini = lazy(() => import('./pages/servizi/PulizieCondomini'));
-const PulizieIndustriali = lazy(() => import('./pages/servizi/PulizieIndustriali'));
-const PuliziePostCantiere = lazy(() => import('./pages/servizi/PuliziePostCantiere'));
-const PulizieVetri = lazy(() => import('./pages/servizi/PulizieVetri'));
-const SanificazioneAmbienti = lazy(() => import('./pages/servizi/SanificazioneAmbienti'));
-const Giardinaggio = lazy(() => import('./pages/servizi/Giardinaggio'));
-const GestioneCarrellati = lazy(() => import('./pages/servizi/GestioneCarrellati'));
-const RichidiPreventivo = lazy(() => import('./pages/RichidiPreventivo'));
-const ServizioLocaleDynamic = lazy(() => import('./pages/ServizioLocaleDynamic'));
-const Blog = lazy(() => import('./pages/Blog'));
-const BlogPost = lazy(() => import('./pages/blog/BlogPost'));
-const FAQ = lazy(() => import('./pages/FAQ'));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const NotFound = lazy(() => import('./pages/NotFound'));
+const isServer = import.meta.env.SSR;
+
+const isServer = import.meta.env.SSR;
+
+type PageComponent = ComponentType<Record<string, unknown>>;
+
+let Homepage: PageComponent;
+let ChiSiamo: PageComponent;
+let ComeLavoriamo: PageComponent;
+let Recensioni: PageComponent;
+let Servizi: PageComponent;
+let DoveOperiamo: PageComponent;
+let PulizieUffici: PageComponent;
+let PulizieCondomini: PageComponent;
+let PulizieIndustriali: PageComponent;
+let PuliziePostCantiere: PageComponent;
+let PulizieVetri: PageComponent;
+let SanificazioneAmbienti: PageComponent;
+let Giardinaggio: PageComponent;
+let GestioneCarrellati: PageComponent;
+let RichidiPreventivo: PageComponent;
+let ServizioLocaleDynamic: PageComponent;
+let Blog: PageComponent;
+let BlogPost: PageComponent;
+let FAQ: PageComponent;
+let PrivacyPolicy: PageComponent;
+
+if (isServer) {
+  Homepage = (await import('./pages/Homepage')).default;
+  ChiSiamo = (await import('./pages/ChiSiamo')).default;
+  ComeLavoriamo = (await import('./pages/ComeLavoriamo')).default;
+  Recensioni = (await import('./pages/Recensioni')).default;
+  Servizi = (await import('./pages/Servizi')).default;
+  DoveOperiamo = (await import('./pages/DoveOperiamo')).default;
+  PulizieUffici = (await import('./pages/servizi/PulizieUffici')).default;
+  PulizieCondomini = (await import('./pages/servizi/PulizieCondomini')).default;
+  PulizieIndustriali = (await import('./pages/servizi/PulizieIndustriali')).default;
+  PuliziePostCantiere = (await import('./pages/servizi/PuliziePostCantiere')).default;
+  PulizieVetri = (await import('./pages/servizi/PulizieVetri')).default;
+  SanificazioneAmbienti = (await import('./pages/servizi/SanificazioneAmbienti')).default;
+  Giardinaggio = (await import('./pages/servizi/Giardinaggio')).default;
+  GestioneCarrellati = (await import('./pages/servizi/GestioneCarrellati')).default;
+  RichidiPreventivo = (await import('./pages/RichidiPreventivo')).default;
+  ServizioLocaleDynamic = (await import('./pages/ServizioLocaleDynamic')).default;
+  Blog = (await import('./pages/Blog')).default;
+  BlogPost = (await import('./pages/blog/BlogPost')).default;
+  FAQ = (await import('./pages/FAQ')).default;
+  PrivacyPolicy = (await import('./pages/PrivacyPolicy')).default;
+} else {
+  Homepage = lazy(() => import('./pages/Homepage'));
+  ChiSiamo = lazy(() => import('./pages/ChiSiamo'));
+  ComeLavoriamo = lazy(() => import('./pages/ComeLavoriamo'));
+  Recensioni = lazy(() => import('./pages/Recensioni'));
+  Servizi = lazy(() => import('./pages/Servizi'));
+  DoveOperiamo = lazy(() => import('./pages/DoveOperiamo'));
+  PulizieUffici = lazy(() => import('./pages/servizi/PulizieUffici'));
+  PulizieCondomini = lazy(() => import('./pages/servizi/PulizieCondomini'));
+  PulizieIndustriali = lazy(() => import('./pages/servizi/PulizieIndustriali'));
+  PuliziePostCantiere = lazy(() => import('./pages/servizi/PuliziePostCantiere'));
+  PulizieVetri = lazy(() => import('./pages/servizi/PulizieVetri'));
+  SanificazioneAmbienti = lazy(() => import('./pages/servizi/SanificazioneAmbienti'));
+  Giardinaggio = lazy(() => import('./pages/servizi/Giardinaggio'));
+  GestioneCarrellati = lazy(() => import('./pages/servizi/GestioneCarrellati'));
+  RichidiPreventivo = lazy(() => import('./pages/RichidiPreventivo'));
+  ServizioLocaleDynamic = lazy(() => import('./pages/ServizioLocaleDynamic'));
+  Blog = lazy(() => import('./pages/Blog'));
+  BlogPost = lazy(() => import('./pages/blog/BlogPost'));
+  FAQ = lazy(() => import('./pages/FAQ'));
+  PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+}
 
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">

@@ -149,9 +149,9 @@ const PuliziePostCantiere = () => {
                 Pulizie <span className="text-sky-500">Post-Cantiere</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Pulizie specializzate per la consegna di nuove costruzioni o ristrutturazioni. 
-                Trasformiamo i cantieri in spazi pronti all'uso con interventi professionali 
-                e attrezzature specifiche.
+                Pulizie specializzate <strong>a Brescia, provincia e Lago di Garda</strong> per la consegna di nuove costruzioni o ristrutturazioni.
+                Trasformiamo i cantieri in spazi pronti all'uso con interventi professionali,
+                squadre dedicate e attrezzature specifiche per abitazioni, uffici e industrie locali.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -169,6 +169,8 @@ const PuliziePostCantiere = () => {
                 width={640}
                 height={540}
                 fallbackSrc="https://images.pexels.com/photos/8467975/pexels-photo-8467975.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                sizes="(min-width: 1024px) 540px, 90vw"
+                priority
               />
             </div>
           </div>

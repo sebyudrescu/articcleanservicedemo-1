@@ -127,6 +127,8 @@ const PulizieUffici = () => {
                 width={640}
                 height={540}
                 fallbackSrc="https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                sizes="(min-width: 1024px) 540px, 90vw"
+                priority
               />
             </div>
           </div>

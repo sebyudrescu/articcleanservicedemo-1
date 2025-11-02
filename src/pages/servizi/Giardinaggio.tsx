@@ -167,6 +167,8 @@ const Giardinaggio = () => {
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
+                sizes="(min-width: 1024px) 540px, 90vw"
+                priority
               />
             </div>
           </div>

@@ -7,6 +7,7 @@ export interface BlogPost {
   metaDescription: string;
   heroImage: string;
   publishedAt: string;
+  lastUpdated?: string;
   readingTimeMinutes: number;
   serviceIds: string[];
   keywords: string[];
@@ -15,7 +16,8 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = posts.map((post) => ({
   ...post,
-  publishedAt: post.publishedAt
+  publishedAt: post.publishedAt,
+  lastUpdated: post.lastUpdated ?? post.publishedAt
 }));
 
 export const getPostBySlug = (slug: string) =>
@@ -28,5 +30,9 @@ export const getPostsByService = (serviceId: string, limit = 3) =>
 
 export const getRecentPosts = (limit = 3) =>
   [...blogPosts]
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .sort(
+      (a, b) =>
+        new Date(b.lastUpdated ?? b.publishedAt).getTime() -
+        new Date(a.lastUpdated ?? a.publishedAt).getTime()
+    )
     .slice(0, limit);

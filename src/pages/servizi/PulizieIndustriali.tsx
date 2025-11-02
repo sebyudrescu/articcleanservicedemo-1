@@ -132,9 +132,9 @@ const PulizieIndustriali = () => {
                 Pulizie <span className="text-sky-500">Industriali</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Interventi specializzati per capannoni, magazzini e ambienti industriali. 
-                Attrezzature professionali e personale formato per gestire ogni tipo di 
-                ambiente produttivo in totale sicurezza.
+                Interventi specializzati <strong>a Brescia e provincia</strong> per capannoni, magazzini e ambienti industriali.
+                Operiamo nei poli produttivi di Val Trompia, Franciacorta e Lago di Garda con squadre dedicate,
+                attrezzature professionali e protocolli certificati.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -152,6 +152,8 @@ const PulizieIndustriali = () => {
                 width={640}
                 height={540}
                 fallbackSrc="https://images.pexels.com/photos/4484078/pexels-photo-4484078.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                sizes="(min-width: 1024px) 540px, 90vw"
+                priority
               />
             </div>
           </div>
