@@ -1,4 +1,4 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from '@/lib/helmetAsync';
 import { buildCanonicalUrl, siteMetadata } from '@/data/siteMetadata';
 
 interface SEOProps {

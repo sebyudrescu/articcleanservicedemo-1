@@ -1,30 +1,17 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from '@/lib/helmetAsync';
 import App from './App.tsx';
+import './index.css';
 
-// (opzionale) lazy load CSS come facevi tu
-const loadAppStyles = () => import('./index.css');
+const container = document.getElementById('root');
 
-if (typeof window !== 'undefined') {
-  const { requestIdleCallback } = window as typeof window & {
-    requestIdleCallback?: (callback: () => void) => number;
-  };
-
-  if (typeof requestIdleCallback === 'function') {
-    requestIdleCallback(() => {
-      loadAppStyles();
-    });
-  } else {
-    setTimeout(() => {
-      loadAppStyles();
-    }, 0);
-  }
+if (!container) {
+  throw new Error("Impossibile trovare il contenitore root per l'applicazione");
 }
 
-const container = document.getElementById('root')!;
-createRoot(container).render(
+const app = (
   <React.StrictMode>
     <HelmetProvider>
       <BrowserRouter>
@@ -34,3 +21,8 @@ createRoot(container).render(
   </React.StrictMode>
 );
 
+if (container.hasChildNodes()) {
+  hydrateRoot(container, app);
+} else {
+  createRoot(container).render(app);
+}

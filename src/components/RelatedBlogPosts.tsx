@@ -64,7 +64,7 @@ const RelatedBlogPosts = ({
                       day: '2-digit',
                       month: 'short',
                       year: 'numeric'
-                    }).format(new Date(post.publishedAt))}
+                    }).format(new Date(post.lastUpdated ?? post.publishedAt))}
                   </span>
                 </div>
                 <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600 transition-colors">

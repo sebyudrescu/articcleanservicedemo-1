@@ -4,6 +4,7 @@ import type { ImgHTMLAttributes } from 'react';
 interface LazyImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   placeholder?: string;
   fallbackSrc?: string;
+  priority?: boolean;
 }
 
 const DEFAULT_PLACEHOLDER =
@@ -15,6 +16,9 @@ const LazyImage = ({
   className = '',
   placeholder = DEFAULT_PLACEHOLDER,
   fallbackSrc,
+  priority = false,
+  loading,
+  decoding,
   ...rest
 }: LazyImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -60,7 +64,9 @@ const LazyImage = ({
     }
   };
 
-  const displaySrc = isInView ? currentSrc : placeholder;
+  const displaySrc = priority || isInView ? currentSrc : placeholder;
+  const resolvedLoading = priority ? 'eager' : loading ?? 'lazy';
+  const resolvedDecoding = priority ? 'sync' : decoding ?? 'async';
 
   return (
     <img
@@ -71,8 +77,8 @@ const LazyImage = ({
         isLoaded ? 'opacity-100' : 'opacity-0'
       }`}
       onLoad={() => setIsLoaded(true)}
-      loading="lazy"
-      decoding="async"
+      loading={resolvedLoading}
+      decoding={resolvedDecoding}
       onError={handleError}
       {...rest}
     />

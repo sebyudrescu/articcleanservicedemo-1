@@ -10,7 +10,9 @@ import { buildBreadcrumbSchema } from '@/utils/structuredData';
 
 const Blog = () => {
   const posts = [...blogPosts].sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    (a, b) =>
+      new Date(b.lastUpdated ?? b.publishedAt).getTime() -
+      new Date(a.lastUpdated ?? a.publishedAt).getTime()
   );
 
   const structuredData = [
@@ -24,6 +26,7 @@ const Blog = () => {
         '@type': 'BlogPosting',
         headline: post.title,
         datePublished: post.publishedAt,
+        dateModified: post.lastUpdated ?? post.publishedAt,
         url: buildCanonicalUrl(`/blog/${post.slug}`)
       }))
     },
@@ -59,6 +62,8 @@ const Blog = () => {
             const relatedServices = services.filter((service) =>
               post.serviceIds.includes(service.id)
             );
+            const lastUpdated = post.lastUpdated ?? post.publishedAt;
+            const hasBeenUpdated = lastUpdated !== post.publishedAt;
 
             return (
               <article
@@ -88,6 +93,19 @@ const Blog = () => {
                         }).format(new Date(post.publishedAt))}
                       </span>
                     </span>
+                    {hasBeenUpdated && (
+                      <span className="inline-flex items-center space-x-1">
+                        <span className="w-1 h-1 rounded-full bg-slate-300" aria-hidden="true"></span>
+                        <span>
+                          Aggiornato il{' '}
+                          {new Intl.DateTimeFormat('it-IT', {
+                            day: '2-digit',
+                            month: 'long',
+                            year: 'numeric'
+                          }).format(new Date(lastUpdated))}
+                        </span>
+                      </span>
+                    )}
                     <span className="inline-flex items-center space-x-1">
                       <Clock className="w-4 h-4" />
                       <span>{post.readingTimeMinutes} min</span>

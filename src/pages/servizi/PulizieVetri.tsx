@@ -154,9 +154,9 @@ const PulizieVetri = () => {
                 Pulizia <span className="text-sky-500">Vetri e Vetrate</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Servizio specializzato per vetri, vetrate e superfici trasparenti. 
-                Risultati perfetti senza aloni o striature, anche per interventi 
-                in altezza e grandi superfici.
+                Servizio specializzato <strong>a Brescia e provincia</strong> per vetri, vetrate e superfici trasparenti.
+                Squadre locali per negozi del centro, showroom sul Garda e capannoni industriali,
+                con risultati perfetti senza aloni o striature anche in quota.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -174,6 +174,8 @@ const PulizieVetri = () => {
                 width={640}
                 height={540}
                 fallbackSrc="https://images.pexels.com/photos/7735355/pexels-photo-7735355.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                sizes="(min-width: 1024px) 540px, 90vw"
+                priority
               />
             </div>
           </div>

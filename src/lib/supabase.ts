@@ -1,13 +1,41 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const envUrl = import.meta.env.VITE_SUPABASE_URL;
+const envAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
+let cachedClient: SupabaseClient | null | undefined;
+
+const isServer = typeof window === 'undefined';
+
+function getSupabaseClient(): SupabaseClient | null {
+  if (cachedClient !== undefined) {
+    return cachedClient;
+  }
+
+  if (!envUrl || !envAnonKey) {
+    if (isServer) {
+      console.warn('Supabase non inizializzato: variabili ambiente mancanti durante il rendering SSR/SSG.');
+    } else {
+      console.warn('Supabase non inizializzato: controlla le variabili VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY.');
+    }
+    cachedClient = null;
+    return null;
+  }
+
+  cachedClient = createClient(envUrl, envAnonKey, {
+    auth: {
+      persistSession: false,
+      autoRefreshToken: false,
+    },
+    global: {
+      headers: isServer ? { 'X-Client-Environment': 'ssr' } : undefined,
+    },
+  });
+
+  return cachedClient;
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = getSupabaseClient();
 
 export interface Location {
   id: string;
@@ -54,7 +82,22 @@ export interface LocalServicePage {
   location?: Location;
 }
 
+function handleMissingClient<T>(fallback: T, label: string): T {
+  if (cachedClient === null) {
+    if (isServer) {
+      console.warn(`Operazione Supabase '${label}' risolta con fallback statico.`);
+    }
+    return fallback;
+  }
+
+  throw new Error('Supabase client non inizializzato correttamente.');
+}
+
 export async function getLocalServicePage(serviceSlug: string, locationSlug: string) {
+  if (!supabase) {
+    return handleMissingClient<LocalServicePage | null>(null, 'getLocalServicePage');
+  }
+
   const { data, error } = await supabase
     .from('local_service_pages')
     .select(`
@@ -75,6 +118,10 @@ export async function getLocalServicePage(serviceSlug: string, locationSlug: str
 }
 
 export async function getAllLocalServicePages() {
+  if (!supabase) {
+    return handleMissingClient<LocalServicePage[]>([], 'getAllLocalServicePages');
+  }
+
   const { data, error } = await supabase
     .from('local_service_pages')
     .select(`
@@ -94,6 +141,10 @@ export async function getAllLocalServicePages() {
 }
 
 export async function getServicesByLocation(locationSlug: string) {
+  if (!supabase) {
+    return handleMissingClient<LocalServicePage[]>([], 'getServicesByLocation');
+  }
+
   const { data, error } = await supabase
     .from('local_service_pages')
     .select(`
@@ -113,6 +164,10 @@ export async function getServicesByLocation(locationSlug: string) {
 }
 
 export async function getLocationsByService(serviceSlug: string) {
+  if (!supabase) {
+    return handleMissingClient<LocalServicePage[]>([], 'getLocationsByService');
+  }
+
   const { data, error } = await supabase
     .from('local_service_pages')
     .select(`
@@ -132,6 +187,10 @@ export async function getLocationsByService(serviceSlug: string) {
 }
 
 export async function getAllLocations() {
+  if (!supabase) {
+    return handleMissingClient<Location[]>([], 'getAllLocations');
+  }
+
   const { data, error } = await supabase
     .from('locations')
     .select('*')
@@ -146,6 +205,10 @@ export async function getAllLocations() {
 }
 
 export async function getAllServices() {
+  if (!supabase) {
+    return handleMissingClient<Service[]>([], 'getAllServices');
+  }
+
   const { data, error } = await supabase
     .from('services')
     .select('*')

@@ -78,5 +78,9 @@ export default defineConfig(({ mode }) => ({
     port: PREVIEW_PORT,
     strictPort: false,
   },
-  build: { sourcemap: mode !== 'production' },
+  build: {
+    sourcemap: mode !== 'production',
+    outDir: 'dist/client',
+    emptyOutDir: mode === 'production',
+  },
 }));

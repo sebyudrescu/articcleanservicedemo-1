@@ -1,4 +1,17 @@
-import { ArrowRight, Sparkles, Shield, Clock, Award, Users, Star } from 'lucide-react';
+import {
+  ArrowRight,
+  Sparkles,
+  Shield,
+  Clock,
+  Award,
+  Users,
+  Star,
+  CheckCircle,
+  BadgeCheck,
+  MapPin,
+  FileText,
+  Building2
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CTASection } from '@/components/ui/cta-with-rectangle';
 import SEO from '@/components/SEO';
@@ -6,6 +19,35 @@ import LazyImage from '@/components/LazyImage';
 import { siteMetadata, buildCanonicalUrl } from '@/data/siteMetadata';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
+import { getRecentPosts } from '@/data/blogPosts';
+import { services as serviceCatalog } from '@/data/servicesData';
+
+const homepageTestimonials = [
+  {
+    name: "Marco Rossi",
+    company: "TechCorp Milano",
+    text:
+      "Artic Pulizie si occupa dei nostri uffici da 3 anni. Professionalità e qualità eccellenti, il nostro team lavora sempre in un ambiente perfetto.",
+    rating: 5,
+    role: "Responsabile Facilities"
+  },
+  {
+    name: "Laura Bianchi",
+    company: "Studio Legale Associato",
+    text:
+      "Servizio impeccabile e puntuale. I clienti apprezzano sempre la pulizia dei nostri locali. Consiglio vivamente Artic Pulizie.",
+    rating: 5,
+    role: "Partner"
+  },
+  {
+    name: "Giuseppe Verdi",
+    company: "Industrie Meccaniche Spa",
+    text:
+      "Per i nostri capannoni industriali, Artic Pulizie garantisce standard elevati di pulizia e sicurezza. Un partner affidabile.",
+    rating: 5,
+    role: "Direttore Operativo"
+  }
+];
 
 const homepageStructuredData = [
   {
@@ -36,7 +78,12 @@ const homepageStructuredData = [
       'Sanificazione Ambienti Professionale',
       'Pulizie Industriali e Capannoni'
     ],
-    aggregateRating: siteMetadata.aggregateRating
+    aggregateRating: siteMetadata.aggregateRating,
+    reviews: homepageTestimonials.slice(0, 3).map((testimonial) => ({
+      author: testimonial.name,
+      reviewBody: testimonial.text,
+      ratingValue: testimonial.rating
+    }))
   }),
   buildFAQSchema([
     {
@@ -59,7 +106,7 @@ const Homepage = () => {
   const services = [
     {
       title: "Pulizie Uffici",
-      description: "Servizi completi per uffici e spazi lavorativi con prodotti professionali e personale qualificato.",
+      description: "Servizi completi per uffici e spazi lavorativi a Brescia e provincia con prodotti professionali e personale qualificato.",
       icon: "🏢",
       features: ["Pulizia quotidiana", "Sanificazione postazioni", "Gestione rifiuti"],
       link: "/servizi/pulizie-uffici",
@@ -68,7 +115,7 @@ const Homepage = () => {
     },
     {
       title: "Pulizie Condomini",
-      description: "Pulizie professionali per aree comuni condominiali con contratti singoli o periodici programmati.",
+      description: "Pulizie professionali per aree comuni condominiali a Brescia con contratti singoli o periodici programmati.",
       icon: "🏘️",
       features: ["Aree comuni", "Scale e ascensori", "Gestione carrellati"],
       link: "/servizi/pulizie-condomini",
@@ -77,7 +124,7 @@ const Homepage = () => {
     },
     {
       title: "Pulizie Industriali",
-      description: "Interventi specializzati per capannoni, magazzini e ambienti industriali di ogni dimensione.",
+      description: "Interventi specializzati a Brescia per capannoni, magazzini e ambienti industriali di ogni dimensione.",
       icon: "🏭",
       features: ["Pulizia capannoni", "Aspirazione industriale", "Trattamento pavimenti"],
       link: "/servizi/pulizie-industriali",
@@ -86,7 +133,7 @@ const Homepage = () => {
     },
     {
       title: "Pulizie Vetri e Vetrate",
-      description: "Servizio specializzato per vetri, vetrate e superfici trasparenti di ogni tipo e dimensione.",
+      description: "Servizio specializzato per vetri, vetrate e superfici trasparenti a Brescia e nei principali poli produttivi.",
       icon: "✨",
       features: ["Vetri senza aloni", "Interventi in altezza", "Grandi superfici"],
       link: "/servizi/pulizie-vetri",
@@ -95,7 +142,7 @@ const Homepage = () => {
     },
     {
       title: "Giardinaggio",
-      description: "Cura e manutenzione di parchi, giardini e aiuole. Promozione speciale per condomini.",
+      description: "Cura e manutenzione di parchi, giardini e aiuole per condomini e aziende della provincia di Brescia.",
       icon: "🌳",
       features: ["Manutenzione verde", "Potature", "Cura aiuole"],
       link: "/servizi/giardinaggio",
@@ -104,7 +151,7 @@ const Homepage = () => {
     },
     {
       title: "Gestione Carrellati",
-      description: "Gestione professionale dei bidoni per la raccolta differenziata in condomini e aziende.",
+      description: "Gestione professionale dei bidoni per la raccolta differenziata in condomini e aziende di Brescia.",
       icon: "♻️",
       features: ["Raccolta differenziata", "Pulizia carrellati", "Gestione periodica"],
       link: "/servizi/gestione-carrellati",
@@ -117,48 +164,85 @@ const Homepage = () => {
     {
       icon: Award,
       title: "Alta Qualità del Servizio",
-      description: "Un team di 28 dipendenti qualificati al servizio di aziende e privati con standard elevati."
+      description: "Un team di 28 dipendenti qualificati al servizio di aziende e condomini di Brescia con standard elevati."
     },
     {
       icon: Clock,
       title: "Puntualità Garantita",
-      description: "Rispettiamo sempre gli orari concordati per non interferire con le tue attività lavorative."
+      description: "Rispettiamo sempre gli orari concordati per non interferire con le attività lavorative e condominiali locali."
     },
     {
       icon: Shield,
       title: "Prodotti Professionali",
-      description: "Utilizziamo prodotti professionali ad alta efficacia sgrassante per risultati impeccabili."
+      description: "Utilizziamo prodotti professionali certificati ISO e HACCP per risultati impeccabili a Brescia."
     },
     {
       icon: Users,
       title: "Personale Qualificato",
-      description: "Staff formato e aggiornato sui migliori standard di qualità e sicurezza sul lavoro."
+      description: "Staff interno formato su sicurezza, DVR e protocolli per settori uffici, retail e industria."
+    }
+  ];
+  const testimonials = homepageTestimonials;
+  const heroMetrics = [
+    {
+      value: '4,9/5',
+      label: 'Valutazione media',
+      description: '87 recensioni verificate su Google, Trustpilot e portali locali'
+    },
+    {
+      value: '28',
+      label: 'Professionisti interni',
+      description: 'Squadre dedicate per uffici, condomini, retail e capannoni'
+    },
+    {
+      value: '24h',
+      label: 'Preventivo garantito',
+      description: 'Sopralluogo e proposta per Brescia e provincia entro il giorno successivo'
     }
   ];
 
-  const testimonials = [
+  const certificationBadges = [
+    { title: 'ISO 9001', subtitle: 'Sistema di gestione qualità certificato' },
+    { title: 'HACCP', subtitle: 'Protocollo igienico per ambienti alimentari' },
+    { title: 'Formazione DVR', subtitle: 'Operatori con attestati sicurezza e DPI' }
+  ];
+
+  const clientSegments = [
+    { name: 'Facility Manager Brescia', description: 'Sedi direzionali e uffici corporate' },
+    { name: 'Residenziale Premium Garda', description: 'Condomini turistici e residenze di pregio' },
+    { name: 'Settore Healthcare', description: 'Poliambulatori, cliniche e centri medici' },
+    { name: 'Industria & Logistica', description: 'Capannoni, magazzini e aree produttive' }
+  ];
+
+  const serviceHubs = [
     {
-      name: "Marco Rossi",
-      company: "TechCorp Milano",
-      text: "Artic Pulizie si occupa dei nostri uffici da 3 anni. Professionalità e qualità eccellenti, il nostro team lavora sempre in un ambiente perfetto.",
-      rating: 5,
-      role: "Responsabile Facilities"
+      icon: <Building2 className="w-6 h-6 text-sky-500" aria-hidden="true" />,
+      title: 'Pulizie uffici Brescia',
+      description: 'Check-list operative, turni serali e protocolli per sedi direzionali e coworking cittadini.',
+      to: '/servizi/pulizie-uffici'
     },
     {
-      name: "Laura Bianchi", 
-      company: "Studio Legale Associato",
-      text: "Servizio impeccabile e puntuale. I clienti apprezzano sempre la pulizia dei nostri locali. Consiglio vivamente Artic Pulizie.",
-      rating: 5,
-      role: "Partner"
+      icon: <Shield className="w-6 h-6 text-sky-500" aria-hidden="true" />,
+      title: 'Sanificazioni certificate',
+      description: 'Soluzioni HACCP e protocolli sanitari per strutture healthcare e produzione alimentare.',
+      to: '/servizi/sanificazione-ambienti'
     },
     {
-      name: "Giuseppe Verdi",
-      company: "Industrie Meccaniche Spa",
-      text: "Per i nostri capannoni industriali, Artic Pulizie garantisce standard elevati di pulizia e sicurezza. Un partner affidabile.",
-      rating: 5,
-      role: "Direttore Operativo"
+      icon: <MapPin className="w-6 h-6 text-sky-500" aria-hidden="true" />,
+      title: 'Copertura Brescia e provincia',
+      description: 'Pagine locali dedicate per oltre 20 comuni con preventivi rapidi e squadre sul territorio.',
+      to: '/dove-operiamo'
+    },
+    {
+      icon: <FileText className="w-6 h-6 text-sky-500" aria-hidden="true" />,
+      title: 'Gestione carrellati e rifiuti',
+      description: 'Servizio completo per condomini e aziende con report digitali e verifiche programmate.',
+      to: '/servizi/gestione-carrellati'
     }
   ];
+
+  const recentGuides = getRecentPosts(3);
+  const serviceNameById = Object.fromEntries(serviceCatalog.map((service) => [service.id, service.name]));
 
   return (
     <div>
@@ -188,22 +272,61 @@ const Homepage = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="space-y-12">
             <div className="space-y-8">
+              <div className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full text-sky-700 font-semibold mx-auto shadow-sm">
+                <MapPin className="w-4 h-4" aria-hidden="true" />
+                <span>Impresa di pulizie leader a Brescia e provincia</span>
+              </div>
               <h1 className="hero-title-montserrat text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-slate-900 leading-tight max-w-5xl mx-auto tracking-tight">
-                PULIZIE
-                <span className="block bg-gradient-to-r from-sky-600 via-cyan-500 to-teal-500 bg-clip-text text-transparent">
-                  PROFESSIONALI
-                </span>
-                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl font-bold text-sky-700 mt-2">
-                  PER LA TUA AZIENDA
-                </span>
+                Impresa di Pulizie a Brescia per Aziende, Condomini e Industria
               </h1>
-              
               <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light px-4">
-                Offriamo servizi di pulizia specializzati per uffici, aziende e ambienti industriali.
-                <span className="block mt-2 font-medium text-sky-700">
-                  Affidabilità, qualità e risultati garantiti per il tuo business.
-                </span>
+                Artic Pulizie è l'<strong>impresa di pulizie a Brescia</strong> scelta da aziende, facility manager e amministratori condominiali.
+                Offriamo sanificazioni certificate, piani operativi su misura e squadre dedicate in tutta la provincia.
               </p>
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light px-4">
+                Copriamo Brescia città, la Franciacorta, il Lago di Garda e i principali distretti industriali con interventi programmati, emergenze 24/7 e report digitali.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-3 px-4">
+              {heroMetrics.map((metric) => (
+                <div
+                  key={metric.label}
+                  className="bg-white/90 backdrop-blur rounded-2xl p-6 shadow-sm border border-slate-100"
+                >
+                  <p className="text-3xl font-bold text-sky-600">{metric.value}</p>
+                  <p className="text-slate-900 font-semibold mt-2">{metric.label}</p>
+                  <p className="text-sm text-slate-600 mt-2 leading-relaxed">{metric.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4 px-4">
+              {certificationBadges.map((badge) => (
+                <div
+                  key={badge.title}
+                  className="flex items-center space-x-3 bg-white/80 backdrop-blur rounded-xl px-4 py-3 shadow-sm border border-sky-100"
+                >
+                  <BadgeCheck className="w-5 h-5 text-emerald-500" aria-hidden="true" />
+                  <div className="text-left">
+                    <p className="text-sm font-semibold text-slate-900 uppercase tracking-wide">{badge.title}</p>
+                    <p className="text-xs text-slate-600">{badge.subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-3 px-4">
+              {clientSegments.map((segment) => (
+                <div
+                  key={segment.name}
+                  className="bg-slate-900/80 text-white px-4 py-3 rounded-xl text-sm shadow-md"
+                  aria-label={`Cliente servito: ${segment.name}`}
+                >
+                  <p className="font-semibold">{segment.name}</p>
+                  <p className="text-xs text-slate-200">{segment.description}</p>
+                </div>
+              ))}
             </div>
             
             {/* CTA Buttons */}
@@ -253,16 +376,170 @@ const Homepage = () => {
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 lg:gap-8 mt-12 text-xs sm:text-sm lg:text-base text-slate-600 px-4">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                <span>Sopralluoghi gratuiti</span>
+                <span>+87 recensioni verificate (4,9/5) su Google e portali locali</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-sky-500 rounded-full"></div>
-                <span>28 dipendenti qualificati</span>
+                <span>Sopralluoghi gratuiti in tutta Brescia e provincia</span>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-teal-500 rounded-full"></div>
-                <span>Prezzi competitivi</span>
+                <span>Check-list digitali per uffici, condomini e industrie</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategic Hubs */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              Hub strategici per dominare le ricerche locali
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Ottimizza la presenza della tua impresa scegliendo il cluster più rilevante:
+              servizi verticali, sanificazioni certificate, copertura territoriale o gestione rifiuti.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {serviceHubs.map((hub) => (
+              <Link
+                key={hub.title}
+                to={hub.to}
+                className="group bg-slate-900 text-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/10">
+                    {hub.icon}
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-semibold group-hover:text-sky-300 transition-colors">
+                      {hub.title}
+                    </h3>
+                    <p className="text-sm text-slate-200 leading-relaxed">{hub.description}</p>
+                    <span className="inline-flex items-center text-sm font-semibold text-sky-300">
+                      Approfondisci
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Guides */}
+      <section className="py-16 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              Guide operative e checklist per Brescia
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Approfondimenti SEO-ready per facility manager, amministratori condominiali e responsabili di stabilimento che vogliono posizionarsi su Google.
+            </p>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {recentGuides.map((post) => {
+              const relatedServices = post.serviceIds
+                .map((id) => serviceNameById[id])
+                .filter(Boolean);
+
+              return (
+                <Link
+                  key={post.slug}
+                  to={`/blog/${post.slug}`}
+                  className="group bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-100"
+                >
+                  <LazyImage
+                    src={post.heroImage}
+                    alt={`${post.title} - Guida Artic Pulizie Brescia`}
+                    className="w-full h-44 object-cover"
+                    width={480}
+                    height={220}
+                    sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 90vw"
+                  />
+                  <div className="p-6 space-y-3">
+                    <p className="text-xs uppercase tracking-widest text-sky-600 font-semibold">
+                      {relatedServices.length > 0 ? relatedServices.join(' • ') : 'Pulizie professionali a Brescia'}
+                    </p>
+                    <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600 transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">{post.excerpt}</p>
+                    <span className="inline-flex items-center text-sm font-semibold text-sky-600">
+                      Leggi la guida
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Lead Magnet */}
+      <section className="py-16 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-12 md:grid-cols-2 items-center">
+            <div className="space-y-6">
+              <h2 className="text-3xl lg:text-4xl font-bold leading-tight">
+                Scarica la checklist SEO delle pulizie professionali a Brescia
+              </h2>
+              <p className="text-lg text-slate-200 leading-relaxed">
+                Ricevi via email il modello operativo utilizzato dal nostro team per uffici, condomini e capannoni.
+                Il modulo di richiesta preventivo ora include i campi servizio e località per personalizzare il follow-up.
+              </p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 mt-1" aria-hidden="true" />
+                  <span className="text-sm text-slate-100 leading-relaxed">
+                    Indicazioni pratiche per ottimizzare le schede Google Business Profile delle sedi bresciane.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 mt-1" aria-hidden="true" />
+                  <span className="text-sm text-slate-100 leading-relaxed">
+                    Template di email follow-up segmentati per servizio richiesto e comune di riferimento.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 mt-1" aria-hidden="true" />
+                  <span className="text-sm text-slate-100 leading-relaxed">
+                    KPI suggeriti per monitorare conversioni, recensioni e retention dei clienti locali.
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white text-slate-900 rounded-2xl shadow-2xl p-8 space-y-6">
+              <h3 className="text-2xl font-semibold">Richiedi checklist + preventivo</h3>
+              <p className="text-sm text-slate-600">
+                Compila il form dedicato con <strong>servizio di interesse</strong> e <strong>località</strong> per ricevere la checklist e un preventivo personalizzato in 24 ore.
+              </p>
+              <div className="space-y-4 text-sm text-slate-600">
+                <p className="flex items-center gap-2">
+                  <BadgeCheck className="w-4 h-4 text-sky-500" aria-hidden="true" />
+                  <span>Webhook Make aggiornato con segmentazione servizio/località.</span>
+                </p>
+                <p className="flex items-center gap-2">
+                  <BadgeCheck className="w-4 h-4 text-sky-500" aria-hidden="true" />
+                  <span>Follow-up automatico con risorse dedicate all'area selezionata.</span>
+                </p>
+              </div>
+              <Link
+                to="/richiedi-preventivo?utm_source=homepage&utm_medium=cta&utm_campaign=checklist-pulizie-brescia"
+                className="inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+              >
+                <FileText className="w-5 h-5" aria-hidden="true" />
+                <span>Compila il modulo e ricevi la checklist</span>
+              </Link>
             </div>
           </div>
         </div>
@@ -296,6 +573,7 @@ const Homepage = () => {
                   className="w-full h-44 object-cover rounded-xl mb-4"
                   width={600}
                   height={320}
+                  sizes="(min-width: 1280px) 320px, (min-width: 768px) 45vw, 90vw"
                 />
                 <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-sky-600 transition-colors">
                   {service.title}
@@ -379,22 +657,32 @@ const Homepage = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-slate-50 rounded-xl p-6 relative group hover:bg-sky-50 transition-colors duration-300"
+                itemScope
+                itemType="https://schema.org/Review"
               >
+                <meta itemProp="itemReviewed" content="Artic Pulizie" />
                 <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                  ))}
+                  <div itemProp="reviewRating" itemScope itemType="https://schema.org/Rating" className="flex">
+                    <meta itemProp="ratingValue" content={testimonial.rating.toString()} />
+                    <meta itemProp="bestRating" content="5" />
+                    <meta itemProp="worstRating" content="1" />
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    ))}
+                  </div>
                 </div>
-                
-                <p className="text-slate-700 mb-6 leading-relaxed italic">
+
+                <p className="text-slate-700 mb-6 leading-relaxed italic" itemProp="reviewBody">
                   "{testimonial.text}"
                 </p>
-                
+
                 <div className="border-t border-slate-200 pt-4">
-                  <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
+                  <h4 className="font-bold text-slate-900" itemProp="author">
+                    {testimonial.name}
+                  </h4>
                   <p className="text-sky-600 text-sm">{testimonial.role}</p>
                   <p className="text-slate-500 text-sm">{testimonial.company}</p>
                 </div>
