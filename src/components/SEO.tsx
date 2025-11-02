@@ -1,6 +1,10 @@
 import { Helmet } from '@/lib/helmetAsync';
 import { buildCanonicalUrl, siteMetadata } from '@/data/siteMetadata';
 
+if (import.meta.env.SSR && (typeof Helmet !== 'function' && (typeof Helmet !== 'object' || Helmet === null))) {
+  throw new Error('[SSR] Helmet component è undefined/invalid in SEO.tsx');
+}
+
 interface SEOProps {
   title?: string;
   description?: string;

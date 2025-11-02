@@ -11,6 +11,17 @@ import SanificazioneAmbienti from './pages/servizi/SanificazioneAmbienti';
 
 const isServer = import.meta.env.SSR;
 
+const assertIsComponent = (component: unknown, name: string) => {
+  const isFunction = typeof component === 'function';
+  const isLazyComponent =
+    typeof component === 'object' && component !== null && '$$typeof' in (component as Record<string, unknown>);
+
+  if (!isFunction && !isLazyComponent) {
+    const value = component === null ? 'null' : typeof component === 'object' ? 'object' : String(component);
+    throw new Error(`[SSR] Component "${name}" è undefined/invalid (tipo: ${value})`);
+  }
+};
+
 type PageComponent = ComponentType<Record<string, unknown>>;
 
 let Homepage: PageComponent;
@@ -78,6 +89,44 @@ if (isServer) {
   NotFound = lazy(() => import('./pages/NotFound'));
 }
 
+if (isServer) {
+  const criticalComponents: Record<string, unknown> = {
+    App,
+    ScrollToTop,
+    AccentThemeManager,
+    MouseGlow,
+    Header,
+    Footer,
+    ScrollToTopButton,
+    StickyCtaBanner,
+    SanificazioneAmbienti,
+    Homepage,
+    ChiSiamo,
+    ComeLavoriamo,
+    Recensioni,
+    Servizi,
+    DoveOperiamo,
+    PulizieUffici,
+    PulizieCondomini,
+    PulizieIndustriali,
+    PuliziePostCantiere,
+    PulizieVetri,
+    Giardinaggio,
+    GestioneCarrellati,
+    RichidiPreventivo,
+    ServizioLocaleDynamic,
+    Blog,
+    BlogPost,
+    FAQ,
+    PrivacyPolicy,
+    NotFound
+  };
+
+  Object.entries(criticalComponents).forEach(([name, component]) => {
+    assertIsComponent(component, name);
+  });
+}
+
 const LoadingSpinner = () => (
   <div className="min-h-screen flex items-center justify-center">
     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-sky-500"></div>
@@ -126,5 +175,4 @@ function App() {
 }
 
 export default App;
-
 
