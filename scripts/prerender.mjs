@@ -14,6 +14,9 @@ const TEMPLATE_PATH = path.join(DIST_CLIENT, 'index.html');
 const SITEMAP_PATH = path.resolve(__dirname, '../public/sitemap.xml');
 const APP_FILE = path.resolve(__dirname, '../src/App.tsx');
 const BLOG_POSTS_FILE = path.resolve(__dirname, '../content/blog/posts.json');
+const VERCEL_OUTPUT_DIR = path.resolve(__dirname, '../.vercel/output');
+const VERCEL_STATIC_DIR = path.join(VERCEL_OUTPUT_DIR, 'static');
+const VERCEL_CONFIG_PATH = path.join(VERCEL_OUTPUT_DIR, 'config.json');
 
 function normaliseRoute(route) {
   if (!route) {
@@ -47,6 +50,9 @@ async function collectRoutes() {
     let match;
     while ((match = routeRegex.exec(appSource)) !== null) {
       const raw = match[1];
+      if (raw === '*') {
+        continue;
+      }
       if (!raw.includes(':')) {
         routes.add(normaliseRoute(raw));
       }
@@ -83,6 +89,7 @@ async function collectRoutes() {
 
   return Array.from(routes)
     .filter(Boolean)
+    .filter((route) => route !== '/*')
     .filter((route) => !route.includes(':'))
     .sort((a, b) => a.localeCompare(b));
 }
@@ -104,6 +111,29 @@ function injectAttributes(html, htmlAttributes, bodyAttributes) {
     processed = processed.replace('<body>', `<body ${bodyAttributes}>`);
   }
   return processed;
+}
+
+async function prepareVercelOutput() {
+  try {
+    await fs.rm(VERCEL_STATIC_DIR, { recursive: true, force: true });
+  } catch {}
+
+  await fs.mkdir(VERCEL_STATIC_DIR, { recursive: true });
+  await fs.cp(DIST_CLIENT, VERCEL_STATIC_DIR, { recursive: true });
+
+  const config = {
+    version: 3,
+    routes: [
+      { handle: 'filesystem' },
+      { src: '/servizi/[^/]+/[^/]+', dest: '/index.html' },
+      { src: '/.*', status: 404, dest: '/404.html' }
+    ],
+    cleanUrls: true,
+    trailingSlash: false
+  };
+
+  await fs.mkdir(VERCEL_OUTPUT_DIR, { recursive: true });
+  await fs.writeFile(VERCEL_CONFIG_PATH, `${JSON.stringify(config, null, 2)}\n`, 'utf8');
 }
 
 async function main() {
@@ -137,6 +167,9 @@ async function main() {
   }
 
   console.log('🏁  Pre-rendering completato.');
+
+  await prepareVercelOutput();
+  console.log(`📦  Static bundle copiato in ${path.relative(process.cwd(), VERCEL_STATIC_DIR)} per il deploy su Vercel.`);
 }
 
 main().catch((error) => {
