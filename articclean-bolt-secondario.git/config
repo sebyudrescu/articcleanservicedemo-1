@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = true
-[remote "origin"]
-	url = git@github.com:Seby850/articclean-bolt-secondario.git
-	fetch = +refs/*:refs/*
-	mirror = true
