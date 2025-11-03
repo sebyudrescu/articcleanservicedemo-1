@@ -7,7 +7,7 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { cdnImage } from '@/utils/image';
+import { pulizieVetriImage } from '@/data/serviceImages';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const faqItems = [
@@ -170,12 +170,12 @@ const PulizieVetri = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80 })}
+                src={pulizieVetriImage}
                 alt="Tecnici impegnati nel lavaggio professionale di grandi vetrate a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
-                fallbackSrc="https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                fallbackSrc={pulizieVetriImage}
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />

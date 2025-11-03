@@ -7,7 +7,7 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { cdnImage } from '@/utils/image';
+import { pulizieUfficiImage } from '@/data/serviceImages';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const faqItems = [
@@ -122,12 +122,12 @@ const PulizieUffici = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 80 })}
+                src={pulizieUfficiImage}
                 alt="Addetta alle pulizie che igienizza una scrivania in un ufficio a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
-                fallbackSrc="https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                fallbackSrc={pulizieUfficiImage}
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />

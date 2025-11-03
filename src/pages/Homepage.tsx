@@ -1,6 +1,7 @@
 import { ArrowRight, Sparkles, Shield, Clock, Award, Users, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CTASection } from '@/components/ui/cta-with-rectangle';
+import { serviceImagesByLink } from '@/data/serviceImages';
 
 const Homepage = () => {
   const services = [
@@ -10,7 +11,7 @@ const Homepage = () => {
       icon: "🏢",
       features: ["Pulizia uffici Brescia", "Sanificazione postazioni lavoro", "Gestione rifiuti certificata"],
       link: "/servizi/pulizie-uffici",
-      image: "https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200",
+      image: serviceImagesByLink['/servizi/pulizie-uffici'],
       alt: "Addetta alle pulizie che igienizza una scrivania in un ufficio a Brescia"
     },
     {
@@ -19,7 +20,7 @@ const Homepage = () => {
       icon: "🏭",
       features: ["Pulizia capannoni Brescia", "Aspirazione industriale", "Trattamento pavimenti resinati"],
       link: "/servizi/pulizie-industriali",
-      image: "https://images.pexels.com/photos/3850247/pexels-photo-3850247.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      image: serviceImagesByLink['/servizi/pulizie-industriali'],
       alt: "Operatore che pulisce un capannone industriale a Brescia"
     },
     {
@@ -28,7 +29,7 @@ const Homepage = () => {
       icon: "🔨",
       features: ["Rimozione detriti edili", "Pulizia finale Brescia", "Consegna immediata"],
       link: "/servizi/pulizie-post-cantiere",
-      image: "https://images.pexels.com/photos/8487026/pexels-photo-8487026.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      image: serviceImagesByLink['/servizi/pulizie-post-cantiere'],
       alt: "Tecnici che rifiniscono la pulizia post ristrutturazione"
     },
     {
@@ -37,7 +38,7 @@ const Homepage = () => {
       icon: "✨",
       features: ["Vetri senza aloni Brescia", "Interventi in altezza", "Grandi superfici commerciali"],
       link: "/servizi/pulizie-vetri",
-      image: "https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280",
+      image: serviceImagesByLink['/servizi/pulizie-vetri'],
       alt: "Addetto che pulisce grandi vetrate di un negozio"
     },
     {

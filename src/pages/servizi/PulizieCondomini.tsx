@@ -7,7 +7,7 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { cdnImage } from '@/utils/image';
+import { pulizieCondominialiImage } from '@/data/serviceImages';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const faqItems = [
@@ -137,8 +137,8 @@ const PulizieCondomini = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 75, fit: 'cover' })}
-                fallbackSrc="https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src={pulizieCondominialiImage}
+                fallbackSrc={pulizieCondominialiImage}
                 alt="Addetta che pulisce la scala di un condominio a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}

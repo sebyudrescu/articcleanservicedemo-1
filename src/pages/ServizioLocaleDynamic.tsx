@@ -9,7 +9,7 @@ import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import ScrollReveal from '@/components/ScrollReveal';
 import { getLocalServicePage, LocalServicePage, getAllServices, getAllLocations } from '@/lib/supabase';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { cdnImage } from '@/utils/image';
+import { serviceImagesBySlug } from '@/data/serviceImages';
 import { buildBreadcrumbSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const ServizioLocaleDynamic = () => {
@@ -200,6 +200,8 @@ const ServizioLocaleDynamic = () => {
   const selectedKeywordPack = serviceKeywordPacks[service.slug] ?? defaultKeywordPack;
   const heroKeywordLine = formatKeywordText(selectedKeywordPack.heroLine);
   const localizedKeywordVariations = selectedKeywordPack.keywordVariations.map(formatKeywordText);
+  const defaultHeroImage = 'https://images.pexels.com/photos/6195275/pexels-photo-6195275.jpeg?auto=compress&cs=tinysrgb&w=1200';
+  const heroImage = serviceImagesBySlug[service.slug] ?? defaultHeroImage;
 
   const metaKeywords = [
     `${service.name.toLowerCase()} ${location.name}`,
@@ -469,8 +471,8 @@ const ServizioLocaleDynamic = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/6195275/pexels-photo-6195275.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1280, quality: 70, fit: 'cover' })}
-                fallbackSrc="https://images.pexels.com/photos/6195275/pexels-photo-6195275.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src={heroImage}
+                fallbackSrc={defaultHeroImage}
                 alt={`${service.name} a ${location.name}`}
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}

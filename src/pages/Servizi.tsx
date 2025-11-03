@@ -5,6 +5,7 @@ import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
+import { serviceImagesById } from '@/data/serviceImages';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
@@ -47,8 +48,8 @@ const Servizi = () => {
         "Riduzione assenze per malattia",
         "Immagine aziendale impeccabile"
       ],
-      image: cdnImage('https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 80, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: serviceImagesById.uffici,
+      fallbackImage: serviceImagesById.uffici
     },
     {
       id: 'industriale',
@@ -69,8 +70,8 @@ const Servizi = () => {
         "Prevenzione incidenti",
         "Mantenimento efficienza impianti"
       ],
-      image: cdnImage('https://images.pexels.com/photos/3850247/pexels-photo-3850247.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/3850247/pexels-photo-3850247.jpeg?auto=compress&cs=tinysrgb&w=1280'
+      image: serviceImagesById.industriale,
+      fallbackImage: serviceImagesById.industriale
     },
     {
       id: 'post-cantiere',
@@ -91,8 +92,8 @@ const Servizi = () => {
         "Rimozione completa detriti",
         "Risparmio di tempo e costi"
       ],
-      image: cdnImage('https://images.pexels.com/photos/8487026/pexels-photo-8487026.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/8487026/pexels-photo-8487026.jpeg?auto=compress&cs=tinysrgb&w=1280'
+      image: serviceImagesById['post-cantiere'],
+      fallbackImage: serviceImagesById['post-cantiere']
     },
     {
       id: 'vetri',
@@ -113,8 +114,8 @@ const Servizi = () => {
         "Maggiore durata delle superfici",
         "Risparmio energetico illuminazione"
       ],
-      image: cdnImage('https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280'
+      image: serviceImagesById.vetri,
+      fallbackImage: serviceImagesById.vetri
     },
     {
       id: 'sanificazione',
@@ -157,8 +158,8 @@ const Servizi = () => {
         "Servizio affidabile e puntuale",
         "Promozione per servizi integrati"
       ],
-      image: cdnImage('https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 75, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: serviceImagesById.condomini,
+      fallbackImage: serviceImagesById.condomini
     },
     {
       id: 'giardinaggio',
@@ -201,8 +202,8 @@ const Servizi = () => {
         "Conformità normative sanitarie",
         "Risparmio tempo per il personale"
       ],
-      image: cdnImage('https://cdn.pixabay.com/photo/2017/06/09/12/29/garbage-2388457_1280.jpg', { width: 1200, quality: 70, fit: 'cover' }),
-      fallbackImage: 'https://cdn.pixabay.com/photo/2017/06/09/12/29/garbage-2388457_1280.jpg'
+      image: serviceImagesById.carrellati,
+      fallbackImage: serviceImagesById.carrellati
     }
   ];
 
