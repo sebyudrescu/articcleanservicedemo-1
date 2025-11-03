@@ -30,10 +30,11 @@ const faqItems = [
 
 const PulizieIndustriali = () => {
   const features = [
-    "Pulizia capannoni e magazzini",
+    "Pulizie capannoni industriali a Brescia",
     "Aspirazione industriale specializzata",
     "Trattamenti pavimenti industriali",
     "Pulizia macchinari e impianti",
+    "Pulizia pannelli fotovoltaici Brescia",
     "Rimozione polveri e residui di lavorazione",
     "Sanificazione aree produttive",
     "Pulizia sistemi di ventilazione",
@@ -98,7 +99,7 @@ const PulizieIndustriali = () => {
       name: 'Pulizie industriali a Brescia',
       serviceType: 'Pulizie Industriali',
       description:
-        'Pulizie industriali e manutenzione capannoni a Brescia con macchinari professionali, protocolli certificati e personale specializzato.',
+        'Pulizie industriali e manutenzione capannoni a Brescia, compresa la pulizia di pannelli fotovoltaici, con macchinari professionali, protocolli certificati e personale specializzato.',
       url: '/servizi/pulizie-industriali',
       areaServed: 'Brescia',
       offers: features
@@ -115,7 +116,7 @@ const PulizieIndustriali = () => {
       <SEO
         title="Pulizie Industriali a Brescia | Artic Pulizie"
         description="Pulizie industriali e manutenzione capannoni a Brescia con macchinari professionali e protocolli certificati. Artic Pulizie garantisce sicurezza e continuità produttiva."
-        keywords="pulizie industriali brescia, pulizia capannoni brescia, pulizie fabbriche artic pulizie, manutenzione industriale brescia"
+        keywords="pulizie industriali brescia, pulizie capannoni industriali brescia, pulizia capannoni brescia, pulizia pannelli fotovoltaici brescia, pulizie fabbriche artic pulizie, manutenzione industriale brescia"
         canonical={buildCanonicalUrl('/servizi/pulizie-industriali')}
         structuredData={structuredData}
       />
@@ -132,9 +133,10 @@ const PulizieIndustriali = () => {
                 Pulizie <span className="text-sky-500">Industriali</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Interventi specializzati <strong>a Brescia e provincia</strong> per capannoni, magazzini e ambienti industriali.
-                Operiamo nei poli produttivi di Val Trompia, Franciacorta e Lago di Garda con squadre dedicate,
-                attrezzature professionali e protocolli certificati.
+                Interventi specializzati <strong>a Brescia e provincia</strong> per capannoni industriali, magazzini e ambienti produttivi.
+                Operiamo nei poli di Val Trompia, Franciacorta e Lago di Garda con squadre dedicate,
+                attrezzature professionali e protocolli certificati, includendo la <strong>pulizia pannelli fotovoltaici a Brescia</strong>
+                per mantenere la massima efficienza energetica degli impianti.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -146,12 +148,12 @@ const PulizieIndustriali = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/4484078/pexels-photo-4484078.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80 })}
-                alt="Pulizie industriali a Brescia con Artic Pulizie"
+                src={cdnImage('https://images.pexels.com/photos/3850247/pexels-photo-3850247.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80 })}
+                alt="Squadra che igienizza un capannone industriale a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
-                fallbackSrc="https://images.pexels.com/photos/4484078/pexels-photo-4484078.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                fallbackSrc="https://images.pexels.com/photos/3850247/pexels-photo-3850247.jpeg?auto=compress&cs=tinysrgb&w=1280"
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />
@@ -168,8 +170,9 @@ const PulizieIndustriali = () => {
               Servizi Industriali Specializzati
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Interventi mirati per ogni tipo di ambiente industriale con attrezzature 
-              e tecniche specifiche per il settore.
+              Interventi mirati per ogni tipo di ambiente industriale con attrezzature
+              e tecniche specifiche per il settore, dal lavaggio <strong>capannoni industriali a Brescia</strong>
+              alla manutenzione di linee produttive e impianti fotovoltaici.
             </p>
           </div>
 

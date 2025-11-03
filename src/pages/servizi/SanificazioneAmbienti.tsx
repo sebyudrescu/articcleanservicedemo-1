@@ -32,6 +32,7 @@ const SanificazioneAmbienti = () => {
     "Sanificazione con prodotti certificati",
     "Trattamenti anti-batterici e virali",
     "Nebulizzazione e vaporizzazione",
+    "Sanificazione ozono Brescia con macchinari certificati",
     "Certificazione degli interventi",
     "Protocolli specifici per settore",
     "Monitoraggio qualità dell'aria",
@@ -66,7 +67,7 @@ const SanificazioneAmbienti = () => {
     {
       title: "Sanificazione Standard",
       description: "Uffici e negozi",
-      features: ["Trattamento superfici", "Nebulizzazione", "Certificazione base"],
+      features: ["Trattamento superfici", "Nebulizzazione", "Certificazione base", "Pacchetti scuole e asili"],
       frequency: "Settimanale/Mensile",
       sectors: ["Uffici", "Negozi", "Studi"]
     },
@@ -123,7 +124,7 @@ const SanificazioneAmbienti = () => {
       name: 'Sanificazione ambienti a Brescia',
       serviceType: 'Sanificazione Ambienti',
       description:
-        'Sanificazione certificata di uffici, cliniche e ambienti industriali a Brescia con protocolli virucidi e documentazione ufficiale.',
+        'Sanificazione certificata di uffici, scuole, asili e ambienti industriali a Brescia con protocolli virucidi, trattamenti ad ozono e documentazione ufficiale.',
       url: '/servizi/sanificazione-ambienti',
       areaServed: 'Brescia',
       offers: features
@@ -140,7 +141,7 @@ const SanificazioneAmbienti = () => {
       <SEO
         title="Sanificazione Ambienti a Brescia | Artic Pulizie"
         description="Sanificazione certificata di uffici, cliniche e ambienti industriali a Brescia. Artic Pulizie utilizza protocolli virucidi e rilascia certificazioni ufficiali."
-        keywords="sanificazione ambienti brescia, sanificazione uffici brescia, sanificazione certificata artic pulizie"
+        keywords="sanificazione ambienti brescia, sanificazione ozono brescia, sanificazione uffici brescia, pulizie scuole e asili brescia, sanificazione certificata artic pulizie"
         canonical={buildCanonicalUrl('/servizi/sanificazione-ambienti')}
         structuredData={structuredData}
       />
@@ -158,8 +159,9 @@ const SanificazioneAmbienti = () => {
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
                 Trattamenti certificati <strong>a Brescia e provincia</strong> per la sicurezza e l'igiene degli ambienti di lavoro.
-                Supportiamo uffici, cliniche, scuole e impianti produttivi con protocolli professionali
-                e prodotti riconosciuti dal Ministero della Salute per eliminare virus, batteri e agenti patogeni.
+                Supportiamo uffici, cliniche, scuole e asili con protocolli professionali
+                e prodotti riconosciuti dal Ministero della Salute, integrando <strong>sanificazione ozono a Brescia</strong>
+                per eliminare virus, batteri e agenti patogeni anche in spazi ad alta frequentazione.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -171,9 +173,9 @@ const SanificazioneAmbienti = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/4099471/pexels-photo-4099471.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1280, quality: 70, fit: 'cover' })}
-                fallbackSrc="https://images.pexels.com/photos/4099471/pexels-photo-4099471.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Sanificazione ambienti a Brescia con Artic Pulizie"
+                src={cdnImage('https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 75, fit: 'cover' })}
+                fallbackSrc="https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                alt="Operatore che sanifica un ambiente di lavoro a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
@@ -186,15 +188,16 @@ const SanificazioneAmbienti = () => {
       </section>
 
       {/* Features */}
-      <section className="py-20 bg-white">
+      <section id="ozono" className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
               Servizi di Sanificazione Certificati
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
-              Interventi professionali con prodotti e protocolli certificati per garantire 
-              la massima sicurezza sanitaria dei tuoi ambienti.
+              Interventi professionali con prodotti e protocolli certificati per garantire
+              la massima sicurezza sanitaria dei tuoi ambienti, inclusi trattamenti di <strong>sanificazione ozono a Brescia</strong>
+              per abbattere contaminazioni in scuole, asili, uffici e reparti produttivi.
             </p>
           </div>
 

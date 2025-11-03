@@ -31,7 +31,8 @@ const faqItems = [
 const PuliziePostCantiere = () => {
   const features = [
     "Rimozione polveri da costruzione",
-    "Pulizia residui di malta e cemento", 
+    "Pulizie post ristrutturazione appartamenti a Brescia",
+    "Pulizia residui di malta e cemento",
     "Lucidatura pavimenti e superfici",
     "Pulizia vetri e infissi",
     "Sanificazione completa ambienti",
@@ -67,7 +68,12 @@ const PuliziePostCantiere = () => {
     {
       title: "Ristrutturazioni Residenziali",
       description: "Appartamenti e case",
-      features: ["Pulizia post-lavori", "Rimozione polveri", "Lucidatura pavimenti"],
+      features: [
+        "Pulizia post-lavori",
+        "Pulizie post ristrutturazione Brescia",
+        "Rimozione polveri",
+        "Lucidatura pavimenti"
+      ],
       duration: "1-2 giorni",
       scope: "Fino a 200 mq"
     },
@@ -115,7 +121,7 @@ const PuliziePostCantiere = () => {
       name: 'Pulizie post cantiere a Brescia',
       serviceType: 'Pulizie Post Cantiere',
       description:
-        "Pulizie post-cantiere a Brescia con rimozione detriti, lucidatura e sanificazione finale per consegne pronte all'uso.",
+        "Pulizie post-cantiere e post ristrutturazione a Brescia con rimozione detriti, lucidatura e sanificazione finale per consegne pronte all'uso.",
       url: '/servizi/pulizie-post-cantiere',
       areaServed: 'Brescia',
       offers: features
@@ -132,7 +138,7 @@ const PuliziePostCantiere = () => {
       <SEO
         title="Pulizie Post Cantiere a Brescia | Artic Pulizie"
         description="Pulizie post-cantiere a Brescia con rimozione detriti, lucidatura e sanificazione finale. Artic Pulizie consegna ambienti pronti all'uso."
-        keywords="pulizie post cantiere brescia, pulizia fine lavori brescia, sanificazione post cantiere artic pulizie"
+        keywords="pulizie post cantiere brescia, pulizie post ristrutturazione brescia, pulizie appartamenti brescia, pulizia fine lavori brescia, sanificazione post cantiere artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-post-cantiere')}
         structuredData={structuredData}
       />
@@ -150,6 +156,7 @@ const PuliziePostCantiere = () => {
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
                 Pulizie specializzate <strong>a Brescia, provincia e Lago di Garda</strong> per la consegna di nuove costruzioni o ristrutturazioni.
+                Siamo il riferimento per <strong>pulizie post ristrutturazione a Brescia</strong> in appartamenti, ville, negozi e showroom.
                 Trasformiamo i cantieri in spazi pronti all'uso con interventi professionali,
                 squadre dedicate e attrezzature specifiche per abitazioni, uffici e industrie locali.
               </p>
@@ -163,12 +170,12 @@ const PuliziePostCantiere = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/8467975/pexels-photo-8467975.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80 })}
-                alt="Pulizie post-cantiere a Brescia con Artic Pulizie"
+                src={cdnImage('https://images.pexels.com/photos/8487026/pexels-photo-8487026.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80 })}
+                alt="Operatori che completano le pulizie post-cantiere in un appartamento a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
-                fallbackSrc="https://images.pexels.com/photos/8467975/pexels-photo-8467975.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                fallbackSrc="https://images.pexels.com/photos/8487026/pexels-photo-8487026.jpeg?auto=compress&cs=tinysrgb&w=1280"
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />

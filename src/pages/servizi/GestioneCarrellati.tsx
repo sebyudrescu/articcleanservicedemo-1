@@ -163,8 +163,8 @@ const GestioneCarrellati = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/3735218/pexels-photo-3735218.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1280, quality: 70, fit: 'cover' })}
-                fallbackSrc="https://images.pexels.com/photos/3735218/pexels-photo-3735218.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                src={cdnImage('https://cdn.pixabay.com/photo/2017/06/09/12/29/garbage-2388457_1280.jpg', { width: 1280, quality: 70, fit: 'cover' })}
+                fallbackSrc="https://cdn.pixabay.com/photo/2017/06/09/12/29/garbage-2388457_1280.jpg"
                 alt="Gestione carrellati a Brescia con Artic Pulizie"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}

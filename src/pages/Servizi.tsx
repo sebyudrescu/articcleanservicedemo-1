@@ -47,8 +47,8 @@ const Servizi = () => {
         "Riduzione assenze per malattia",
         "Immagine aziendale impeccabile"
       ],
-      image: cdnImage('https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 75, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: cdnImage('https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 80, fit: 'cover' }),
+      fallbackImage: 'https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200'
     },
     {
       id: 'industriale',
@@ -69,8 +69,8 @@ const Servizi = () => {
         "Prevenzione incidenti",
         "Mantenimento efficienza impianti"
       ],
-      image: cdnImage('https://images.pexels.com/photos/4484078/pexels-photo-4484078.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 80, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/4484078/pexels-photo-4484078.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: cdnImage('https://images.pexels.com/photos/3850247/pexels-photo-3850247.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80, fit: 'cover' }),
+      fallbackImage: 'https://images.pexels.com/photos/3850247/pexels-photo-3850247.jpeg?auto=compress&cs=tinysrgb&w=1280'
     },
     {
       id: 'post-cantiere',
@@ -91,8 +91,8 @@ const Servizi = () => {
         "Rimozione completa detriti",
         "Risparmio di tempo e costi"
       ],
-      image: cdnImage('https://images.pexels.com/photos/8467975/pexels-photo-8467975.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 80, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/8467975/pexels-photo-8467975.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: cdnImage('https://images.pexels.com/photos/8487026/pexels-photo-8487026.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80, fit: 'cover' }),
+      fallbackImage: 'https://images.pexels.com/photos/8487026/pexels-photo-8487026.jpeg?auto=compress&cs=tinysrgb&w=1280'
     },
     {
       id: 'vetri',
@@ -113,8 +113,8 @@ const Servizi = () => {
         "Maggiore durata delle superfici",
         "Risparmio energetico illuminazione"
       ],
-      image: cdnImage('https://images.pexels.com/photos/7735355/pexels-photo-7735355.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 80, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/7735355/pexels-photo-7735355.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: cdnImage('https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80, fit: 'cover' }),
+      fallbackImage: 'https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280'
     },
     {
       id: 'sanificazione',
@@ -135,8 +135,8 @@ const Servizi = () => {
         "Riduzione rischi biologici",
         "Tranquillità per clienti e visitatori"
       ],
-      image: cdnImage('https://images.pexels.com/photos/4099471/pexels-photo-4099471.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 70, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/4099471/pexels-photo-4099471.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: cdnImage('https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 75, fit: 'cover' }),
+      fallbackImage: 'https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280'
     },
     {
       id: 'condomini',
@@ -157,8 +157,8 @@ const Servizi = () => {
         "Servizio affidabile e puntuale",
         "Promozione per servizi integrati"
       ],
-      image: cdnImage('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 70, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: cdnImage('https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 75, fit: 'cover' }),
+      fallbackImage: 'https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200'
     },
     {
       id: 'giardinaggio',
@@ -201,8 +201,8 @@ const Servizi = () => {
         "Conformità normative sanitarie",
         "Risparmio tempo per il personale"
       ],
-      image: cdnImage('https://images.pexels.com/photos/3186574/pexels-photo-3186574.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 70, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/3186574/pexels-photo-3186574.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: cdnImage('https://cdn.pixabay.com/photo/2017/06/09/12/29/garbage-2388457_1280.jpg', { width: 1200, quality: 70, fit: 'cover' }),
+      fallbackImage: 'https://cdn.pixabay.com/photo/2017/06/09/12/29/garbage-2388457_1280.jpg'
     }
   ];
 

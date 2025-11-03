@@ -30,7 +30,7 @@ const faqItems = [
 
 const PulizieCondomini = () => {
   const features = [
-    "Pulizia scale e pianerottoli",
+    "Pulizia scale e pianerottoli condominiali a Brescia",
     "Sanificazione ascensori",
     "Pulizia atrii e ingressi",
     "Gestione bidoni raccolta differenziata",
@@ -106,7 +106,7 @@ const PulizieCondomini = () => {
       <SEO
         title="Pulizie Condomini a Brescia | Artic Pulizie"
         description="Pulizia scale, ingressi e aree comuni dei condomini a Brescia e provincia. Artic Pulizie offre gestione carrellati, giardinaggio e contratti flessibili."
-        keywords="pulizie condomini brescia, pulizia scale condominio brescia, gestione carrellati artic pulizie"
+        keywords="pulizie condomini brescia, impresa pulizie condominiali brescia, pulizia scale condominio brescia, gestione carrellati artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-condomini')}
         structuredData={structuredData}
       />
@@ -121,11 +121,11 @@ const PulizieCondomini = () => {
                 <span className="text-sky-600 font-semibold">Servizio Specializzato</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                Pulizie <span className="text-sky-500">Condomini</span>
+                Pulizie <span className="text-sky-500">Condomini</span> a Brescia
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Servizi professionali di pulizia per aree comuni condominiali a Brescia e provincia.
-                Contratti singoli o periodici programmati con personale qualificato.
+                Siamo l'<strong>impresa di pulizie condominiali a Brescia</strong> di riferimento per amministratori e property manager.
+                Servizi professionali per aree comuni, scale e carrellati con contratti singoli o periodici programmati e personale qualificato.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -137,9 +137,9 @@ const PulizieCondomini = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 70, fit: 'cover' })}
-                fallbackSrc="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1200"
-                alt="Pulizie condomini a Brescia con Artic Pulizie"
+                src={cdnImage('https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 75, fit: 'cover' })}
+                fallbackSrc="https://images.pexels.com/photos/5591953/pexels-photo-5591953.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                alt="Addetta che pulisce la scala di un condominio a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}

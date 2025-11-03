@@ -138,7 +138,7 @@ const PulizieVetri = () => {
       <SEO
         title="Pulizia Vetri e Vetrate a Brescia | Artic Pulizie"
         description="Pulizia professionale di vetri, vetrate e facciate continue a Brescia. Artic Pulizie opera in quota con sistemi ad acqua pura e prodotti anti-aloni."
-        keywords="pulizie vetri brescia, pulizia vetrate brescia, lavaggio vetri in quota artic pulizie"
+        keywords="pulizie vetri brescia, pulizie vetri e vetrate brescia, pulizia vetrate brescia, lavaggio vetri in quota artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-vetri')}
         structuredData={structuredData}
       />
@@ -157,7 +157,8 @@ const PulizieVetri = () => {
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
                 Servizio specializzato <strong>a Brescia e provincia</strong> per vetri, vetrate e superfici trasparenti.
                 Squadre locali per negozi del centro, showroom sul Garda e capannoni industriali,
-                con risultati perfetti senza aloni o striature anche in quota.
+                con risultati perfetti senza aloni o striature anche in quota e <strong>pulizie vetri e vetrate a Brescia</strong>
+                calibrate sulle esigenze di hospitality, retail e uffici.
               </p>
               <Link
                 to="/richiedi-preventivo"
@@ -169,12 +170,12 @@ const PulizieVetri = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/7735355/pexels-photo-7735355.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80 })}
-                alt="Pulizia vetri a Brescia con Artic Pulizie"
+                src={cdnImage('https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 80 })}
+                alt="Tecnici impegnati nel lavaggio professionale di grandi vetrate a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
-                fallbackSrc="https://images.pexels.com/photos/7735355/pexels-photo-7735355.jpeg?auto=compress&cs=tinysrgb&w=1280"
+                fallbackSrc="https://images.pexels.com/photos/5598021/pexels-photo-5598021.jpeg?auto=compress&cs=tinysrgb&w=1280"
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />

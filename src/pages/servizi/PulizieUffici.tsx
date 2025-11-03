@@ -85,7 +85,7 @@ const PulizieUffici = () => {
       <SEO
         title="Pulizie Uffici a Brescia | Artic Pulizie"
         description="Pulizia uffici a Brescia e provincia con team dedicato, prodotti certificati e orari flessibili. Artic Pulizie offre preventivo gratuito in 24 ore."
-        keywords="pulizie uffici brescia, impresa pulizie uffici brescia, pulizia uffici aziende brescia, sanificazione uffici artic pulizie"
+        keywords="pulizie uffici brescia, pulizie uffici brescia centro, impresa pulizie uffici brescia, pulizia uffici aziende brescia, sanificazione uffici artic pulizie"
         canonical={buildCanonicalUrl('/servizi/pulizie-uffici')}
         structuredData={structuredData}
       />
@@ -100,12 +100,13 @@ const PulizieUffici = () => {
                 <span className="text-sky-600 font-semibold">Servizio Specializzato</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Pulizie Uffici a Brescia – Servizi Professionali per Aziende e Studi
+                Pulizie Uffici a Brescia – Servizi Professionali per Aziende e Studi nel Centro e in Provincia
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-4">
                 Offriamo servizi di <strong>pulizia uffici a Brescia e provincia</strong> con personale qualificato,
-                attrezzature professionali e prodotti ad alta efficacia. La nostra impresa garantisce ambienti
-                sempre puliti e ordinati per aziende, studi professionali e spazi di coworking.
+                attrezzature professionali e prodotti ad alta efficacia. Copriamo quotidianamente il <strong>centro di Brescia</strong>
+                con interventi serali e pre-apertura per sedi direzionali, coworking e studi professionali.
+                La nostra impresa garantisce ambienti sempre puliti e ordinati per aziende e team ibridi.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
                 Con oltre <strong>28 dipendenti qualificati</strong>, operiamo in tutta la provincia di Brescia
@@ -121,12 +122,12 @@ const PulizieUffici = () => {
             </div>
             <div>
               <LazyImage
-                src={cdnImage('https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 75 })}
-                alt="Pulizie uffici a Brescia con Artic Pulizie"
+                src={cdnImage('https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 80 })}
+                alt="Addetta alle pulizie che igienizza una scrivania in un ufficio a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
                 width={640}
                 height={540}
-                fallbackSrc="https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg?auto=compress&cs=tinysrgb&w=1200"
+                fallbackSrc="https://images.pexels.com/photos/6195128/pexels-photo-6195128.jpeg?auto=compress&cs=tinysrgb&w=1200"
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />
@@ -136,7 +137,7 @@ const PulizieUffici = () => {
       </section>
 
       {/* Intro Text Section */}
-      <section className="py-16 bg-white">
+      <section id="centro" className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-900 mb-6">
             Pulizie Professionali per Uffici a Brescia e Provincia
@@ -146,6 +147,11 @@ const PulizieUffici = () => {
               La nostra impresa di pulizie è specializzata nella <strong>pulizia e sanificazione di uffici</strong> a
               Brescia e in tutta la provincia. Serviamo quotidianamente aziende, studi professionali, uffici pubblici
               e spazi di coworking con un servizio puntuale e di alta qualità.
+            </p>
+            <p>
+              Siamo presenti nel <strong>centro storico di Brescia</strong>, da Piazza Loggia al Quartiere Carmine,
+              garantendo <strong>pulizie uffici Brescia centro</strong> con finestre dedicate per ingressi mattutini,
+              interventi serali e supporto nei giorni festivi.
             </p>
             <p>
               Sappiamo quanto sia importante lavorare in un ambiente pulito e ordinato. Per questo motivo, il nostro

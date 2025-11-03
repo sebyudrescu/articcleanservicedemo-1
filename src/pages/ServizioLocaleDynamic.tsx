@@ -118,6 +118,96 @@ const ServizioLocaleDynamic = () => {
     }
   ];
 
+  const serviceKeywordPacks: Record<string, { heroLine: string; keywordVariations: string[] }> = {
+    'pulizie-post-cantiere': {
+      heroLine: 'Pulizie post ristrutturazione a {location} con consegna chiavi in mano',
+      keywordVariations: [
+        'pulizie post ristrutturazione {location}',
+        'pulizie fine cantiere {location} provincia di Brescia',
+        'impresa pulizie post lavori {location}'
+      ]
+    },
+    'pulizie-uffici': {
+      heroLine: 'Pulizie uffici professionali a {location} centro e aree direzionali',
+      keywordVariations: [
+        'pulizie uffici {location}',
+        'impresa pulizie uffici {location}',
+        'pulizie uffici {location} centro'
+      ]
+    },
+    'pulizie-condomini': {
+      heroLine: 'Pulizie condominiali dedicate a {location} con referenze per amministratori',
+      keywordVariations: [
+        'impresa pulizie condominiali {location}',
+        'pulizia scale condominio {location}',
+        'pulizie parti comuni {location}'
+      ]
+    },
+    'pulizie-industriali': {
+      heroLine: 'Pulizie capannoni industriali a {location} con squadre certificate HSE',
+      keywordVariations: [
+        'pulizie industriali {location}',
+        'pulizie capannoni {location}',
+        'pulizia magazzini logistici {location}'
+      ]
+    },
+    'sanificazione-ambienti': {
+      heroLine: 'Sanificazione certificata a {location} con trattamenti all\'ozono',
+      keywordVariations: [
+        'sanificazione ozono {location}',
+        'sanificazione ambienti {location}',
+        'disinfezione professionale {location}'
+      ]
+    },
+    'pulizia-vetri': {
+      heroLine: 'Pulizia vetri e vetrate a {location} anche in quota',
+      keywordVariations: [
+        'pulizia vetrate {location}',
+        'pulizia vetri negozi {location}',
+        'lavaggio vetrate alte {location}'
+      ]
+    },
+    'gestione-carrellati': {
+      heroLine: 'Gestione carrellati rifiuti a {location} con lavaggio programmato',
+      keywordVariations: [
+        'gestione carrellati {location}',
+        'lavaggio bidoni condominiali {location}',
+        'servizio raccolta differenziata condominio {location}'
+      ]
+    },
+    'giardinaggio': {
+      heroLine: 'Manutenzione aree verdi condominiali a {location} con interventi stagionali',
+      keywordVariations: [
+        'manutenzione giardini {location}',
+        'giardinaggio condominiale {location}',
+        'cura aree verdi {location}'
+      ]
+    }
+  };
+
+  const defaultKeywordPack = {
+    heroLine: `Servizio professionale di ${service.name.toLowerCase()} a {location}`,
+    keywordVariations: [
+      `${service.name.toLowerCase()} {location}`,
+      `impresa pulizie {location}`,
+      `servizio pulizie professionali {location}`
+    ]
+  };
+
+  const formatKeywordText = (template: string) =>
+    template.replace(/{location}/g, location.name).replace(/{province}/g, 'Brescia');
+
+  const selectedKeywordPack = serviceKeywordPacks[service.slug] ?? defaultKeywordPack;
+  const heroKeywordLine = formatKeywordText(selectedKeywordPack.heroLine);
+  const localizedKeywordVariations = selectedKeywordPack.keywordVariations.map(formatKeywordText);
+
+  const metaKeywords = [
+    `${service.name.toLowerCase()} ${location.name}`,
+    `impresa pulizie ${location.name}`,
+    `pulizie professionali ${location.name}`,
+    ...localizedKeywordVariations
+  ].join(', ');
+
   const renderSection = (sectionKey: string) => {
     switch (sectionKey) {
       case 'whyChoose':
@@ -328,7 +418,7 @@ const ServizioLocaleDynamic = () => {
       <SEO
         title={pageData.meta_title}
         description={pageData.meta_description}
-        keywords={`${service.name.toLowerCase()} ${location.name}, impresa pulizie ${location.name}, pulizie professionali ${location.name}`}
+        keywords={metaKeywords}
         canonical={buildCanonicalUrl(`/servizi/${servizio}/${localita}`)}
         structuredData={structuredData}
       />
@@ -352,9 +442,23 @@ const ServizioLocaleDynamic = () => {
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 {pageData.h1_title}
               </h1>
-              <p className="text-xl text-slate-600 leading-relaxed mb-8">
+              <p className="text-lg font-semibold text-sky-700 mb-4">
+                {heroKeywordLine}
+              </p>
+              <p className="text-xl text-slate-600 leading-relaxed mb-6">
                 {pageData.intro_text}
               </p>
+              <div className="flex flex-wrap gap-3 mb-8">
+                {localizedKeywordVariations.map((keyword, index) => (
+                  <span
+                    key={index}
+                    className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/90 px-4 py-2 text-sm font-semibold text-sky-700 shadow-sm"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                    <span className="capitalize">{keyword}</span>
+                  </span>
+                ))}
+              </div>
               <Link
                 to="/richiedi-preventivo"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-sky-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl"
