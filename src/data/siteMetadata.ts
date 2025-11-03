@@ -5,7 +5,7 @@ export const siteMetadata = {
   brandPromise: 'Pulizie dal 2005',
   legalName: 'Artic Clean Service Srl',
   alternateName: ['Artic Clean Service', 'Artic Pulizie'],
-  baseUrl: 'https://www.articpulizie.it',
+  baseUrl: 'https://articpulizie.it',
   phone: '+39 030 52 31 285',
   email: 'info@articpulizie.it',
   streetAddress: 'Via Carpaccio 10',
@@ -34,7 +34,7 @@ export const siteMetadata = {
   priceRange: '€€',
   paymentAccepted: ['Contanti', 'Bonifico', 'Carta di credito'],
   currenciesAccepted: ['EUR'],
-  logoUrl: 'https://www.articpulizie.it/assets/logo.png',
+  logoUrl: 'https://articpulizie.it/assets/logo.png',
   socialProfiles: [
     'https://www.facebook.com/articpulizie',
     'https://www.instagram.com/articpulizie',
