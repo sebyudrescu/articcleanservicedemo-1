@@ -4,134 +4,128 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://www.articpulizie.it</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/*</loc>
-    <lastmod>2025-11-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.articpulizie.it/blog</loc>
+    <loc>https://articpulizie.it/blog</loc>
     <lastmod>2024-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/blog/pulizie-condominiali-gestione-carrellati</loc>
+    <loc>https://articpulizie.it/blog/pulizie-condominiali-gestione-carrellati</loc>
     <lastmod>2024-01-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/blog/pulizie-uffici-brescia-checklist-settimanale</loc>
+    <loc>https://articpulizie.it/blog/pulizie-uffici-brescia-checklist-settimanale</loc>
     <lastmod>2024-02-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/blog/sanificazione-ambienti-brescia-differenze</loc>
+    <loc>https://articpulizie.it/blog/sanificazione-ambienti-brescia-differenze</loc>
     <lastmod>2024-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/chi-siamo</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/chi-siamo</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/come-lavoriamo</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/come-lavoriamo</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/dove-operiamo</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/dove-operiamo</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/faq</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/faq</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/privacy-policy</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/privacy-policy</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/recensioni</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/recensioni</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/richiedi-preventivo</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/richiedi-preventivo</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/gestione-carrellati</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/gestione-carrellati</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/giardinaggio</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/giardinaggio</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/pulizie-condomini</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/pulizie-condomini</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/pulizie-industriali</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/pulizie-industriali</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/pulizie-post-cantiere</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/pulizie-post-cantiere</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/pulizie-uffici</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/pulizie-uffici</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/pulizie-vetri</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/pulizie-vetri</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.articpulizie.it/servizi/sanificazione-ambienti</loc>
-    <lastmod>2025-11-02</lastmod>
+    <loc>https://articpulizie.it/servizi/sanificazione-ambienti</loc>
+    <lastmod>2025-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

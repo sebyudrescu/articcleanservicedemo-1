@@ -101,7 +101,7 @@ const Homepage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-sky-950/70 to-cyan-900/80 py-24">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-sky-950/70 to-cyan-900/80 py-16 sm:py-20 lg:py-24">
         {/* Animated Background */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/60 via-sky-900/50 to-cyan-900/40"></div>
@@ -110,7 +110,7 @@ const Homepage = () => {
             <div className="wave wave-2"></div>
             <div className="wave wave-3"></div>
           </div>
-          
+
           <div className="particles-container">
             <div className="particle particle-1"></div>
             <div className="particle particle-2"></div>
@@ -120,50 +120,50 @@ const Homepage = () => {
         </div>
 
         <div className="relative z-10">
-          <div className="max-w-5xl mx-auto text-center px-6 py-28">
-            <div className="relative px-6 py-14 sm:px-10 sm:py-16 md:px-16 md:py-20 rounded-3xl">
+          <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 py-16 sm:py-20">
+            <div className="relative px-5 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-16 rounded-3xl">
               <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent rounded-3xl backdrop-blur-sm border border-white/10"></div>
-              <div className="relative space-y-6">
-                <h1 className="text-5xl md:text-6xl lg:text-5xl font-extrabold leading-snug mb-6 text-sky-200">
+              <div className="relative space-y-6 sm:space-y-7">
+                <h1 className="text-balance text-[clamp(1.78rem,5.1vw,3.3rem)] sm:text-[clamp(2.3rem,4.6vw,3.65rem)] font-extrabold leading-tight md:leading-tight tracking-tight text-sky-200">
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-200 to-emerald-200">Impresa di pulizie professionali a Brescia</span>
                 </h1>
 
-                <p className="text-base sm:text-lg md:text-xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-light text-center">
+                <p className="text-balance text-base sm:text-lg md:text-xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-light text-center">
                   Artic Pulizie è l’impresa di pulizie a Brescia scelta da aziende, facility manager e amministratori condominiali. Offriamo sanificazioni certificate, piani operativi su misura e squadre dedicate in tutta la provincia.
                 </p>
-                <p className="text-base md:text-lg font-semibold text-emerald-300 max-w-3xl mx-auto mb-8 text-center">
+                <p className="text-balance text-base sm:text-lg font-semibold text-emerald-300 max-w-3xl mx-auto text-center">
                   Copriamo Brescia città, la Franciacorta, il Lago di Garda e i principali distretti industriali con interventi programmati, emergenze 24/7 e report digitali.
                 </p>
               </div>
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+            <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 mt-8 max-w-sm sm:max-w-none mx-auto">
               <Link to="/richiedi-preventivo">
                 <button
                   aria-label="Richiedi un preventivo per le pulizie a Brescia"
-                  className="primary-cta-button group relative overflow-hidden w-full sm:w-auto px-8 py-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  className="primary-cta-button group relative overflow-hidden w-full sm:w-auto max-w-sm sm:max-w-none px-6 sm:px-8 py-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 min-h-[52px] sm:min-h-[56px]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 transition-all duration-300 group-hover:from-emerald-400 group-hover:via-teal-400 group-hover:to-cyan-400"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 opacity-0 group-hover:opacity-30 transition-opacity duration-300 blur-xl"></div>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
 
-                  <div className="relative z-10 flex items-center justify-center space-x-3 px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5">
-                    <Sparkles className="w-5 h-5 lg:w-6 lg:h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
-                    <span className="font-bold text-base sm:text-lg lg:text-xl text-white whitespace-nowrap">
+                  <div className="relative z-10 flex items-center justify-center gap-2 px-3 sm:px-6 py-2 sm:py-3">
+                    <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
+                    <span className="font-bold text-base sm:text-lg lg:text-xl text-white text-center">
                       Richiedi Preventivo
                     </span>
-                    <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
-                  
+
                   <div className="absolute inset-0 rounded-xl border-2 border-white/30 group-hover:scale-105 group-hover:border-white/50 transition-all duration-300"></div>
                 </button>
               </Link>
-              
+
               <Link to="/servizi">
                 <button
                   aria-label="Scopri tutti i servizi di pulizia a Brescia"
-                  className="white-bg-button group relative overflow-hidden transition-all duration-300 transform perspective-1000 hover:translateY(-3px) shadow-lg hover:shadow-xl w-full sm:w-auto px-8 py-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  className="white-bg-button group relative overflow-hidden transition-all duration-300 transform perspective-1000 hover:-translate-y-0.5 shadow-lg hover:shadow-xl w-full sm:w-auto max-w-sm sm:max-w-none px-6 sm:px-8 py-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 min-h-[52px] sm:min-h-[56px]"
                 >
                   {/* Background completamente bianco */}
                   <div className="absolute inset-0 bg-white rounded-lg"></div>
@@ -176,29 +176,33 @@ const Homepage = () => {
                   {/* Subtle Glow */}
                   <div className="absolute inset-0 bg-gradient-to-r from-sky-400 to-cyan-400 opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl"></div>
                   
-                  <div className="relative z-10 flex items-center justify-center space-x-3 px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5">
-                    <span className="font-bold text-base sm:text-lg lg:text-xl text-slate-700 group-hover:text-sky-700 transition-colors duration-300 whitespace-nowrap">
+                  <div className="relative z-10 flex items-center justify-center gap-2 px-3 sm:px-6 py-2 sm:py-3">
+                    <span className="font-bold text-base sm:text-lg lg:text-xl text-slate-700 group-hover:text-sky-700 transition-colors duration-300 text-center">
                       Scopri i Nostri Servizi
                     </span>
-                    <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-slate-600 group-hover:text-sky-600 group-hover:translate-x-1 transition-all duration-300" />
+                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-slate-600 group-hover:text-sky-600 group-hover:translate-x-1 transition-all duration-300" />
                   </div>
                 </button>
               </Link>
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-6 mt-12 text-sm text-slate-200 px-4">
-              <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-10 text-sm sm:text-base text-slate-200 px-4 max-w-2xl mx-auto">
+              <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-300 rounded-full"></div>
                 <span>Preventivo pulizie Brescia in 24h</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-sky-300 rounded-full"></div>
                 <span>Oltre 200 aziende servite a Brescia e provincia</span>
               </div>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-teal-300 rounded-full"></div>
-                <span>Risultati garantiti certificati ISO</span>
+                <span>Squadre dedicate con formazione certificata</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-cyan-300 rounded-full"></div>
+                <span>Copertura emergenze e interventi programmati</span>
               </div>
             </div>
           </div>

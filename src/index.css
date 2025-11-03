@@ -43,10 +43,12 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   min-height: 100%;
+  width: 100%;
   overflow-x: hidden;
   background-color: #f8fafc;
 }
@@ -95,6 +97,14 @@ body {
   }
   body::before {
     transition: none;
+  }
+  .wave,
+  .particle {
+    animation: none !important;
+  }
+  .wave-container,
+  .particles-container {
+    display: none !important;
   }
 }
 
@@ -198,12 +208,21 @@ body {
   letter-spacing: -0.02em;
 }
 
+.text-balance {
+  text-wrap: balance;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
+  .wave-container,
+  .particles-container {
+    display: none;
+  }
+
   .wave {
     height: 100px;
   }
-  
+
   .particle {
     width: 2px;
     height: 2px;

@@ -13,7 +13,7 @@ import { createClient } from '@supabase/supabase-js';
 const APP_FILE = path.resolve('src/App.tsx');
 const OUTPUT_FILE = path.resolve('public/sitemap.xml');
 const BLOG_POSTS_FILE = path.resolve('content/blog/posts.json');
-const BASE_URL = 'https://www.articpulizie.it';
+const BASE_URL = 'https://articpulizie.it';
 const TODAY = new Date().toISOString().split('T')[0];
 
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL;
@@ -71,7 +71,7 @@ const getStaticRoutes = async () => {
 
   while ((match = regex.exec(content)) !== null) {
     const raw = match[1];
-    if (raw.includes(':')) {
+    if (raw === '*' || raw.includes(':')) {
       // Ignora percorsi dinamici che verranno gestiti separatamente
       continue;
     }
