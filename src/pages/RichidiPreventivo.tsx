@@ -1,21 +1,16 @@
 import { useState } from 'react';
-import { Send, CheckCircle, AlertCircle, FileText, Phone, User, MapPin, Briefcase } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, FileText, Phone, User } from 'lucide-react';
 import SEO from '@/components/SEO';
 import InternalLinkSection from '@/components/InternalLinkSection';
 import { buildCanonicalUrl, siteMetadata } from '@/data/siteMetadata';
 import { buildBreadcrumbSchema } from '@/utils/structuredData';
-import { services as serviceCatalog, locations as locationCatalog } from '@/data/servicesData';
 
 const RichidiPreventivo = () => {
   const [formData, setFormData] = useState({
     nome: '',
     cognome: '',
     email: '',
-    telefono: '',
-    servizioRichiesto: '',
-    localita: '',
-    note: '',
-    desideraChecklist: false
+    telefono: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,18 +35,8 @@ const RichidiPreventivo = () => {
     ].filter(Boolean) as Record<string, unknown>[]
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const target = e.target;
-    const { name, value } = target;
-
-    if (target instanceof HTMLInputElement && target.type === 'checkbox') {
-      setFormData(prev => ({
-        ...prev,
-        [name]: target.checked
-      }));
-      return;
-    }
-
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -84,11 +69,7 @@ const RichidiPreventivo = () => {
           nome: '',
           cognome: '',
           email: '',
-          telefono: '',
-          servizioRichiesto: '',
-          localita: '',
-          note: '',
-          desideraChecklist: false
+          telefono: ''
         });
       } else {
         throw new Error('Errore durante l\'invio del modulo');
@@ -118,9 +99,6 @@ const RichidiPreventivo = () => {
               <p className="text-lg text-slate-600 mb-6">
                 Grazie per aver richiesto un preventivo. Il nostro team ti contatterà entro 24 ore
                 per fornirti una proposta personalizzata.
-              </p>
-              <p className="text-sm text-slate-500 mb-6">
-                Se hai selezionato la checklist, controlla la posta: riceverai il materiale operativo dedicato alla località indicata.
               </p>
               <div className="bg-sky-50 rounded-lg p-4 mb-6">
                 <p className="text-sky-800 font-semibold">
@@ -248,83 +226,6 @@ const RichidiPreventivo = () => {
                 </div>
               </div>
             </div>
-
-            {/* Servizio e Località */}
-            <div>
-              <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
-                <Briefcase className="w-5 h-5 mr-2 text-sky-500" />
-                Servizio richiesto e copertura territoriale
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Servizio di interesse *
-                  </label>
-                  <select
-                    name="servizioRichiesto"
-                    value={formData.servizioRichiesto}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
-                  >
-                    <option value="">Seleziona il servizio</option>
-                    {serviceCatalog.map((service) => (
-                      <option key={service.id} value={service.name}>
-                        {service.name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Località di riferimento *
-                  </label>
-                  <div className="relative">
-                    <MapPin className="w-4 h-4 text-sky-500 absolute left-3 top-1/2 -translate-y-1/2" />
-                    <select
-                      name="localita"
-                      value={formData.localita}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
-                    >
-                      <option value="">Seleziona la località</option>
-                      {locationCatalog.map((location) => (
-                        <option key={location.id} value={location.name}>
-                          {location.name} ({location.province})
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <div className="mt-6">
-                <label className="block text-sm font-semibold text-slate-700 mb-2">
-                  Esigenze aggiuntive o note operative
-                </label>
-                <textarea
-                  name="note"
-                  value={formData.note}
-                  onChange={handleInputChange}
-                  rows={4}
-                  placeholder="Indica metri quadri, fasce orarie preferite o esigenze particolari per la checklist personalizzata."
-                  className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
-                />
-              </div>
-              <label className="mt-4 inline-flex items-start gap-3 text-sm text-slate-600">
-                <input
-                  type="checkbox"
-                  name="desideraChecklist"
-                  checked={formData.desideraChecklist}
-                  onChange={handleInputChange}
-                  className="mt-1 h-4 w-4 rounded border-slate-300 text-sky-500 focus:ring-sky-500"
-                />
-                <span>
-                  Desidero ricevere la checklist di pulizie e la timeline suggerita per la località selezionata.
-                </span>
-              </label>
-            </div>
-
             {/* Error Message */}
             {submitStatus === 'error' && (
               <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center space-x-3">
