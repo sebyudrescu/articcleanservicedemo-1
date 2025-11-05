@@ -4,6 +4,8 @@ import { CTASection } from '@/components/ui/cta-with-rectangle';
 import { serviceImagesByLink } from '@/data/serviceImages';
 
 const Homepage = () => {
+  const heroImage = serviceImagesByLink['/servizi/pulizie-uffici'];
+
   const services = [
     {
       title: "Pulizie Uffici",
@@ -102,47 +104,39 @@ const Homepage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-sky-950/70 to-cyan-900/80 py-16 sm:py-20 lg:py-24">
-        {/* Animated Background */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/60 via-sky-900/50 to-cyan-900/40"></div>
-          <div className="wave-container">
-            <div className="wave wave-1"></div>
-            <div className="wave wave-2"></div>
-            <div className="wave wave-3"></div>
-          </div>
-
-          <div className="particles-container">
-            <div className="particle particle-1"></div>
-            <div className="particle particle-2"></div>
-            <div className="particle particle-3"></div>
-            <div className="particle particle-4"></div>
-          </div>
+      <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt=""
+            className="w-full h-full object-cover opacity-75"
+            loading="eager"
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-sky-900/80 to-teal-900/75"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
         </div>
 
         <div className="relative z-10">
-          <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 py-16 sm:py-20">
-            <div className="relative px-5 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-16 rounded-3xl">
-              <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-transparent rounded-3xl backdrop-blur-sm border border-white/10"></div>
-              <div className="relative space-y-6 sm:space-y-7">
-                <h1 className="text-balance text-[clamp(1.78rem,5.1vw,3.3rem)] sm:text-[clamp(2.3rem,4.6vw,3.65rem)] font-extrabold leading-tight md:leading-tight tracking-tight text-sky-200">
-                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-300 via-cyan-200 to-emerald-200">Impresa di pulizie professionali a Brescia</span>
-                </h1>
-
-                <p className="text-balance text-base sm:text-lg md:text-xl text-slate-100 max-w-3xl mx-auto leading-relaxed font-light text-center">
-                  Artic Pulizie è l’impresa di pulizie a Brescia scelta da aziende, facility manager e amministratori condominiali. Offriamo sanificazioni certificate, piani operativi su misura e squadre dedicate in tutta la provincia.
-                </p>
-                <p className="text-balance text-base sm:text-lg font-semibold text-emerald-300 max-w-3xl mx-auto text-center">
-                  Copriamo Brescia città, la Franciacorta, il Lago di Garda e i principali distretti industriali con interventi programmati, emergenze 24/7 e report digitali.
-                </p>
-              </div>
+          <div className="max-w-5xl mx-auto text-center px-4 sm:px-6">
+            <div className="space-y-6 sm:space-y-7">
+              <h1 className="text-white text-[clamp(2.35rem,6vw,3.9rem)] font-extrabold leading-[1.08] tracking-tight">
+                <span className="block">Impresa di pulizie</span>
+                <span className="block">professionali a</span>
+                <span className="block">Brescia e provincia</span>
+              </h1>
+              <h2 className="text-slate-100 text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed max-w-3xl mx-auto">
+                Dal 2005 offriamo servizi di pulizia certificati per aziende, condomini e ambienti industriali.
+                <br className="hidden sm:block" />
+                Squadre qualificate, interventi programmati ed emergenze 24/7.
+              </h2>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 mt-8 max-w-sm sm:max-w-none mx-auto">
               <Link to="/richiedi-preventivo">
                 <button
-                  aria-label="Richiedi un preventivo per le pulizie a Brescia"
+                  aria-label="Richiedi un preventivo di pulizie gratuito a Brescia"
                   className="primary-cta-button group relative overflow-hidden w-full sm:w-auto max-w-sm sm:max-w-none px-6 sm:px-8 py-3 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 min-h-[52px] sm:min-h-[56px]"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 transition-all duration-300 group-hover:from-emerald-400 group-hover:via-teal-400 group-hover:to-cyan-400"></div>
@@ -152,7 +146,7 @@ const Homepage = () => {
                   <div className="relative z-10 flex items-center justify-center gap-2 px-3 sm:px-6 py-2 sm:py-3">
                     <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:rotate-12 transition-transform duration-300" />
                     <span className="font-bold text-base sm:text-lg lg:text-xl text-white text-center">
-                      Richiedi Preventivo
+                      Richiedi Preventivo Gratuito
                     </span>
                     <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
@@ -188,7 +182,7 @@ const Homepage = () => {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-10 text-sm sm:text-base text-slate-200 px-4 max-w-2xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-10 text-sm sm:text-base text-slate-100 px-4 max-w-2xl mx-auto">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-emerald-300 rounded-full"></div>
                 <span>Preventivo pulizie Brescia in 24h</span>
