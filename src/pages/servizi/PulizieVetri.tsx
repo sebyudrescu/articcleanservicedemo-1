@@ -155,9 +155,9 @@ const PulizieVetri = () => {
                 Pulizia <span className="text-sky-500">Vetri e Vetrate</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Servizio specializzato <strong>a Brescia e provincia</strong> per vetri, vetrate e superfici trasparenti.
+                Servizio specializzato <strong>a Brescia e provincia</strong>{' '}per vetri, vetrate e superfici trasparenti.
                 Squadre locali per negozi del centro, showroom sul Garda e capannoni industriali,
-                con risultati perfetti senza aloni o striature anche in quota e <strong>pulizie vetri e vetrate a Brescia</strong>
+                con risultati perfetti senza aloni o striature anche in quota e <strong>pulizie vetri e vetrate a Brescia</strong>{' '}
                 calibrate sulle esigenze di hospitality, retail e uffici.
               </p>
               <Link

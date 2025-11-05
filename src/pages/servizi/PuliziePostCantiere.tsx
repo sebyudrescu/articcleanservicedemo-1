@@ -155,8 +155,8 @@ const PuliziePostCantiere = () => {
                 Pulizie <span className="text-sky-500">Post-Cantiere</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Pulizie specializzate <strong>a Brescia, provincia e Lago di Garda</strong> per la consegna di nuove costruzioni o ristrutturazioni.
-                Siamo il riferimento per <strong>pulizie post ristrutturazione a Brescia</strong> in appartamenti, ville, negozi e showroom.
+                Pulizie specializzate <strong>a Brescia, provincia e Lago di Garda</strong>{' '}per la consegna di nuove costruzioni o ristrutturazioni.
+                Siamo il riferimento per <strong>pulizie post ristrutturazione a Brescia</strong>{' '}in appartamenti, ville, negozi e showroom.
                 Trasformiamo i cantieri in spazi pronti all'uso con interventi professionali,
                 squadre dedicate e attrezzature specifiche per abitazioni, uffici e industrie locali.
               </p>

@@ -124,7 +124,7 @@ const PulizieCondomini = () => {
                 Pulizie <span className="text-sky-500">Condomini</span> a Brescia
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Siamo l'<strong>impresa di pulizie condominiali a Brescia</strong> di riferimento per amministratori e property manager.
+                Siamo l'<strong>impresa di pulizie condominiali a Brescia</strong>{' '}di riferimento per amministratori e property manager.
                 Servizi professionali per aree comuni, scale e carrellati con contratti singoli o periodici programmati e personale qualificato.
               </p>
               <Link

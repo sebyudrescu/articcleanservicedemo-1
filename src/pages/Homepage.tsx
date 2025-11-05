@@ -2,10 +2,10 @@ import { ArrowRight, Sparkles, Shield, Clock, Award, Users, Star } from 'lucide-
 import { Link } from 'react-router-dom';
 import { CTASection } from '@/components/ui/cta-with-rectangle';
 import { serviceImagesByLink } from '@/data/serviceImages';
+import heroBackground from '../../immagini-servizi/pulizie uffici.jpg';
 
 const Homepage = () => {
-  const heroImage = serviceImagesByLink['/servizi/pulizie-uffici'];
-
+  const heroImage = heroBackground;
   const services = [
     {
       title: "Pulizie Uffici",
@@ -108,19 +108,18 @@ const Homepage = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt=""
-            className="w-full h-full object-cover opacity-75"
+            alt="Operatrice Artic Pulizie che igienizza un ufficio a Brescia"
+            className="w-full h-full object-cover"
             loading="eager"
-            aria-hidden="true"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-sky-900/80 to-teal-900/75"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/45 via-transparent to-transparent"></div>
         </div>
 
         <div className="relative z-10">
           <div className="max-w-5xl mx-auto text-center px-4 sm:px-6">
             <div className="space-y-6 sm:space-y-7">
-              <h1 className="text-white text-[clamp(2.35rem,6vw,3.9rem)] font-extrabold leading-[1.08] tracking-tight">
+              <h1 className="text-white text-[clamp(2.35rem,6vw,3.9rem)] font-extrabold leading-[1.08] tracking-tight drop-shadow-[0_6px_18px_rgba(8,18,44,0.28)]">
                 <span className="block">Impresa di pulizie</span>
                 <span className="block">professionali a</span>
                 <span className="block">Brescia e provincia</span>

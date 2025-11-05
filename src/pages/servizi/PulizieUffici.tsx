@@ -103,8 +103,8 @@ const PulizieUffici = () => {
                 Pulizie Uffici a Brescia – Servizi Professionali per Aziende e Studi nel Centro e in Provincia
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-4">
-                Offriamo servizi di <strong>pulizia uffici a Brescia e provincia</strong> con personale qualificato,
-                attrezzature professionali e prodotti ad alta efficacia. Copriamo quotidianamente il <strong>centro di Brescia</strong>
+                Offriamo servizi di <strong>pulizia uffici a Brescia e provincia</strong>{' '}con personale qualificato,
+                attrezzature professionali e prodotti ad alta efficacia. Copriamo quotidianamente il <strong>centro di Brescia</strong>{' '}
                 con interventi serali e pre-apertura per sedi direzionali, coworking e studi professionali.
                 La nostra impresa garantisce ambienti sempre puliti e ordinati per aziende e team ibridi.
               </p>
@@ -144,18 +144,18 @@ const PulizieUffici = () => {
           </h2>
           <div className="prose prose-lg text-slate-600 space-y-4">
             <p>
-              La nostra impresa di pulizie è specializzata nella <strong>pulizia e sanificazione di uffici</strong> a
+              La nostra impresa di pulizie è specializzata nella <strong>pulizia e sanificazione di uffici</strong>{' '}a
               Brescia e in tutta la provincia. Serviamo quotidianamente aziende, studi professionali, uffici pubblici
               e spazi di coworking con un servizio puntuale e di alta qualità.
             </p>
             <p>
               Siamo presenti nel <strong>centro storico di Brescia</strong>, da Piazza Loggia al Quartiere Carmine,
-              garantendo <strong>pulizie uffici Brescia centro</strong> con finestre dedicate per ingressi mattutini,
+              garantendo <strong>pulizie uffici Brescia centro</strong>{' '}con finestre dedicate per ingressi mattutini,
               interventi serali e supporto nei giorni festivi.
             </p>
             <p>
               Sappiamo quanto sia importante lavorare in un ambiente pulito e ordinato. Per questo motivo, il nostro
-              team di operatori qualificati utilizza <strong>prodotti professionali ad alta efficacia sgrassante</strong> e
+              team di operatori qualificati utilizza <strong>prodotti professionali ad alta efficacia sgrassante</strong>{' '}e
               attrezzature moderne per garantire risultati impeccabili in ogni intervento.
             </p>
             <p>
@@ -244,7 +244,7 @@ const PulizieUffici = () => {
               </h2>
             </div>
             <p className="text-lg text-slate-600 leading-relaxed">
-              Operiamo in tutta la città di <strong>Brescia</strong> e nei comuni della provincia, garantendo
+              Operiamo in tutta la città di <strong>Brescia</strong>{' '}e nei comuni della provincia, garantendo
               puntualità e professionalità in ogni intervento. I nostri servizi di pulizia uffici sono disponibili
               sia per piccoli studi professionali che per grandi aziende in tutta la <strong>provincia di Brescia</strong>.
             </p>
@@ -315,7 +315,7 @@ const PulizieUffici = () => {
             Contattaci per un Preventivo Gratuito a Brescia e Provincia
           </h2>
           <p className="text-xl text-slate-300 mb-4 leading-relaxed">
-            Offriamo <strong>sopralluoghi gratuiti</strong> per valutare le tue esigenze e proporti
+            Offriamo <strong>sopralluoghi gratuiti</strong>{' '}per valutare le tue esigenze e proporti
             la soluzione più adatta al tuo ufficio o studio professionale.
           </p>
           <p className="text-lg text-slate-400 mb-8">

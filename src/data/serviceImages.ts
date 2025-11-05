@@ -2,7 +2,7 @@ import gestioneCarrelatiFile from '../../immagini-servizi/gestione carrelati.jpg
 import pulizieCondominialiFile from '../../immagini-servizi/pulizie-condominiali.jpg';
 import pulizieIndustrialiFile from '../../immagini-servizi/pulizie industriali.jpg';
 import puliziePostCantiereFile from '../../immagini-servizi/pulizie post cantiere.jpg';
-import pulizieUfficiFile from '../../immagini-servizi/pulizie uffici.jpg';
+import pulizieUfficiFile from '../../immagini-servizi/pulizie-ufficii.webp';
 import pulizieVetriFile from '../../immagini-servizi/pulizie vetri.jpg';
 
 export const gestioneCarrellatiImage = gestioneCarrelatiFile;

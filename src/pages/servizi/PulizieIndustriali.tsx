@@ -133,9 +133,9 @@ const PulizieIndustriali = () => {
                 Pulizie <span className="text-sky-500">Industriali</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Interventi specializzati <strong>a Brescia e provincia</strong> per capannoni industriali, magazzini e ambienti produttivi.
+                Interventi specializzati <strong>a Brescia e provincia</strong>{' '}per capannoni industriali, magazzini e ambienti produttivi.
                 Operiamo nei poli di Val Trompia, Franciacorta e Lago di Garda con squadre dedicate,
-                attrezzature professionali e protocolli certificati, includendo la <strong>pulizia pannelli fotovoltaici a Brescia</strong>
+                attrezzature professionali e protocolli certificati, includendo la <strong>pulizia pannelli fotovoltaici a Brescia</strong>{' '}
                 per mantenere la massima efficienza energetica degli impianti.
               </p>
               <Link

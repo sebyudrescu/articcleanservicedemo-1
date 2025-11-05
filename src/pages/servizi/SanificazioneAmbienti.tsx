@@ -158,9 +158,9 @@ const SanificazioneAmbienti = () => {
                 Sanificazione <span className="text-sky-500">Ambienti</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
-                Trattamenti certificati <strong>a Brescia e provincia</strong> per la sicurezza e l'igiene degli ambienti di lavoro.
+                Trattamenti certificati <strong>a Brescia e provincia</strong>{' '}per la sicurezza e l'igiene degli ambienti di lavoro.
                 Supportiamo uffici, cliniche, scuole e asili con protocolli professionali
-                e prodotti riconosciuti dal Ministero della Salute, integrando <strong>sanificazione ozono a Brescia</strong>
+                e prodotti riconosciuti dal Ministero della Salute, integrando <strong>sanificazione ozono a Brescia</strong>{' '}
                 per eliminare virus, batteri e agenti patogeni anche in spazi ad alta frequentazione.
               </p>
               <Link
@@ -196,7 +196,7 @@ const SanificazioneAmbienti = () => {
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Interventi professionali con prodotti e protocolli certificati per garantire
-              la massima sicurezza sanitaria dei tuoi ambienti, inclusi trattamenti di <strong>sanificazione ozono a Brescia</strong>
+              la massima sicurezza sanitaria dei tuoi ambienti, inclusi trattamenti di <strong>sanificazione ozono a Brescia</strong>{' '}
               per abbattere contaminazioni in scuole, asili, uffici e reparti produttivi.
             </p>
           </div>
