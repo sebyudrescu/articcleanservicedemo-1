@@ -1,86 +1,106 @@
-#!/usr/bin/env node
-
-/**
- * Ottimizza le immagini presenti nella cartella `immagini/`
- * utilizzando @squoosh/cli (installato al volo tramite npx).
- * Vengono generati file WebP ottimizzati nella cartella
- * `public/assets/images/generated`.
- */
-
-import { promises as fs } from 'node:fs';
+import { mkdir, access } from 'node:fs/promises';
+import { constants } from 'node:fs';
 import path from 'node:path';
-import { spawn } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import sharp from 'sharp';
 
-const RAW_DIR = path.resolve('immagini');
-const OUTPUT_DIR = path.resolve('public/assets/images/generated');
-const SUPPORTED_EXT = ['.jpg', '.jpeg', '.png'];
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const sourceDir = path.join(projectRoot, 'immagini-servizi');
+const outputDir = path.join(projectRoot, 'public', 'images', 'optimized');
+const assetsDir = path.join(projectRoot, 'public', 'assets');
 
-const ensureDir = async (dir) => {
-  await fs.mkdir(dir, { recursive: true });
-};
-
-const getRawImages = async () => {
+async function ensureDir(dir) {
   try {
-    const entries = await fs.readdir(RAW_DIR, { withFileTypes: true });
-    return entries
-      .filter((entry) => entry.isFile() && SUPPORTED_EXT.includes(path.extname(entry.name).toLowerCase()))
-      .map((entry) => path.join(RAW_DIR, entry.name));
-  } catch (error) {
-    console.warn(`⚠️  Nessuna cartella '${RAW_DIR}' trovata o nessun file immagine disponibile.`);
-    return [];
+    await access(dir, constants.F_OK);
+  } catch {
+    await mkdir(dir, { recursive: true });
   }
-};
+}
 
-const optimizeImage = (filePath) => {
-  return new Promise((resolve, reject) => {
-    const fileName = path.basename(filePath);
-    const process = spawn(
-      'npx',
-      [
-        '@squoosh/cli',
-        filePath,
-        '--webp',
-        '{"quality":80}',
-        '--mozjpeg',
-        '{"quality":82,"progressive":true}',
-        '--output-dir',
-        OUTPUT_DIR
-      ],
-      { stdio: 'inherit' }
-    );
-
-    process.on('close', (code) => {
-      if (code === 0) {
-        console.log(`✅  Ottimizzazione completata: ${fileName}`);
-        resolve();
-      } else {
-        reject(new Error(`Ottimizzazione fallita per ${fileName} (codice ${code})`));
-      }
-    });
-  });
-};
-
-const main = async () => {
-  await ensureDir(OUTPUT_DIR);
-
-  const images = await getRawImages();
-  if (!images.length) {
-    console.log('ℹ️  Nessuna immagine da ottimizzare.');
-    return;
+const images = [
+  {
+    file: 'pulizie-uffici.jpg',
+    outputs: [
+      { width: 1600, name: 'pulizie-uffici-1600.webp' },
+      { width: 960, name: 'pulizie-uffici-960.webp' },
+      { width: 640, name: 'pulizie-uffici-640.webp' }
+    ],
+    quality: 75
+  },
+  {
+    file: 'pulizie-industriali.jpg',
+    outputs: [
+      { width: 960, name: 'pulizie-industriali-960.webp' },
+      { width: 640, name: 'pulizie-industriali-640.webp' }
+    ]
+  },
+  {
+    file: 'pulizie-post-cantiere.jpg',
+    outputs: [
+      { width: 960, name: 'pulizie-post-cantiere-960.webp' },
+      { width: 640, name: 'pulizie-post-cantiere-640.webp' }
+    ]
+  },
+  {
+    file: 'pulizie-vetri.jpg',
+    outputs: [
+      { width: 960, name: 'pulizie-vetri-960.webp' },
+      { width: 640, name: 'pulizie-vetri-640.webp' }
+    ]
+  },
+  {
+    file: 'pulizie-condominiali.jpg',
+    outputs: [
+      { width: 960, name: 'pulizie-condominiali-960.webp' },
+      { width: 640, name: 'pulizie-condominiali-640.webp' }
+    ]
+  },
+  {
+    file: 'gestione-carrelati.jpg',
+    outputs: [
+      { width: 960, name: 'gestione-carrelati-960.webp' },
+      { width: 640, name: 'gestione-carrelati-640.webp' }
+    ]
   }
+];
+
+const otherImages = [
+  {
+    input: path.join(assetsDir, 'logo.png'),
+    outputs: [
+      { width: 320, name: path.join(assetsDir, 'logo.webp') }
+    ],
+    quality: 80
+  }
+];
+
+async function optimize() {
+  await ensureDir(outputDir);
 
   for (const image of images) {
-    try {
-      await optimizeImage(image);
-    } catch (error) {
-      console.error(error instanceof Error ? error.message : error);
+    const inputPath = path.join(sourceDir, image.file);
+    for (const { width, name } of image.outputs) {
+      const outputPath = path.join(outputDir, name);
+      await sharp(inputPath)
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: image.quality ?? 72 })
+        .toFile(outputPath);
+      console.log(`Generated ${outputPath}`);
     }
   }
 
-  console.log(`📁  File ottimizzati disponibili in: ${OUTPUT_DIR}`);
-};
+  for (const image of otherImages) {
+    for (const { width, name } of image.outputs) {
+      await sharp(image.input)
+        .resize({ width, withoutEnlargement: true })
+        .webp({ quality: image.quality ?? 80 })
+        .toFile(name);
+      console.log(`Generated ${name}`);
+    }
+  }
+}
 
-main().catch((error) => {
-  console.error('❌  Errore inaspettato durante l\'ottimizzazione delle immagini:', error);
-  process.exit(1);
+optimize().catch((error) => {
+  console.error('Image optimization failed:', error);
+  process.exitCode = 1;
 });

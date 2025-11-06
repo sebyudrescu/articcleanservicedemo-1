@@ -174,7 +174,7 @@ const Recensioni = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-sky-600 mb-2">
+                  <div className="text-4xl md:text-5xl font-bold text-sky-800 mb-2">
                     {stat.number}
                   </div>
                   <div className="text-slate-600 font-medium">
@@ -310,7 +310,7 @@ const Recensioni = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/richiedi-preventivo"
-                className="inline-flex items-center justify-center space-x-2 bg-white text-sky-600 px-8 py-4 rounded-xl font-semibold hover:bg-sky-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center space-x-2 bg-white text-sky-800 px-8 py-4 rounded-xl font-semibold hover:bg-sky-50 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>Richiedi Preventivo Gratuito</span>
               </Link>

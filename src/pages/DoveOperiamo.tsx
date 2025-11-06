@@ -73,7 +73,7 @@ const DoveOperiamo = () => {
               >
                 <div className="flex flex-col items-center text-center space-y-3">
                   <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center group-hover:bg-sky-200 transition-colors">
-                    <MapPin className="w-6 h-6 text-sky-600" />
+                    <MapPin className="w-6 h-6 text-sky-800" />
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900 group-hover:text-sky-700 transition-colors mb-1">
@@ -140,7 +140,7 @@ const DoveOperiamo = () => {
                 <h3 className="text-lg font-bold text-slate-900 group-hover:text-sky-700 transition-colors mb-2">
                   {service.name}
                 </h3>
-                <div className="flex items-center text-sky-600 text-sm font-medium">
+                <div className="flex items-center text-sky-800 text-sm font-medium">
                   <span>Scopri di più</span>
                   <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </div>

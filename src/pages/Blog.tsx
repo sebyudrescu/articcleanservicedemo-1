@@ -45,7 +45,7 @@ const Blog = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-16">
-          <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-sky-100 text-sky-600 rounded-full">
+          <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-sky-100 text-sky-800 rounded-full">
             Blog Artic Pulizie
           </p>
           <h1 className="mt-6 text-4xl lg:text-5xl font-bold text-slate-900">
@@ -113,7 +113,7 @@ const Blog = () => {
                   </div>
 
                   <Link to={`/blog/${post.slug}`}>
-                    <h2 className="text-2xl font-semibold text-slate-900 hover:text-sky-600 transition-colors">
+                    <h2 className="text-2xl font-semibold text-slate-900 hover:text-sky-800 transition-colors">
                       {post.title}
                     </h2>
                   </Link>
@@ -126,7 +126,7 @@ const Blog = () => {
                         <Link
                           key={service.id}
                           to={`/servizi/${service.slug}`}
-                          className="inline-flex items-center space-x-1 text-sm font-medium text-sky-600 bg-sky-50 hover:bg-sky-100 px-3 py-1 rounded-full transition-colors"
+                          className="inline-flex items-center space-x-1 text-sm font-medium text-sky-800 bg-sky-50 hover:bg-sky-100 px-3 py-1 rounded-full transition-colors"
                         >
                           <Tag className="w-3 h-3" />
                           <span>{service.name}</span>
@@ -137,7 +137,7 @@ const Blog = () => {
 
                   <Link
                     to={`/blog/${post.slug}`}
-                    className="mt-6 inline-flex items-center space-x-2 text-sky-600 font-semibold hover:text-sky-700 transition-colors"
+                    className="mt-6 inline-flex items-center space-x-2 text-sky-800 font-semibold hover:text-sky-700 transition-colors"
                   >
                     <span>Leggi l&apos;articolo</span>
                     <ArrowRight className="w-4 h-4" />

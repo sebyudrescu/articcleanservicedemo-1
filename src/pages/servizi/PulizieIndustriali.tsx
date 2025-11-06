@@ -7,7 +7,7 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { pulizieIndustrialiImage } from '@/data/serviceImages';
+import { pulizieIndustrialiImage, pulizieIndustrialiImageSmall } from '@/data/serviceImages';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const faqItems = [
@@ -126,11 +126,11 @@ const PulizieIndustriali = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-3 mb-6">
-                <Factory className="w-8 h-8 text-sky-500" />
-                <span className="text-sky-600 font-semibold">Servizio Specializzato</span>
+                <Factory className="w-8 h-8 text-sky-700" />
+                <span className="text-sky-800 font-semibold">Servizio Specializzato</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                Pulizie <span className="text-sky-500">Industriali</span>
+                Pulizie <span className="text-sky-700">Industriali</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
                 Interventi specializzati <strong>a Brescia e provincia</strong>{' '}per capannoni industriali, magazzini e ambienti produttivi.
@@ -149,11 +149,12 @@ const PulizieIndustriali = () => {
             <div>
               <LazyImage
                 src={pulizieIndustrialiImage}
+                srcSet={`${pulizieIndustrialiImageSmall} 640w, ${pulizieIndustrialiImage} 960w`}
                 alt="Squadra che igienizza un capannone industriale a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
-                width={640}
-                height={540}
-                fallbackSrc={pulizieIndustrialiImage}
+                width={960}
+                height={598}
+                fallbackSrc={pulizieIndustrialiImageSmall}
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />
@@ -184,7 +185,7 @@ const PulizieIndustriali = () => {
                 as="article"
                 className="group relative flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-800 shadow-inner group-hover:bg-sky-200 transition-colors">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <p className="text-base font-semibold leading-relaxed text-slate-800">
@@ -216,7 +217,7 @@ const PulizieIndustriali = () => {
                 as="article"
                 className="group flex h-full flex-col items-center rounded-2xl border border-sky-200 bg-white/95 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-800 shadow-inner group-hover:bg-sky-200 transition-colors">
                   <benefit.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
@@ -254,14 +255,14 @@ const PulizieIndustriali = () => {
               >
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 mb-1">{type.title}</h3>
-                  <p className="text-sm font-medium uppercase tracking-[0.3em] text-sky-500 mb-4">{type.description}</p>
+                  <p className="text-sm font-medium uppercase tracking-[0.3em] text-sky-700 mb-4">{type.description}</p>
 
                   <div className="mb-6">
                     <h4 className="font-semibold text-slate-900 mb-2">Servizi inclusi</h4>
                     <ul className="space-y-2">
                       {type.features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-sky-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="w-4 h-4 text-sky-700 mt-0.5 flex-shrink-0" />
                           <span className="text-slate-600 text-sm leading-relaxed">{feature}</span>
                         </li>
                       ))}
@@ -306,7 +307,7 @@ const PulizieIndustriali = () => {
                 as="article"
                 className="group flex h-full items-center gap-4 rounded-2xl border border-sky-200 bg-white/95 p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-md"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-sky-100 text-sky-800 shadow-inner group-hover:bg-sky-200 transition-colors">
                   <Wrench className="w-5 h-5" />
                 </div>
                 <span className="text-slate-700 font-semibold leading-relaxed">{item}</span>

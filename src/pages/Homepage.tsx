@@ -1,11 +1,16 @@
 import { ArrowRight, Sparkles, Shield, Clock, Award, Users, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { CTASection } from '@/components/ui/cta-with-rectangle';
-import { serviceImagesByLink } from '@/data/serviceImages';
-import heroBackground from '../../immagini-servizi/pulizie uffici.jpg';
+import { serviceImagesByLink, serviceImageMeta, pulizieUfficiHeroImage } from '@/data/serviceImages';
+import LazyImage from '@/components/LazyImage';
+import { cdnImage } from '@/utils/image';
 
 const Homepage = () => {
-  const heroImage = heroBackground;
+  const heroImage = pulizieUfficiHeroImage;
+  const sanificazioneBaseImage = 'https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg';
+  const sanificazioneImage = cdnImage(`${sanificazioneBaseImage}?auto=compress&cs=tinysrgb&w=960`, { width: 960, quality: 75, fit: 'cover' });
+  const sanificazioneImageSmall = cdnImage(`${sanificazioneBaseImage}?auto=compress&cs=tinysrgb&w=640`, { width: 640, quality: 70, fit: 'cover' });
+
   const services = [
     {
       title: "Pulizie Uffici",
@@ -14,7 +19,8 @@ const Homepage = () => {
       features: ["Pulizia uffici Brescia", "Sanificazione postazioni lavoro", "Gestione rifiuti certificata"],
       link: "/servizi/pulizie-uffici",
       image: serviceImagesByLink['/servizi/pulizie-uffici'],
-      alt: "Addetta alle pulizie che igienizza una scrivania in un ufficio a Brescia"
+      alt: "Addetta alle pulizie che igienizza una scrivania in un ufficio a Brescia",
+      meta: serviceImageMeta.uffici
     },
     {
       title: "Pulizie Industriali",
@@ -23,7 +29,8 @@ const Homepage = () => {
       features: ["Pulizia capannoni Brescia", "Aspirazione industriale", "Trattamento pavimenti resinati"],
       link: "/servizi/pulizie-industriali",
       image: serviceImagesByLink['/servizi/pulizie-industriali'],
-      alt: "Operatore che pulisce un capannone industriale a Brescia"
+      alt: "Operatore che pulisce un capannone industriale a Brescia",
+      meta: serviceImageMeta.industriale
     },
     {
       title: "Pulizie Post-Cantiere",
@@ -32,7 +39,8 @@ const Homepage = () => {
       features: ["Rimozione detriti edili", "Pulizia finale Brescia", "Consegna immediata"],
       link: "/servizi/pulizie-post-cantiere",
       image: serviceImagesByLink['/servizi/pulizie-post-cantiere'],
-      alt: "Tecnici che rifiniscono la pulizia post ristrutturazione"
+      alt: "Tecnici che rifiniscono la pulizia post ristrutturazione",
+      meta: serviceImageMeta['post-cantiere']
     },
     {
       title: "Pulizie Vetri e Vetrate",
@@ -41,7 +49,8 @@ const Homepage = () => {
       features: ["Vetri senza aloni Brescia", "Interventi in altezza", "Grandi superfici commerciali"],
       link: "/servizi/pulizie-vetri",
       image: serviceImagesByLink['/servizi/pulizie-vetri'],
-      alt: "Addetto che pulisce grandi vetrate di un negozio"
+      alt: "Addetto che pulisce grandi vetrate di un negozio",
+      meta: serviceImageMeta.vetri
     },
     {
       title: "Sanificazione Ambienti",
@@ -49,8 +58,14 @@ const Homepage = () => {
       icon: "🦠",
       features: ["Sanificazione ozono Brescia", "Prodotti ecologici", "Protocolli sicurezza"],
       link: "/servizi/sanificazione-ambienti",
-      image: "https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280",
-      alt: "Operatore che sanifica con nebulizzatore un ambiente di lavoro"
+      image: sanificazioneImage,
+      alt: "Operatore che sanifica con nebulizzatore un ambiente di lavoro",
+      meta: {
+        src: sanificazioneImage,
+        srcSet: `${sanificazioneImageSmall} 640w, ${sanificazioneImage} 960w`,
+        width: 960,
+        height: 569
+      }
     }
   ];
 
@@ -104,7 +119,7 @@ const Homepage = () => {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-16 sm:py-20 lg:py-24">
+      <section className="hero-initial relative overflow-hidden py-16 sm:py-20 lg:py-24" data-cta-anchor="hero">
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -117,7 +132,7 @@ const Homepage = () => {
         </div>
 
         <div className="relative z-10">
-          <div className="max-w-5xl mx-auto text-center px-4 sm:px-6">
+          <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 pt-[calc(env(safe-area-inset-top,0px)+2rem)] sm:pt-0">
             <div className="space-y-6 sm:space-y-7">
               <h1 className="text-white text-[clamp(2.35rem,6vw,3.9rem)] font-extrabold leading-[1.08] tracking-tight drop-shadow-[0_6px_18px_rgba(8,18,44,0.28)]">
                 <span className="block">Impresa di pulizie</span>
@@ -174,7 +189,7 @@ const Homepage = () => {
                     <span className="font-bold text-base sm:text-lg lg:text-xl text-slate-700 group-hover:text-sky-700 transition-colors duration-300 text-center">
                       Scopri i Nostri Servizi
                     </span>
-                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-slate-600 group-hover:text-sky-600 group-hover:translate-x-1 transition-all duration-300" />
+                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-slate-600 group-hover:text-sky-800 group-hover:translate-x-1 transition-all duration-300" />
                   </div>
                 </button>
               </Link>
@@ -208,7 +223,7 @@ const Homepage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              I Nostri <span className="text-sky-500">Servizi</span>
+              I Nostri <span className="text-sky-800">Servizi</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Soluzioni complete per ogni esigenza di pulizia aziendale a Brescia,
@@ -221,13 +236,18 @@ const Homepage = () => {
               <Link
                 key={index}
                 to={service.link}
+                aria-label={`Scopri il servizio ${service.title}`}
                 className="group bg-slate-50 rounded-2xl overflow-hidden hover:bg-white transition-all duration-300 border border-transparent hover:border-sky-100 cursor-pointer shadow-sm hover:shadow-xl"
               >
                 <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={service.image}
+                  <LazyImage
+                    src={service.meta?.src ?? service.image}
+                    srcSet={service.meta?.srcSet}
                     alt={service.alt}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    width={service.meta?.width ?? 680}
+                    height={service.meta?.height ?? 420}
+                    sizes="(min-width: 1024px) 360px, 90vw"
                     loading="lazy"
                   />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent p-4 flex items-center justify-start">
@@ -235,7 +255,7 @@ const Homepage = () => {
                   </div>
                 </div>
                 <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-sky-600 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-sky-800 transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed">
@@ -249,7 +269,7 @@ const Homepage = () => {
                       </li>
                     ))}
                   </ul>
-                  <div className="flex items-center text-sky-600 font-semibold group-hover:text-sky-700 transition-colors pt-2">
+                  <div className="flex items-center text-sky-700 font-semibold group-hover:text-sky-800 transition-colors pt-2">
                     <span>Scopri di più</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
@@ -275,7 +295,7 @@ const Homepage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Perché Scegliere <span className="text-sky-500">Arctic Clean</span>
+              Perché Scegliere <span className="text-sky-800">Arctic Clean</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               Qualità superiore, affidabilità e attenzione ai dettagli che ci distinguono
@@ -290,7 +310,7 @@ const Homepage = () => {
                 className="text-center group"
               >
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mx-auto mb-6 shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-110">
-                  <advantage.icon className="w-8 h-8 text-sky-500" />
+                  <advantage.icon className="w-8 h-8 text-sky-800" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">
                   {advantage.title}
@@ -309,7 +329,7 @@ const Homepage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Cosa Dicono i Nostri <span className="text-sky-500">Clienti</span>
+              Cosa Dicono i Nostri <span className="text-sky-800">Clienti</span>
             </h2>
             <p className="text-lg text-slate-600 max-w-3xl mx-auto">
               La soddisfazione dei nostri clienti è la nostra migliore referenza. 
@@ -334,8 +354,8 @@ const Homepage = () => {
                 </p>
                 
                 <div className="border-t border-slate-200 pt-4">
-                  <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
-                  <p className="text-sky-600 text-sm">{testimonial.role}</p>
+                  <h3 className="text-lg font-bold text-slate-900">{testimonial.name}</h3>
+                  <p className="text-sky-800 text-sm">{testimonial.role}</p>
                   <p className="text-slate-500 text-sm">{testimonial.company}</p>
                 </div>
               </div>
@@ -345,7 +365,7 @@ const Homepage = () => {
           <div className="text-center mt-12">
             <Link
               to="/recensioni"
-              className="inline-flex items-center space-x-2 text-sky-600 hover:text-sky-700 font-semibold"
+              className="inline-flex items-center space-x-2 text-sky-800 hover:text-sky-700 font-semibold"
             >
               <span>Leggi Tutte le Recensioni</span>
               <ArrowRight className="w-4 h-4" />

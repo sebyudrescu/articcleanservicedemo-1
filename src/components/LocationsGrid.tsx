@@ -44,7 +44,7 @@ const LocationsGrid = ({ serviceSlug, serviceName, showAll = true }: LocationsGr
             >
               <div className="flex flex-col items-center text-center space-y-3">
                 <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center group-hover:bg-sky-200 transition-colors">
-                  <MapPin className="w-6 h-6 text-sky-600" />
+                  <MapPin className="w-6 h-6 text-sky-800" />
                 </div>
                 <div>
                   <h3 className="font-bold text-slate-900 group-hover:text-sky-700 transition-colors mb-1">
@@ -56,7 +56,7 @@ const LocationsGrid = ({ serviceSlug, serviceName, showAll = true }: LocationsGr
                     </p>
                   )}
                 </div>
-                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100" />
+                <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-sky-800 group-hover:translate-x-1 transition-all opacity-0 group-hover:opacity-100" />
               </div>
             </Link>
           ))}

@@ -1,14 +1,8 @@
 <!doctype html>
 <html lang="it">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Z54QJBN9Z"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-9Z54QJBN9Z');
-    </script>
+    <title>Impresa di Pulizie a Brescia | Artic Clean Service</title>
+    <meta name="description" content="Impresa di pulizie a Brescia per uffici, condomini e industrie. Servizi professionali con squadre qualificate, interventi programmati ed emergenze 24/7." />
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,8 +14,10 @@
 
     <link rel="preconnect" href="https://i.imgur.com" />
     <link rel="preconnect" href="https://images.pexels.com" />
+    <link rel="preconnect" href="https://images.weserv.nl" crossorigin />
     <link rel="dns-prefetch" href="https://i.imgur.com" />
     <link rel="dns-prefetch" href="https://images.pexels.com" />
+    <link rel="dns-prefetch" href="https://images.weserv.nl" />
 
     <link rel="manifest" href="/manifest.json" />
     <style data-critical>
@@ -36,8 +32,66 @@
         text-rendering: optimizeLegibility;
       }
       a { color: inherit; text-decoration: none; }
+      .hero-initial {
+        position: relative;
+        padding: calc(env(safe-area-inset-top, 0px) + 3rem) 1.25rem 3rem;
+        text-align: center;
+        background: radial-gradient(circle at top, rgba(12,74,110,0.4), rgba(8,47,73,0.85));
+        color: #fff;
+      }
+      .hero-initial h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 6vw, 3.8rem);
+        font-weight: 800;
+        line-height: 1.1;
+      }
+      .hero-initial h2 {
+        margin-top: 1rem;
+        font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+        font-weight: 600;
+        color: rgba(248, 250, 252, 0.85);
+      }
     </style>
-    <link rel="stylesheet" href="/src/index.css" />
+    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/src/index.css" /></noscript>
+    <link
+      rel="preload"
+      as="image"
+      href="/images/optimized/pulizie-uffici-1600.webp"
+      imagesrcset="/images/optimized/pulizie-uffici-960.webp 960w, /images/optimized/pulizie-uffici-1600.webp 1600w"
+      imagesizes="100vw"
+      type="image/webp"
+    />
+    <script>
+      (function() {
+        function loadGTM() {
+          if (window.__gtmLoaded) return;
+          window.__gtmLoaded = true;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=G-9Z54QJBN9Z';
+          document.head.appendChild(script);
+          window.gtag = function(){ window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', 'G-9Z54QJBN9Z');
+        }
+
+        window.__loadGTM = loadGTM;
+
+        try {
+          if (typeof window !== 'undefined' && window.localStorage && window.localStorage.getItem('articConsent') === 'granted') {
+            loadGTM();
+          }
+        } catch (err) {
+          console.warn('Consent state unavailable', err);
+        }
+
+        window.addEventListener('articConsentGranted', loadGTM);
+      })();
+    </script>
     <!--app-head-->
   </head>
   <body>

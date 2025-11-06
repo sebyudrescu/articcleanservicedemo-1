@@ -159,7 +159,7 @@ const FAQ = () => {
                       </div>
                       <Link
                         to="/richiedi-preventivo"
-                        className="inline-flex items-center px-5 py-3 rounded-lg bg-white text-sky-600 font-semibold border border-sky-200 hover:bg-sky-50 transition-colors"
+                        className="inline-flex items-center px-5 py-3 rounded-lg bg-white text-sky-800 font-semibold border border-sky-200 hover:bg-sky-50 transition-colors"
                       >
                         Parla con un consulente
                       </Link>
@@ -189,14 +189,14 @@ const FAQ = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="mailto:info@articpulizie.it"
-                className="inline-flex items-center px-6 py-3 rounded-lg bg-white text-sky-600 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center px-6 py-3 rounded-lg bg-white text-sky-800 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Scrivici via email
               </a>
               <a
                 href="tel:+390305231285"
-                className="inline-flex items-center px-6 py-3 rounded-lg border border-white text-white font-semibold hover:bg-white hover:text-sky-600 transition-all duration-300"
+                className="inline-flex items-center px-6 py-3 rounded-lg border border-white text-white font-semibold hover:bg-white hover:text-sky-800 transition-all duration-300"
               >
                 <PhoneCall className="w-5 h-5 mr-2" />
                 Contatto immediato

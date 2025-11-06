@@ -92,8 +92,8 @@ const ServizioLocale = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-3 mb-6">
-                <MapPin className="w-8 h-8 text-sky-500" />
-                <span className="text-sky-600 font-semibold">{location.name}, Provincia di Brescia</span>
+                <MapPin className="w-8 h-8 text-sky-700" />
+                <span className="text-sky-800 font-semibold">{location.name}, Provincia di Brescia</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 {content.h1}
@@ -151,7 +151,7 @@ const ServizioLocale = () => {
                 key={index}
                 className="flex items-start space-x-3 p-4 bg-white rounded-lg hover:shadow-md transition-all duration-300"
               >
-                <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-sky-700 mt-0.5 flex-shrink-0" />
                 <span className="text-slate-700 font-medium">{feature}</span>
               </div>
             ))}
@@ -177,7 +177,7 @@ const ServizioLocale = () => {
                 className="bg-slate-50 rounded-xl p-6 hover:bg-sky-50 transition-all duration-300 text-center"
               >
                 <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <benefit.icon className="w-8 h-8 text-sky-600" />
+                  <benefit.icon className="w-8 h-8 text-sky-800" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
                   {benefit.title}
@@ -195,7 +195,7 @@ const ServizioLocale = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-xl p-8 shadow-md">
             <div className="flex items-center space-x-3 mb-6">
-              <MapPin className="w-6 h-6 text-sky-500" />
+              <MapPin className="w-6 h-6 text-sky-700" />
               <h2 className="text-2xl font-bold text-slate-900">
                 Area Operativa: {location.name} e Dintorni
               </h2>
@@ -243,9 +243,9 @@ const ServizioLocale = () => {
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                    <CheckCircle className="w-6 h-6 text-sky-600" />
+                    <CheckCircle className="w-6 h-6 text-sky-800" />
                   </div>
-                  <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-sky-800 group-hover:translate-x-1 transition-all" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-sky-700 transition-colors">
                   {relService.anchorText}
@@ -277,7 +277,7 @@ const ServizioLocale = () => {
                 className="group bg-white rounded-xl p-5 hover:bg-sky-50 transition-all duration-300 border border-slate-200 hover:border-sky-300 hover:shadow-md text-center"
               >
                 <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-200 transition-colors">
-                  <MapPin className="w-6 h-6 text-sky-600" />
+                  <MapPin className="w-6 h-6 text-sky-800" />
                 </div>
                 <h3 className="text-base font-bold text-slate-900 group-hover:text-sky-700 transition-colors mb-1">
                   {relLocation.anchorText}

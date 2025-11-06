@@ -132,9 +132,9 @@ const RichidiPreventivo = () => {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="flex items-center justify-center space-x-3 mb-6">
-              <FileText className="w-8 h-8 text-sky-500" />
+              <FileText className="w-8 h-8 text-sky-700" />
             <h1 className="text-4xl lg:text-5xl font-bold text-slate-900">
-              Richiedi <span className="text-sky-500">Preventivo</span>
+              Richiedi <span className="text-sky-700">Preventivo</span>
             </h1>
           </div>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
@@ -154,7 +154,7 @@ const RichidiPreventivo = () => {
             {/* Dati Personali */}
             <div>
               <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
-                <User className="w-5 h-5 mr-2 text-sky-500" />
+                <User className="w-5 h-5 mr-2 text-sky-700" />
                 Dati Personali
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
@@ -192,7 +192,7 @@ const RichidiPreventivo = () => {
             {/* Contatti */}
             <div>
               <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
-                <Phone className="w-5 h-5 mr-2 text-sky-500" />
+                <Phone className="w-5 h-5 mr-2 text-sky-700" />
                 Informazioni di Contatto
               </h3>
               <div className="grid md:grid-cols-2 gap-6">

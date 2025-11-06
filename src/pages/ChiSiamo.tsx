@@ -91,7 +91,7 @@ const ChiSiamo = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-sky-600 mb-2">
+                  <div className="text-4xl md:text-5xl font-bold text-sky-800 mb-2">
                     {stat.number}
                   </div>
                   <div className="text-slate-600 font-medium">
@@ -227,7 +227,7 @@ const ChiSiamo = () => {
                   key={index}
                   className="bg-gradient-to-br from-sky-50 to-cyan-50 rounded-2xl p-8 text-center"
                 >
-                  <div className="text-5xl font-bold text-sky-600 mb-3">
+                  <div className="text-5xl font-bold text-sky-800 mb-3">
                     {member.count}
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">
@@ -251,7 +251,7 @@ const ChiSiamo = () => {
               </p>
               <Link
                 to="/richiedi-preventivo"
-                className="inline-flex items-center space-x-2 bg-white text-sky-600 px-8 py-4 rounded-xl font-semibold hover:bg-sky-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center space-x-2 bg-white text-sky-800 px-8 py-4 rounded-xl font-semibold hover:bg-sky-50 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>Richiedi un Preventivo Gratuito</span>
               </Link>

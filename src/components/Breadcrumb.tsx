@@ -18,7 +18,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
           <li>
             <Link
               to="/"
-              className="flex items-center text-slate-600 hover:text-sky-600 transition-colors"
+              className="flex items-center text-slate-600 hover:text-sky-800 transition-colors"
             >
               <Home className="w-4 h-4" />
               <span className="ml-1">Home</span>
@@ -30,7 +30,7 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
               {item.path ? (
                 <Link
                   to={item.path}
-                  className="text-slate-600 hover:text-sky-600 transition-colors"
+                  className="text-slate-600 hover:text-sky-800 transition-colors"
                 >
                   {item.label}
                 </Link>

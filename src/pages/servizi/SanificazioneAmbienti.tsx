@@ -151,11 +151,11 @@ const SanificazioneAmbienti = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-3 mb-6">
-                <Shield className="w-8 h-8 text-sky-500" />
-                <span className="text-sky-600 font-semibold">Servizio Specializzato</span>
+                <Shield className="w-8 h-8 text-sky-700" />
+                <span className="text-sky-800 font-semibold">Servizio Specializzato</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                Sanificazione <span className="text-sky-500">Ambienti</span>
+                Sanificazione <span className="text-sky-700">Ambienti</span>
               </h1>
               <p className="text-xl text-slate-600 leading-relaxed mb-8">
                 Trattamenti certificati <strong>a Brescia e provincia</strong>{' '}per la sicurezza e l'igiene degli ambienti di lavoro.
@@ -207,7 +207,7 @@ const SanificazioneAmbienti = () => {
                 key={index}
                 className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg hover:bg-sky-50 transition-colors duration-300"
               >
-                <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-sky-700 mt-0.5 flex-shrink-0" />
                 <span className="text-slate-700 font-medium">{feature}</span>
               </div>
             ))}
@@ -234,7 +234,7 @@ const SanificazioneAmbienti = () => {
                 className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 text-center"
               >
                 <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <benefit.icon className="w-8 h-8 text-sky-600" />
+                  <benefit.icon className="w-8 h-8 text-sky-800" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
                   {benefit.title}
@@ -276,7 +276,7 @@ const SanificazioneAmbienti = () => {
                     <ul className="space-y-1">
                       {type.features.map((feature, i) => (
                         <li key={i} className="flex items-center space-x-2">
-                          <CheckCircle className="w-4 h-4 text-sky-500" />
+                          <CheckCircle className="w-4 h-4 text-sky-700" />
                           <span className="text-slate-600 text-sm">{feature}</span>
                         </li>
                       ))}
@@ -351,7 +351,7 @@ const SanificazioneAmbienti = () => {
                 <ul className="space-y-1">
                   {products.slice(0, 3).map((product, i) => (
                     <li key={i} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-sky-500" />
+                      <CheckCircle className="w-4 h-4 text-sky-700" />
                       <span className="text-slate-600 text-sm">{product}</span>
                     </li>
                   ))}
@@ -362,7 +362,7 @@ const SanificazioneAmbienti = () => {
                 <ul className="space-y-1">
                   {products.slice(3).map((product, i) => (
                     <li key={i} className="flex items-center space-x-2">
-                      <CheckCircle className="w-4 h-4 text-sky-500" />
+                      <CheckCircle className="w-4 h-4 text-sky-700" />
                       <span className="text-slate-600 text-sm">{product}</span>
                     </li>
                   ))}
@@ -387,19 +387,19 @@ const SanificazioneAmbienti = () => {
               <h3 className="text-xl font-bold text-slate-900 mb-6">Certificazioni:</h3>
               <ul className="space-y-3">
                 <li className="flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-sky-500" />
+                  <Award className="w-5 h-5 text-sky-700" />
                   <span className="text-slate-700">Certificazione ISO 14001 Ambientale</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-sky-500" />
+                  <Award className="w-5 h-5 text-sky-700" />
                   <span className="text-slate-700">Autorizzazione Ministero della Salute</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-sky-500" />
+                  <Award className="w-5 h-5 text-sky-700" />
                   <span className="text-slate-700">Certificati prodotti PMC</span>
                 </li>
                 <li className="flex items-center space-x-3">
-                  <Award className="w-5 h-5 text-sky-500" />
+                  <Award className="w-5 h-5 text-sky-700" />
                   <span className="text-slate-700">Formazione personale specializzato</span>
                 </li>
               </ul>

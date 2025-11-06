@@ -34,7 +34,7 @@ export const siteMetadata = {
   priceRange: '€€',
   paymentAccepted: ['Contanti', 'Bonifico', 'Carta di credito'],
   currenciesAccepted: ['EUR'],
-  logoUrl: 'https://articpulizie.it/assets/logo.png',
+  logoUrl: 'https://articpulizie.it/assets/logo.webp',
   socialProfiles: [
     'https://www.facebook.com/articpulizie',
     'https://www.instagram.com/articpulizie',

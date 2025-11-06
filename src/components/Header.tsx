@@ -45,7 +45,7 @@ const Header = () => {
           <Link to="/" className="flex items-center">
             <div className="h-20 md:h-24 flex items-center">
               <img
-                src="/assets/logo.png"
+                src="/assets/logo.webp"
                 alt="Artic Clean logo"
                 className="h-full w-auto max-w-[15rem] md:max-w-[18rem] object-contain"
                 width={528}

@@ -180,7 +180,7 @@ const ComeLavoriamo = () => {
                       <ul className="space-y-3">
                         {step.details.map((detail, idx) => (
                           <li key={idx} className="flex items-start space-x-3">
-                            <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
+                            <CheckCircle className="w-5 h-5 text-sky-700 mt-0.5 flex-shrink-0" />
                             <span className="text-slate-600">{detail}</span>
                           </li>
                         ))}
@@ -189,7 +189,7 @@ const ComeLavoriamo = () => {
 
                     <div className="flex-1">
                       <div className={`bg-gradient-to-br ${isEven ? 'from-sky-100 to-cyan-100' : 'from-cyan-100 to-sky-100'} rounded-3xl p-12 shadow-lg`}>
-                        <Icon className="w-32 h-32 text-sky-500 mx-auto opacity-20" />
+                        <Icon className="w-32 h-32 text-sky-700 mx-auto opacity-20" />
                       </div>
                     </div>
                   </div>
@@ -280,7 +280,7 @@ const ComeLavoriamo = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/richiedi-preventivo"
-                className="inline-flex items-center justify-center space-x-2 bg-white text-sky-600 px-8 py-4 rounded-xl font-semibold hover:bg-sky-50 transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="inline-flex items-center justify-center space-x-2 bg-white text-sky-800 px-8 py-4 rounded-xl font-semibold hover:bg-sky-50 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 <span>Richiedi Preventivo Gratuito</span>
               </Link>

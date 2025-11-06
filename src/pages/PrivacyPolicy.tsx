@@ -13,8 +13,8 @@ const PrivacyPolicy = () => {
       content: (
         <p>
           Il titolare del trattamento dei dati personali è <strong>{siteMetadata.legalName}</strong>, con sede in Via Carpaccio 10,
-          25100 Brescia. Per qualsiasi richiesta puoi scrivere a <a href="mailto:info@articpulizie.it" className="text-sky-600 hover:underline">info@articpulizie.it</a>
-          oppure telefonare al <a href="tel:+390305231285" className="text-sky-600 hover:underline">+39 030 52 31 285</a>.
+          25100 Brescia. Per qualsiasi richiesta puoi scrivere a <a href="mailto:info@articpulizie.it" className="text-sky-800 hover:underline">info@articpulizie.it</a>
+          oppure telefonare al <a href="tel:+390305231285" className="text-sky-800 hover:underline">+39 030 52 31 285</a>.
         </p>
       )
     },
@@ -89,7 +89,7 @@ const PrivacyPolicy = () => {
         <div className="space-y-4 text-slate-600">
           <p>
             Puoi esercitare in ogni momento i diritti previsti dagli articoli 15-22 del GDPR, tra cui accesso, rettifica, cancellazione, limitazione e portabilità dei dati.
-            Per revocare il consenso o richiedere la cancellazione dei dati, scrivi a <a href="mailto:privacy@articpulizie.it" className="text-sky-600 hover:underline">privacy@articpulizie.it</a>.
+            Per revocare il consenso o richiedere la cancellazione dei dati, scrivi a <a href="mailto:privacy@articpulizie.it" className="text-sky-800 hover:underline">privacy@articpulizie.it</a>.
           </p>
           <p>
             Hai inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali o all&apos;autorità competente del tuo Stato membro.
@@ -108,7 +108,7 @@ const PrivacyPolicy = () => {
             I cookie marketing vengono attivati solo previo consenso esplicito dell&apos;utente. Puoi gestire le preferenze in qualsiasi momento tramite il banner dedicato.
           </p>
           <p>
-            Per maggiori dettagli consulta la nostra <Link to="#cookie-policy" className="text-sky-600 hover:underline">Cookie Policy</Link>.
+            Per maggiori dettagli consulta la nostra <Link to="#cookie-policy" className="text-sky-800 hover:underline">Cookie Policy</Link>.
           </p>
         </div>
       )
@@ -199,14 +199,14 @@ const PrivacyPolicy = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <a
                 href="mailto:privacy@articpulizie.it"
-                className="inline-flex items-center px-6 py-3 rounded-lg bg-white text-sky-600 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                className="inline-flex items-center px-6 py-3 rounded-lg bg-white text-sky-800 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <Mail className="w-5 h-5 mr-2" />
                 Scrivi al DPO
               </a>
               <a
                 href="tel:+390305231285"
-                className="inline-flex items-center px-6 py-3 rounded-lg border border-white text-white font-semibold hover:bg-white hover:text-sky-600 transition-all duration-300"
+                className="inline-flex items-center px-6 py-3 rounded-lg border border-white text-white font-semibold hover:bg-white hover:text-sky-800 transition-all duration-300"
               >
                 <Phone className="w-5 h-5 mr-2" />
                 Supporto telefonico

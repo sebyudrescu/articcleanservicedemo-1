@@ -6,7 +6,7 @@ import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { gestioneCarrellatiImage } from '@/data/serviceImages';
+import { gestioneCarrellatiImage, gestioneCarrellatiImageSmall } from '@/data/serviceImages';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const faqItems = [
@@ -164,10 +164,11 @@ const GestioneCarrellati = () => {
             <div>
               <LazyImage
                 src={gestioneCarrellatiImage}
-                fallbackSrc={gestioneCarrellatiImage}
+                srcSet={`${gestioneCarrellatiImageSmall} 640w, ${gestioneCarrellatiImage} 960w`}
+                fallbackSrc={gestioneCarrellatiImageSmall}
                 alt="Gestione carrellati a Brescia con Artic Pulizie"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
-                width={640}
+                width={960}
                 height={540}
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority

@@ -5,7 +5,7 @@ import InternalLinkSection from '@/components/InternalLinkSection';
 import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { serviceImagesById } from '@/data/serviceImages';
+import { serviceImagesById, serviceImageMeta } from '@/data/serviceImages';
 import { cdnImage } from '@/utils/image';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
@@ -28,6 +28,40 @@ const faqItems = [
 ];
 
 const Servizi = () => {
+  const sanificazioneBaseImage = 'https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg';
+  const sanificazioneImageLarge = cdnImage(`${sanificazioneBaseImage}?auto=compress&cs=tinysrgb&w=1280`, {
+    width: 1280,
+    quality: 75,
+    fit: 'cover'
+  });
+  const sanificazioneImage = cdnImage(`${sanificazioneBaseImage}?auto=compress&cs=tinysrgb&w=960`, {
+    width: 960,
+    quality: 75,
+    fit: 'cover'
+  });
+  const sanificazioneImageSmall = cdnImage(`${sanificazioneBaseImage}?auto=compress&cs=tinysrgb&w=640`, {
+    width: 640,
+    quality: 70,
+    fit: 'cover'
+  });
+
+  const giardinaggioBaseImage = 'https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg';
+  const giardinaggioImageLarge = cdnImage(`${giardinaggioBaseImage}?auto=compress&cs=tinysrgb&w=1200`, {
+    width: 1200,
+    quality: 70,
+    fit: 'cover'
+  });
+  const giardinaggioImage = cdnImage(`${giardinaggioBaseImage}?auto=compress&cs=tinysrgb&w=960`, {
+    width: 960,
+    quality: 70,
+    fit: 'cover'
+  });
+  const giardinaggioImageSmall = cdnImage(`${giardinaggioBaseImage}?auto=compress&cs=tinysrgb&w=640`, {
+    width: 640,
+    quality: 70,
+    fit: 'cover'
+  });
+
   const services = [
     {
       id: 'uffici',
@@ -49,7 +83,8 @@ const Servizi = () => {
         "Immagine aziendale impeccabile"
       ],
       image: serviceImagesById.uffici,
-      fallbackImage: serviceImagesById.uffici
+      fallbackImage: serviceImagesById.uffici,
+      imageMeta: serviceImageMeta.uffici
     },
     {
       id: 'industriale',
@@ -71,7 +106,8 @@ const Servizi = () => {
         "Mantenimento efficienza impianti"
       ],
       image: serviceImagesById.industriale,
-      fallbackImage: serviceImagesById.industriale
+      fallbackImage: serviceImagesById.industriale,
+      imageMeta: serviceImageMeta.industriale
     },
     {
       id: 'post-cantiere',
@@ -93,7 +129,8 @@ const Servizi = () => {
         "Risparmio di tempo e costi"
       ],
       image: serviceImagesById['post-cantiere'],
-      fallbackImage: serviceImagesById['post-cantiere']
+      fallbackImage: serviceImagesById['post-cantiere'],
+      imageMeta: serviceImageMeta['post-cantiere']
     },
     {
       id: 'vetri',
@@ -115,7 +152,8 @@ const Servizi = () => {
         "Risparmio energetico illuminazione"
       ],
       image: serviceImagesById.vetri,
-      fallbackImage: serviceImagesById.vetri
+      fallbackImage: serviceImagesById.vetri,
+      imageMeta: serviceImageMeta.vetri
     },
     {
       id: 'sanificazione',
@@ -136,8 +174,14 @@ const Servizi = () => {
         "Riduzione rischi biologici",
         "Tranquillità per clienti e visitatori"
       ],
-      image: cdnImage('https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280', { width: 1280, quality: 75, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280'
+      image: sanificazioneImageLarge,
+      fallbackImage: `${sanificazioneBaseImage}?auto=compress&cs=tinysrgb&w=1280`,
+      imageMeta: {
+        src: sanificazioneImage,
+        srcSet: `${sanificazioneImageSmall} 640w, ${sanificazioneImage} 960w`,
+        width: 960,
+        height: 640
+      }
     },
     {
       id: 'condomini',
@@ -159,7 +203,8 @@ const Servizi = () => {
         "Promozione per servizi integrati"
       ],
       image: serviceImagesById.condomini,
-      fallbackImage: serviceImagesById.condomini
+      fallbackImage: serviceImagesById.condomini,
+      imageMeta: serviceImageMeta.condomini
     },
     {
       id: 'giardinaggio',
@@ -180,8 +225,14 @@ const Servizi = () => {
         "Ambiente più salubre e piacevole",
         "Servizio programmato e affidabile"
       ],
-      image: cdnImage('https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg?auto=compress&cs=tinysrgb&w=1200', { width: 1200, quality: 70, fit: 'cover' }),
-      fallbackImage: 'https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg?auto=compress&cs=tinysrgb&w=1200'
+      image: giardinaggioImageLarge,
+      fallbackImage: `${giardinaggioBaseImage}?auto=compress&cs=tinysrgb&w=1200`,
+      imageMeta: {
+        src: giardinaggioImage,
+        srcSet: `${giardinaggioImageSmall} 640w, ${giardinaggioImage} 960w`,
+        width: 960,
+        height: 640
+      }
     },
     {
       id: 'carrellati',
@@ -203,7 +254,8 @@ const Servizi = () => {
         "Risparmio tempo per il personale"
       ],
       image: serviceImagesById.carrellati,
-      fallbackImage: serviceImagesById.carrellati
+      fallbackImage: serviceImagesById.carrellati,
+      imageMeta: serviceImageMeta.carrellati
     }
   ];
 
@@ -251,7 +303,7 @@ const Servizi = () => {
       <section className="py-20 bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            I Nostri <span className="text-sky-500">Servizi</span>
+            I Nostri <span className="text-sky-700">Servizi</span>
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
             Soluzioni complete per aziende e privati a Brescia e provincia.
@@ -276,7 +328,7 @@ const Servizi = () => {
                 <div className={`space-y-6 ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                   <div className="flex items-center space-x-4">
                     <div className="w-12 h-12 bg-sky-100 rounded-xl flex items-center justify-center">
-                      <service.icon className="w-6 h-6 text-sky-600" />
+                      <service.icon className="w-6 h-6 text-sky-800" />
                     </div>
                     <h2 className="text-3xl lg:text-4xl font-bold text-slate-900">
                       {service.title}
@@ -295,7 +347,7 @@ const Servizi = () => {
                     <ul className="grid md:grid-cols-2 gap-2">
                       {service.features.map((feature, i) => (
                         <li key={i} className="flex items-start space-x-2">
-                          <CheckCircle className="w-5 h-5 text-sky-500 mt-0.5 flex-shrink-0" />
+                          <CheckCircle className="w-5 h-5 text-sky-700 mt-0.5 flex-shrink-0" />
                           <span className="text-slate-600">{feature}</span>
                         </li>
                       ))}
@@ -321,12 +373,14 @@ const Servizi = () => {
                 {/* Image */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
                   <LazyImage
-                    src={service.image}
+                    src={service.imageMeta?.src ?? service.image}
+                    srcSet={service.imageMeta?.srcSet}
                     fallbackSrc={service.fallbackImage}
                     alt={`${service.title} a Brescia`}
                     className="w-full h-80 lg:h-96 object-cover rounded-xl shadow-lg"
-                    width={600}
-                    height={480}
+                    width={service.imageMeta?.width ?? 600}
+                    height={service.imageMeta?.height ?? 480}
+                    sizes="(min-width: 1024px) 560px, 90vw"
                   />
                 </div>
               </div>
@@ -354,7 +408,7 @@ const Servizi = () => {
                 className="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all duration-300 text-center"
               >
                 <div className="w-16 h-16 bg-sky-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-                  <item.icon className="w-8 h-8 text-sky-600" />
+                  <item.icon className="w-8 h-8 text-sky-800" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-4">
                   {item.title}

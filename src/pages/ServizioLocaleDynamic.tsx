@@ -69,7 +69,7 @@ const ServizioLocaleDynamic = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-slate-50">
         <div className="text-center">
-          <Loader2 className="w-12 h-12 text-sky-500 animate-spin mx-auto mb-4" />
+          <Loader2 className="w-12 h-12 text-sky-700 animate-spin mx-auto mb-4" />
           <p className="text-slate-600">Caricamento...</p>
         </div>
       </div>
@@ -223,7 +223,7 @@ const ServizioLocaleDynamic = () => {
             <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
                 <div>
-                  <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-sm font-semibold text-sky-600 shadow-sm ring-1 ring-sky-100">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-sm font-semibold text-sky-800 shadow-sm ring-1 ring-sky-100">
                     <Sparkles className="w-4 h-4" /> Team locale certificato
                   </span>
                   <h2 className="mt-4 text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
@@ -242,7 +242,7 @@ const ServizioLocaleDynamic = () => {
                     delay={index * 120}
                     className="group flex items-start gap-4 rounded-2xl border border-slate-200/70 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300/80 hover:shadow-xl"
                   >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-800 shadow-inner group-hover:bg-sky-200 transition-colors">
                       <CheckCircle className="w-6 h-6" />
                     </div>
                     <p className="text-slate-600 leading-relaxed text-base">
@@ -262,7 +262,7 @@ const ServizioLocaleDynamic = () => {
               <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-slate-50 via-white to-slate-50 p-8 sm:p-12 shadow-lg">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-sky-600 shadow-inner">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-sky-800 shadow-inner">
                       <MapPin className="w-6 h-6" />
                     </div>
                     <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
@@ -349,7 +349,7 @@ const ServizioLocaleDynamic = () => {
                     className="group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="h-10 w-10 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center shadow-inner">
+                      <div className="h-10 w-10 rounded-xl bg-sky-100 text-sky-800 flex items-center justify-center shadow-inner">
                         <Sparkles className="w-5 h-5" />
                       </div>
                       <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-700 transition-colors">
@@ -394,7 +394,7 @@ const ServizioLocaleDynamic = () => {
                     delay={index * 100}
                     className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   >
-                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                    <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-800 shadow-inner group-hover:bg-sky-200 transition-colors">
                       <benefit.icon className="w-8 h-8" />
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-sky-700 transition-colors">
@@ -438,8 +438,8 @@ const ServizioLocaleDynamic = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-3 mb-6">
-                <MapPin className="w-8 h-8 text-sky-500" />
-                <span className="text-sky-600 font-semibold">{location.name}, Provincia di Brescia</span>
+                <MapPin className="w-8 h-8 text-sky-700" />
+                <span className="text-sky-800 font-semibold">{location.name}, Provincia di Brescia</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 {pageData.h1_title}
@@ -505,9 +505,9 @@ const ServizioLocaleDynamic = () => {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
-                      <CheckCircle className="w-6 h-6 text-sky-600" />
+                      <CheckCircle className="w-6 h-6 text-sky-800" />
                     </div>
-                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-sky-800 group-hover:translate-x-1 transition-all" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2 group-hover:text-sky-700 transition-colors">
                     {otherService.name} a {location.name}
@@ -541,7 +541,7 @@ const ServizioLocaleDynamic = () => {
                   className="group bg-white rounded-xl p-5 hover:bg-sky-50 transition-all duration-300 border border-slate-200 hover:border-sky-300 hover:shadow-md text-center"
                 >
                   <div className="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-sky-200 transition-colors">
-                    <MapPin className="w-6 h-6 text-sky-600" />
+                    <MapPin className="w-6 h-6 text-sky-800" />
                   </div>
                   <h3 className="text-base font-bold text-slate-900 group-hover:text-sky-700 transition-colors capitalize">
                     {nearbySlug.replace(/-/g, ' ')}

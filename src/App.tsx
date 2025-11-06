@@ -7,6 +7,7 @@ import MouseGlow from './components/MouseGlow';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import StickyCtaBanner from './components/StickyCtaBanner';
+import ConsentBanner from './components/ConsentBanner';
 import SanificazioneAmbienti from './pages/servizi/SanificazioneAmbienti';
 
 const isServer = import.meta.env.SSR;
@@ -170,9 +171,9 @@ function App() {
       <Footer />
       <ScrollToTopButton />
       <StickyCtaBanner />
+      <ConsentBanner />
     </div>
   );
 }
 
 export default App;
-

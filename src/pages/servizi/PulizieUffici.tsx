@@ -7,7 +7,7 @@ import LazyImage from '@/components/LazyImage';
 import RelatedBlogPosts from '@/components/RelatedBlogPosts';
 import ScrollReveal from '@/components/ScrollReveal';
 import { buildCanonicalUrl } from '@/data/siteMetadata';
-import { pulizieUfficiImage } from '@/data/serviceImages';
+import { pulizieUfficiImage, pulizieUfficiImageSmall } from '@/data/serviceImages';
 import { buildBreadcrumbSchema, buildFAQSchema, buildServiceSchema } from '@/utils/structuredData';
 
 const faqItems = [
@@ -96,8 +96,8 @@ const PulizieUffici = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="flex items-center space-x-3 mb-6">
-                <Building2 className="w-8 h-8 text-sky-500" />
-                <span className="text-sky-600 font-semibold">Servizio Specializzato</span>
+                <Building2 className="w-8 h-8 text-sky-700" />
+                <span className="text-sky-800 font-semibold">Servizio Specializzato</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                 Pulizie Uffici a Brescia – Servizi Professionali per Aziende e Studi nel Centro e in Provincia
@@ -123,11 +123,12 @@ const PulizieUffici = () => {
             <div>
               <LazyImage
                 src={pulizieUfficiImage}
+                srcSet={`${pulizieUfficiImageSmall} 640w, ${pulizieUfficiImage} 960w`}
                 alt="Addetta alle pulizie che igienizza una scrivania in un ufficio a Brescia"
                 className="w-full h-96 object-cover rounded-xl shadow-lg"
-                width={640}
-                height={540}
-                fallbackSrc={pulizieUfficiImage}
+                width={960}
+                height={640}
+                fallbackSrc={pulizieUfficiImageSmall}
                 sizes="(min-width: 1024px) 540px, 90vw"
                 priority
               />
@@ -186,7 +187,7 @@ const PulizieUffici = () => {
                 as="article"
                 className="group relative flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 text-sky-800 shadow-inner group-hover:bg-sky-200 transition-colors">
                   <CheckCircle className="w-6 h-6" />
                 </div>
                 <p className="text-base font-semibold leading-relaxed text-slate-800">
@@ -218,7 +219,7 @@ const PulizieUffici = () => {
                 as="article"
                 className="group flex h-full flex-col items-center rounded-2xl border border-sky-200 bg-white/95 p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-600 shadow-inner group-hover:bg-sky-200 transition-colors">
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-sky-100 text-sky-800 shadow-inner group-hover:bg-sky-200 transition-colors">
                   <benefit.icon className="w-8 h-8" />
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-3">
@@ -238,7 +239,7 @@ const PulizieUffici = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal as="div" className="bg-white rounded-2xl border border-sky-200/70 p-8 shadow-lg">
             <div className="flex items-center space-x-3 mb-6">
-              <MapPin className="w-6 h-6 text-sky-500" />
+              <MapPin className="w-6 h-6 text-sky-700" />
               <h2 className="text-2xl font-bold text-slate-900">
                 Zona Operativa: Brescia e Provincia
               </h2>
@@ -287,7 +288,7 @@ const PulizieUffici = () => {
                 as="article"
                 className="group flex h-full flex-col rounded-2xl border border-sky-200/70 bg-white/95 p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-sky-300 hover:shadow-xl"
               >
-                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-500 mb-3">
+                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-700 mb-3">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">

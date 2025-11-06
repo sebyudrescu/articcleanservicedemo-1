@@ -54,10 +54,10 @@ const InternalLinkSection = ({
               className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-sky-300 hover:shadow-lg transition-all duration-300"
             >
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600 transition-colors">
+                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-800 transition-colors">
                   {link.title}
                 </h3>
-                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-sky-600 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-sky-800 group-hover:translate-x-1 transition-all" />
               </div>
               <p className="text-sm text-slate-600 leading-relaxed">
                 {link.description}

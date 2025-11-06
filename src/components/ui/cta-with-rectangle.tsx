@@ -21,7 +21,10 @@ interface CTASectionProps {
 
 export const CTASection: React.FC<CTASectionProps> = ({ badge, title, description, action }) => {
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden">
+    <section
+      className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 relative overflow-hidden"
+      data-cta-anchor="cta-hotspot"
+    >
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-r from-sky-500/10 to-cyan-500/10"></div>
       <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-sky-400 to-cyan-400 rounded-full blur-3xl opacity-20"></div>

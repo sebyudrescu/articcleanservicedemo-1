@@ -51,7 +51,7 @@ const BlogPost = () => {
         name: 'Artic Pulizie',
         logo: {
           '@type': 'ImageObject',
-          url: buildCanonicalUrl('/assets/logo.png')
+          url: buildCanonicalUrl('/assets/logo.webp')
         }
       },
       description: post.metaDescription
@@ -75,14 +75,14 @@ const BlogPost = () => {
       <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/blog"
-          className="inline-flex items-center space-x-2 text-sky-600 font-semibold hover:text-sky-700 transition-colors mb-8"
+          className="inline-flex items-center space-x-2 text-sky-800 font-semibold hover:text-sky-700 transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Torna al blog</span>
         </Link>
 
         <header className="mb-10">
-          <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-sky-100 text-sky-600 rounded-full">
+          <p className="inline-flex items-center px-3 py-1 text-sm font-semibold bg-sky-100 text-sky-800 rounded-full">
             Artic Pulizie Brescia
           </p>
           <h1 className="mt-6 text-4xl font-bold text-slate-900 leading-tight">
@@ -146,7 +146,7 @@ const BlogPost = () => {
                 <Link
                   key={service.id}
                   to={`/servizi/${service.slug}`}
-                  className="inline-flex items-center space-x-2 bg-white border border-slate-200 hover:border-sky-300 hover:text-sky-600 px-4 py-2 rounded-full font-medium transition-all duration-200"
+                  className="inline-flex items-center space-x-2 bg-white border border-slate-200 hover:border-sky-300 hover:text-sky-800 px-4 py-2 rounded-full font-medium transition-all duration-200"
                 >
                   <Tag className="w-4 h-4" />
                   <span>{service.name}</span>
@@ -168,7 +168,7 @@ const BlogPost = () => {
                   to={`/blog/${relatedPost.slug}`}
                   className="group block bg-slate-50 rounded-2xl p-6 hover:bg-sky-50 transition-colors duration-300 border border-transparent hover:border-sky-200"
                 >
-                  <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600 transition-colors">
+                  <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-800 transition-colors">
                     {relatedPost.title}
                   </h3>
                   <p className="mt-2 text-slate-600 text-sm leading-relaxed">

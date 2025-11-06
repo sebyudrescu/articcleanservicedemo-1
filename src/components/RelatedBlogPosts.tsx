@@ -34,7 +34,7 @@ const RelatedBlogPosts = ({
           <h2 className="text-3xl font-bold text-slate-900">{title}</h2>
           <Link
             to="/blog"
-            className="inline-flex items-center space-x-2 text-sky-600 font-semibold hover:text-sky-700 transition-colors"
+            className="inline-flex items-center space-x-2 text-sky-800 font-semibold hover:text-sky-700 transition-colors"
           >
             <span>Vai al blog</span>
             <ArrowRight className="w-4 h-4" />
@@ -67,11 +67,11 @@ const RelatedBlogPosts = ({
                     }).format(new Date(post.lastUpdated ?? post.publishedAt))}
                   </span>
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600 transition-colors">
+                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-800 transition-colors">
                   {post.title}
                 </h3>
                 <p className="mt-3 text-sm text-slate-600 leading-relaxed">{post.excerpt}</p>
-                <div className="mt-5 inline-flex items-center space-x-2 text-sm font-semibold text-sky-600 group-hover:text-sky-700">
+                <div className="mt-5 inline-flex items-center space-x-2 text-sm font-semibold text-sky-800 group-hover:text-sky-700">
                   <span>Leggi l&apos;articolo</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
