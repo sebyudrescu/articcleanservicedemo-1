@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FileText, Phone, Send, User, CheckCircle } from 'lucide-react';
 import SEO from '@/components/SEO';
 import InternalLinkSection from '@/components/InternalLinkSection';
@@ -17,25 +17,11 @@ const RichidiPreventivo = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
 
-  const canonicalUrl = buildCanonicalUrl('/richiedi-preventivo');
-  const seoConfig = {
-    title: 'Richiedi Preventivo Pulizie a Brescia | Artic Pulizie',
-    description:
-      'Richiedi un preventivo gratuito per le pulizie Artic Pulizie a Brescia. Compila il modulo e ricevi una proposta personalizzata in 24 ore.',
-    keywords:
-      'preventivo pulizie brescia, richiedi preventivo artic pulizie, preventivo impresa pulizie, sopralluogo gratuito pulizie',
-    canonical: canonicalUrl,
-    structuredData: [
-      {
-        '@context': 'https://schema.org',
-        '@type': 'ContactPage',
-        name: `${siteMetadata.siteName} - Richiedi Preventivo`,
-        url: canonicalUrl,
-        description: 'Modulo per richiedere un preventivo gratuito ai consulenti Artic Pulizie.'
-      },
-      buildBreadcrumbSchema([{ name: 'Richiedi Preventivo', path: '/richiedi-preventivo' }])
-    ].filter(Boolean) as Record<string, unknown>[]
-  };
+  useEffect(() => {
+    if (showThankYou && typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [showThankYou]);
 
   const ThankYouPanel = () => (
     <div className="relative mb-10">
@@ -54,8 +40,7 @@ const RichidiPreventivo = () => {
                 Ti ricontattiamo entro 24 ore
               </h3>
               <p className="text-slate-600 mt-2">
-                Grazie per averci scritto. Il nostro team sta già elaborando il tuo preventivo
-                personalizzato.
+                Grazie per averci scritto. Il nostro team sta già elaborando il tuo preventivo personalizzato.
               </p>
             </div>
           </div>
@@ -76,6 +61,26 @@ const RichidiPreventivo = () => {
       </div>
     </div>
   );
+
+  const canonicalUrl = buildCanonicalUrl('/richiedi-preventivo');
+  const seoConfig = {
+    title: 'Richiedi Preventivo Pulizie a Brescia | Artic Pulizie',
+    description:
+      'Richiedi un preventivo gratuito per le pulizie Artic Pulizie a Brescia. Compila il modulo e ricevi una proposta personalizzata in 24 ore.',
+    keywords:
+      'preventivo pulizie brescia, richiedi preventivo artic pulizie, preventivo impresa pulizie, sopralluogo gratuito pulizie',
+    canonical: canonicalUrl,
+    structuredData: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: `${siteMetadata.siteName} - Richiedi Preventivo`,
+        url: canonicalUrl,
+        description: 'Modulo per richiedere un preventivo gratuito ai consulenti Artic Pulizie.'
+      },
+      buildBreadcrumbSchema([{ name: 'Richiedi Preventivo', path: '/richiedi-preventivo' }])
+    ].filter(Boolean) as Record<string, unknown>[]
+  };
 
   return (
     <>
@@ -296,7 +301,7 @@ const RichidiPreventivo = () => {
                     </>
                   )}
                 </button>
-                <div className="text-center text-sm mt-4">
+                <div className="text-center text-sm mt-4 min-h-[1.25rem]">
                   <p className="text-slate-500">
                     Dopo l&apos;invio verrai contattato entro 24 ore con un preventivo dedicato.
                   </p>
