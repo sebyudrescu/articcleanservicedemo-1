@@ -16,6 +16,7 @@ const RichidiPreventivo = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const canonicalUrl = buildCanonicalUrl('/richiedi-preventivo');
   const seoConfig = {
@@ -36,6 +37,47 @@ const RichidiPreventivo = () => {
       buildBreadcrumbSchema([{ name: 'Richiedi Preventivo', path: '/richiedi-preventivo' }])
     ].filter(Boolean) as Record<string, unknown>[]
   };
+
+  if (showThankYou) {
+    return (
+      <>
+        <SEO {...seoConfig} />
+        <div className="pt-24 pb-20 min-h-screen bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">
+          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
+              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CheckCircle className="w-8 h-8 text-emerald-600" />
+              </div>
+              <h1 className="text-3xl font-bold text-slate-900 mb-4">
+                Richiesta Inviata con Successo!
+              </h1>
+              <p className="text-lg text-slate-600 mb-6">
+                Grazie per aver richiesto un preventivo. Il nostro team ti contatterà entro 24 ore
+                per fornirti una proposta personalizzata.
+              </p>
+              <div className="bg-sky-50 rounded-lg p-4 mb-6 text-left">
+                <p className="text-sky-800 font-semibold">
+                  📞 Telefono: +39 030 52 31 285
+                </p>
+                <p className="text-sky-700">
+                  📧 Email: info@articpulizie.it
+                </p>
+                <p className="text-sky-700">
+                  📍 Via Carpaccio 10, Brescia
+                </p>
+              </div>
+              <a
+                href="/"
+                className="inline-flex items-center space-x-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-sky-600 hover:to-cyan-600 transition-all duration-300"
+              >
+                <span>Torna alla Home</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -107,6 +149,7 @@ const RichidiPreventivo = () => {
                   setSubmitStatus('error');
                 } finally {
                   setIsSubmitting(false);
+                  setShowThankYou(true);
                 }
               }}
             >
@@ -318,43 +361,3 @@ const RichidiPreventivo = () => {
 };
 
 export default RichidiPreventivo;
-  if (submitStatus === 'success') {
-    return (
-      <>
-        <SEO {...seoConfig} />
-        <div className="pt-24 pb-20 min-h-screen bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">
-          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-8 h-8 text-emerald-600" />
-              </div>
-              <h1 className="text-3xl font-bold text-slate-900 mb-4">
-                Richiesta Inviata con Successo!
-              </h1>
-              <p className="text-lg text-slate-600 mb-6">
-                Grazie per aver richiesto un preventivo. Il nostro team ti contatterà entro 24 ore
-                per fornirti una proposta personalizzata.
-              </p>
-              <div className="bg-sky-50 rounded-lg p-4 mb-6 text-left">
-                <p className="text-sky-800 font-semibold">
-                  📞 Telefono: +39 030 52 31 285
-                </p>
-                <p className="text-sky-700">
-                  📧 Email: info@articpulizie.it
-                </p>
-                <p className="text-sky-700">
-                  📍 Via Carpaccio 10, Brescia
-                </p>
-              </div>
-              <a
-                href="/"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-sky-600 hover:to-cyan-600 transition-all duration-300"
-              >
-                <span>Torna alla Home</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
