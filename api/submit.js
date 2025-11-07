@@ -31,28 +31,25 @@ export default async function handler(req, res) {
     const fieldMap = buildFieldMap();
     const requiredFields = ['Nome', 'Cognome', 'Email', 'Numero di Telefono'];
 
-    const normalisedValues = Object.fromEntries(
-      Object.keys(fieldMap).map((key) => {
-        const value = typeof data[key] === 'string' ? data[key].trim() : '';
-        return [key, value];
-      })
-    );
+    const fields = {};
+    const missingFields = [];
+    Object.entries(fieldMap).forEach(([formKey, airtableKey]) => {
+      const rawValue = data[formKey];
+      const value = typeof rawValue === 'string' ? rawValue.trim() : '';
+      if (requiredFields.includes(formKey) && !value) {
+        missingFields.push(formKey);
+      }
+      if (value) {
+        fields[airtableKey] = value;
+      }
+    });
 
-    const missingFields = requiredFields.filter((key) => !normalisedValues[key]);
     if (missingFields.length > 0) {
       return res.status(400).json({
         error: 'Missing required fields',
         missing: missingFields
       });
     }
-
-    const fields = {};
-    Object.entries(fieldMap).forEach(([formKey, airtableKey]) => {
-      const value = normalisedValues[formKey];
-      if (value) {
-        fields[airtableKey] = value;
-      }
-    });
 
     const baseId = process.env.AIRTABLE_BASE_ID;
     const table = process.env.AIRTABLE_TABLE;
@@ -66,14 +63,12 @@ export default async function handler(req, res) {
     }
 
     const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}`;
-    const useFieldIds = process.env.AIRTABLE_USE_FIELD_IDS === 'true';
     const payload = { records: [{ fields }] };
     const atRes = await fetch(url, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${pat}`,
-        'Content-Type': 'application/json',
-        ...(useFieldIds ? { 'X-Airtable-Use-Field-Ids': 'true' } : {})
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(payload)
     });
@@ -90,7 +85,6 @@ export default async function handler(req, res) {
       console.error('Airtable error:', {
         base: baseId,
         table,
-        useFieldIds,
         fieldMapUsed: fieldMap,
         fieldsSent: Object.keys(fields),
         response: parsed ?? text
@@ -106,7 +100,8 @@ export default async function handler(req, res) {
           hint: 'Controlla AIRTABLE_TABLE e i valori AIRTABLE_FIELD_*',
           table,
           base: baseId,
-          fieldsUsed: fieldMap
+          fieldsUsed: fieldMap,
+          details: parsed?.error?.message ?? text
         });
       }
 
