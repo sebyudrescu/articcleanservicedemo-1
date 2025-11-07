@@ -71,7 +71,7 @@ const RichidiPreventivo = () => {
                   Dati Personali
                 </h3>
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div className="md:col-span-2">
+                  <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">
                       Nome *
                     </label>
@@ -81,6 +81,18 @@ const RichidiPreventivo = () => {
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="Il tuo nome"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">
+                      Cognome *
+                    </label>
+                    <input
+                      type="text"
+                      name="cognome"
+                      required
+                      className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
+                      placeholder="Il tuo cognome"
                     />
                   </div>
                 </div>
