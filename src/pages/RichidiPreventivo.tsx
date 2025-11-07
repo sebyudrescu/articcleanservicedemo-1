@@ -15,7 +15,6 @@ const RichidiPreventivo = () => {
     website: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [showThankYou, setShowThankYou] = useState(false);
 
   const canonicalUrl = buildCanonicalUrl('/richiedi-preventivo');
@@ -38,46 +37,45 @@ const RichidiPreventivo = () => {
     ].filter(Boolean) as Record<string, unknown>[]
   };
 
-  if (showThankYou) {
-    return (
-      <>
-        <SEO {...seoConfig} />
-        <div className="pt-24 pb-20 min-h-screen bg-gradient-to-br from-white via-sky-50/30 to-cyan-50/20">
-          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <CheckCircle className="w-8 h-8 text-emerald-600" />
-              </div>
-              <h1 className="text-3xl font-bold text-slate-900 mb-4">
-                Richiesta Inviata con Successo!
-              </h1>
-              <p className="text-lg text-slate-600 mb-6">
-                Grazie per aver richiesto un preventivo. Il nostro team ti contatterà entro 24 ore
-                per fornirti una proposta personalizzata.
+  const ThankYouPanel = () => (
+    <div className="relative mb-10">
+      <div className="absolute inset-0 bg-emerald-200/40 blur-3xl opacity-60" aria-hidden="true" />
+      <div className="relative rounded-2xl border border-emerald-100/70 bg-gradient-to-r from-emerald-50 via-white to-emerald-50 p-8 shadow-2xl transition-all duration-500 ease-out">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+          <div className="flex items-start gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600 shadow-inner">
+              <CheckCircle className="w-8 h-8" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-600">
+                Richiesta inviata
               </p>
-              <div className="bg-sky-50 rounded-lg p-4 mb-6 text-left">
-                <p className="text-sky-800 font-semibold">
-                  📞 Telefono: +39 030 52 31 285
-                </p>
-                <p className="text-sky-700">
-                  📧 Email: info@articpulizie.it
-                </p>
-                <p className="text-sky-700">
-                  📍 Via Carpaccio 10, Brescia
-                </p>
-              </div>
-              <a
-                href="/"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-sky-600 hover:to-cyan-600 transition-all duration-300"
-              >
-                <span>Torna alla Home</span>
-              </a>
+              <h3 className="text-2xl font-bold text-slate-900 mt-2">
+                Ti ricontattiamo entro 24 ore
+              </h3>
+              <p className="text-slate-600 mt-2">
+                Grazie per averci scritto. Il nostro team sta già elaborando il tuo preventivo
+                personalizzato.
+              </p>
             </div>
           </div>
+          <div className="flex flex-col sm:flex-row gap-4 lg:items-center">
+            <div className="bg-white/90 rounded-2xl p-4 shadow-md w-full sm:w-auto">
+              <p className="text-sky-900 font-semibold">📞 +39 030 52 31 285</p>
+              <p className="text-slate-600">info@articpulizie.it</p>
+              <p className="text-slate-600">Via Carpaccio 10, Brescia</p>
+            </div>
+            <a
+              href="/"
+              className="inline-flex items-center justify-center space-x-2 rounded-xl border border-emerald-200 bg-white/80 px-6 py-3 font-semibold text-emerald-700 shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              <span>Torna alla Home</span>
+            </a>
+          </div>
         </div>
-      </>
-    );
-  }
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -101,6 +99,8 @@ const RichidiPreventivo = () => {
             </p>
           </div>
 
+          {showThankYou && <ThankYouPanel />}
+
           {/* Form */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="bg-gradient-to-r from-sky-500 to-cyan-500 p-6">
@@ -115,7 +115,6 @@ const RichidiPreventivo = () => {
               onSubmit={async (event) => {
                 event.preventDefault();
                 setIsSubmitting(true);
-                setSubmitStatus('idle');
 
                 try {
                   const payload = new URLSearchParams();
@@ -132,7 +131,6 @@ const RichidiPreventivo = () => {
                   });
 
                   if (response.ok) {
-                    setSubmitStatus('success');
                     setFormData({
                       Nome: '',
                       Cognome: '',
@@ -141,12 +139,9 @@ const RichidiPreventivo = () => {
                       'Nome Azienda': '',
                       website: ''
                     });
-                  } else {
-                    setSubmitStatus('error');
                   }
                 } catch (error) {
                   console.error('Errore invio form:', error);
-                  setSubmitStatus('error');
                 } finally {
                   setIsSubmitting(false);
                   setShowThankYou(true);
@@ -301,16 +296,10 @@ const RichidiPreventivo = () => {
                     </>
                   )}
                 </button>
-                <div className="text-center text-sm mt-4 min-h-[1.25rem]" aria-live="polite">
-                  {submitStatus === 'error' ? (
-                    <p className="text-red-600 font-semibold">
-                      Si è verificato un errore. Riprova più tardi.
-                    </p>
-                  ) : (
-                    <p className="text-slate-500">
-                      Dopo l&apos;invio verrai contattato entro 24 ore con un preventivo dedicato.
-                    </p>
-                  )}
+                <div className="text-center text-sm mt-4">
+                  <p className="text-slate-500">
+                    Dopo l&apos;invio verrai contattato entro 24 ore con un preventivo dedicato.
+                  </p>
                 </div>
               </div>
             </form>
