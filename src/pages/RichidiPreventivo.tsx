@@ -77,7 +77,7 @@ const RichidiPreventivo = () => {
                     </label>
                     <input
                       type="text"
-                      name="nome"
+                      name="Nome"
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="Il tuo nome"
@@ -89,7 +89,7 @@ const RichidiPreventivo = () => {
                     </label>
                     <input
                       type="text"
-                      name="cognome"
+                      name="Cognome"
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="Il tuo cognome"
@@ -111,7 +111,7 @@ const RichidiPreventivo = () => {
                     </label>
                     <input
                       type="email"
-                      name="email"
+                      name="Email"
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="la-tua-email@esempio.it"
@@ -119,11 +119,12 @@ const RichidiPreventivo = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">
-                      Numero di Telefono
+                      Numero di Telefono *
                     </label>
                     <input
                       type="tel"
-                      name="telefono"
+                      name="Numero di Telefono"
+                      required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="+39 123 456 7890"
                     />
@@ -134,7 +135,7 @@ const RichidiPreventivo = () => {
                     </label>
                     <input
                       type="text"
-                      name="nomeAzienda"
+                      name="Nome Azienda"
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="Nome dell'azienda (opzionale)"
                     />

@@ -1,3 +1,11 @@
+const buildFieldMap = () => ({
+  Nome: process.env.AIRTABLE_FIELD_NOME || 'Nome',
+  Cognome: process.env.AIRTABLE_FIELD_COGNOME || 'Cognome',
+  Email: process.env.AIRTABLE_FIELD_EMAIL || 'Email',
+  'Numero di Telefono': process.env.AIRTABLE_FIELD_TELEFONO || 'Numero di Telefono',
+  'Nome Azienda': process.env.AIRTABLE_FIELD_NOME_AZIENDA || 'Nome Azienda'
+});
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -20,33 +28,50 @@ export default async function handler(req, res) {
 
     if (data.website) return res.status(200).json({ ok: true });
 
-    const FIELD_MAP = {
-      nome: process.env.AIRTABLE_FIELD_NOME || 'Nome',
-      email: process.env.AIRTABLE_FIELD_EMAIL || 'Email',
-      telefono: process.env.AIRTABLE_FIELD_TELEFONO || 'Numero di Telefono',
-      nomeAzienda: process.env.AIRTABLE_FIELD_NOME_AZIENDA || 'Nome Azienda'
-    };
+    const fieldMap = buildFieldMap();
+    const requiredFields = ['Nome', 'Cognome', 'Email', 'Numero di Telefono'];
+
+    const normalisedValues = Object.fromEntries(
+      Object.keys(fieldMap).map((key) => {
+        const value = typeof data[key] === 'string' ? data[key].trim() : '';
+        return [key, value];
+      })
+    );
+
+    const missingFields = requiredFields.filter((key) => !normalisedValues[key]);
+    if (missingFields.length > 0) {
+      return res.status(400).json({
+        error: 'Missing required fields',
+        missing: missingFields
+      });
+    }
 
     const fields = {};
-    (Object.keys(FIELD_MAP)).forEach((key) => {
-      if (data[key] && data[key].trim() !== '') {
-        fields[FIELD_MAP[key]] = data[key].trim();
+    Object.entries(fieldMap).forEach(([formKey, airtableKey]) => {
+      const value = normalisedValues[formKey];
+      if (value) {
+        fields[airtableKey] = value;
       }
     });
 
-    if (!fields[FIELD_MAP.nome] || !fields[FIELD_MAP.email]) {
-      return res.status(400).json({ error: 'Nome ed Email sono obbligatori.' });
-    }
-
     const baseId = process.env.AIRTABLE_BASE_ID;
     const table = process.env.AIRTABLE_TABLE;
+    const pat = process.env.AIRTABLE_PAT;
+
+    if (!baseId || !table || !pat) {
+      return res.status(500).json({
+        error: 'Airtable credentials missing',
+        hint: 'Imposta AIRTABLE_BASE_ID, AIRTABLE_TABLE e AIRTABLE_PAT'
+      });
+    }
+
     const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}`;
     const useFieldIds = process.env.AIRTABLE_USE_FIELD_IDS === 'true';
     const payload = { records: [{ fields }] };
     const atRes = await fetch(url, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.AIRTABLE_PAT}`,
+        Authorization: `Bearer ${pat}`,
         'Content-Type': 'application/json',
         ...(useFieldIds ? { 'X-Airtable-Use-Field-Ids': 'true' } : {})
       },
@@ -62,13 +87,14 @@ export default async function handler(req, res) {
         parsed = null;
       }
 
-      const errorContext = {
+      console.error('Airtable error:', {
         base: baseId,
         table,
-        fieldMapUsed: FIELD_MAP,
-        payload
-      };
-      console.error('Airtable error:', { ...errorContext, response: parsed ?? text });
+        useFieldIds,
+        fieldMapUsed: fieldMap,
+        fieldsSent: Object.keys(fields),
+        response: parsed ?? text
+      });
 
       const isFieldMismatch =
         atRes.status === 422 ||
@@ -80,11 +106,17 @@ export default async function handler(req, res) {
           hint: 'Controlla AIRTABLE_TABLE e i valori AIRTABLE_FIELD_*',
           table,
           base: baseId,
-          fieldsUsed: FIELD_MAP
+          fieldsUsed: fieldMap
         });
       }
 
-      return res.status(500).json({ error: 'Errore Airtable', detail: parsed ?? text });
+      return res.status(500).json({
+        error: 'Airtable request failed',
+        detail: parsed ?? text,
+        table,
+        base: baseId,
+        fieldsSent: Object.keys(fields)
+      });
     }
 
     const redirect = process.env.REDIRECT_URL;
