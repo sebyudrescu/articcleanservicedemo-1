@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FileText, Phone, Send, User } from 'lucide-react';
 import SEO from '@/components/SEO';
 import InternalLinkSection from '@/components/InternalLinkSection';
@@ -5,6 +6,17 @@ import { buildCanonicalUrl, siteMetadata } from '@/data/siteMetadata';
 import { buildBreadcrumbSchema } from '@/utils/structuredData';
 
 const RichidiPreventivo = () => {
+  const [formData, setFormData] = useState({
+    Nome: '',
+    Cognome: '',
+    Email: '',
+    'Numero di Telefono': '',
+    'Nome Azienda': '',
+    website: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const canonicalUrl = buildCanonicalUrl('/richiedi-preventivo');
   const seoConfig = {
     title: 'Richiedi Preventivo Pulizie a Brescia | Artic Pulizie',
@@ -54,7 +66,50 @@ const RichidiPreventivo = () => {
               <p className="text-sky-100">Tutti i campi contrassegnati con * sono obbligatori</p>
             </div>
 
-            <form action="/api/submit" method="POST" className="p-8 space-y-8">
+            <form
+              action="/api/submit"
+              method="POST"
+              className="p-8 space-y-8"
+              onSubmit={async (event) => {
+                event.preventDefault();
+                setIsSubmitting(true);
+                setSubmitStatus('idle');
+
+                try {
+                  const payload = new URLSearchParams();
+                  Object.entries(formData).forEach(([key, value]) => {
+                    payload.append(key, value);
+                  });
+
+                  const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: payload.toString()
+                  });
+
+                  if (response.ok) {
+                    setSubmitStatus('success');
+                    setFormData({
+                      Nome: '',
+                      Cognome: '',
+                      Email: '',
+                      'Numero di Telefono': '',
+                      'Nome Azienda': '',
+                      website: ''
+                    });
+                  } else {
+                    setSubmitStatus('error');
+                  }
+                } catch (error) {
+                  console.error('Errore invio form:', error);
+                  setSubmitStatus('error');
+                } finally {
+                  setIsSubmitting(false);
+                }
+              }}
+            >
               <input
                 type="text"
                 name="website"
@@ -62,6 +117,13 @@ const RichidiPreventivo = () => {
                 autoComplete="off"
                 aria-hidden="true"
                 style={{ display: 'none' }}
+                value={formData.website}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    website: e.target.value
+                  }))
+                }
               />
 
               {/* Dati personali */}
@@ -81,6 +143,13 @@ const RichidiPreventivo = () => {
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="Il tuo nome"
+                      value={formData.Nome}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          Nome: e.target.value
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -93,6 +162,13 @@ const RichidiPreventivo = () => {
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="Il tuo cognome"
+                      value={formData.Cognome}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          Cognome: e.target.value
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -115,6 +191,13 @@ const RichidiPreventivo = () => {
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="la-tua-email@esempio.it"
+                      value={formData.Email}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          Email: e.target.value
+                        }))
+                      }
                     />
                   </div>
                   <div>
@@ -127,6 +210,13 @@ const RichidiPreventivo = () => {
                       required
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="+39 123 456 7890"
+                      value={formData['Numero di Telefono']}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          'Numero di Telefono': e.target.value
+                        }))
+                      }
                     />
                   </div>
                   <div className="md:col-span-2">
@@ -138,6 +228,13 @@ const RichidiPreventivo = () => {
                       name="Nome Azienda"
                       className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                       placeholder="Nome dell'azienda (opzionale)"
+                      value={formData['Nome Azienda']}
+                      onChange={(e) =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          'Nome Azienda': e.target.value
+                        }))
+                      }
                     />
                   </div>
                 </div>
@@ -146,14 +243,34 @@ const RichidiPreventivo = () => {
               <div className="border-t border-slate-200 pt-8">
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 text-white py-4 px-6 rounded-lg font-semibold hover:from-sky-600 hover:to-cyan-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-sky-500 to-cyan-500 text-white py-4 px-6 rounded-lg font-semibold hover:from-sky-600 hover:to-cyan-600 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-5 h-5" />
-                  <span>Invia Richiesta</span>
+                  {isSubmitting ? (
+                    <div className="flex items-center space-x-2">
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Invio in corso...</span>
+                    </div>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Invia Richiesta</span>
+                    </>
+                  )}
                 </button>
-                <p className="text-center text-slate-500 text-sm mt-4">
-                  Dopo l&apos;invio verrai contattato entro 24 ore con un preventivo dedicato.
-                </p>
+                <div className="text-center text-sm mt-4 min-h-[1.25rem]" aria-live="polite">
+                  {submitStatus === 'success' && (
+                    <p className="text-emerald-600 font-semibold">Richiesta inviata con successo!</p>
+                  )}
+                  {submitStatus === 'error' && (
+                    <p className="text-red-600 font-semibold">Si è verificato un errore. Riprova più tardi.</p>
+                  )}
+                  {submitStatus === 'idle' && (
+                    <p className="text-slate-500">
+                      Dopo l&apos;invio verrai contattato entro 24 ore con un preventivo dedicato.
+                    </p>
+                  )}
+                </div>
               </div>
             </form>
           </div>
