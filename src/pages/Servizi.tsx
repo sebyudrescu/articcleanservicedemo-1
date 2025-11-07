@@ -45,7 +45,7 @@ const Servizi = () => {
     fit: 'cover'
   });
 
-  const giardinaggioBaseImage = 'https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg';
+  const giardinaggioBaseImage = 'https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg';
   const giardinaggioImageLarge = cdnImage(`${giardinaggioBaseImage}?auto=compress&cs=tinysrgb&w=1200`, {
     width: 1200,
     quality: 70,

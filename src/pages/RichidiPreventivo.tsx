@@ -10,7 +10,9 @@ const RichidiPreventivo = () => {
     nome: '',
     cognome: '',
     email: '',
-    telefono: ''
+    telefono: '',
+    nomeAzienda: '',
+    website: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,17 +52,27 @@ const RichidiPreventivo = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('https://hook.eu2.make.com/cvjvbxtgyxsjdpp6lmogf7vum297mh8n', {
+      const payload = {
+        nome: [formData.nome, formData.cognome].filter(Boolean).join(' ').trim(),
+        cognome: formData.cognome.trim(),
+        email: formData.email.trim(),
+        telefono: formData.telefono.trim(),
+        nomeAzienda: formData.nomeAzienda.trim(),
+        website: formData.website.trim()
+      };
+
+      const response = await fetch('/api/submit', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          ...formData,
-          timestamp: new Date().toISOString(),
-          source: 'Artic Pulizie Website'
-        })
+        body: JSON.stringify(payload)
       });
+
+      if (response.redirected) {
+        window.location.href = response.url;
+        return;
+      }
 
       if (response.ok) {
         setSubmitStatus('success');
@@ -69,7 +81,9 @@ const RichidiPreventivo = () => {
           nome: '',
           cognome: '',
           email: '',
-          telefono: ''
+          telefono: '',
+          nomeAzienda: '',
+          website: ''
         });
       } else {
         throw new Error('Errore durante l\'invio del modulo');
@@ -150,7 +164,21 @@ const RichidiPreventivo = () => {
             <p className="text-sky-100">Tutti i campi contrassegnati con * sono obbligatori</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-8 space-y-8">
+          <form action="/api/submit" method="POST" onSubmit={handleSubmit} className="p-8 space-y-8">
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website" className="sr-only">
+                Website
+              </label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.website}
+                onChange={handleInputChange}
+              />
+            </div>
             {/* Dati Personali */}
             <div>
               <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center">
@@ -222,6 +250,19 @@ const RichidiPreventivo = () => {
                     required
                     className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
                     placeholder="+39 123 456 7890"
+                  />
+                </div>
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                    Nome Azienda
+                  </label>
+                  <input
+                    type="text"
+                    name="nomeAzienda"
+                    value={formData.nomeAzienda}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-slate-200 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent transition-all duration-200"
+                    placeholder="Nome dell'azienda (opzionale)"
                   />
                 </div>
               </div>

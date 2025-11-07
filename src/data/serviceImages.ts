@@ -1,4 +1,6 @@
 const basePath = '/images/optimized';
+const sanificazioneHeroImage = 'https://images.pexels.com/photos/4099465/pexels-photo-4099465.jpeg?auto=compress&cs=tinysrgb&w=1280';
+const giardinaggioHeroImage = 'https://images.pexels.com/photos/1301856/pexels-photo-1301856.jpeg?auto=compress&cs=tinysrgb&w=1280';
 
 export const gestioneCarrellatiImage = `${basePath}/gestione-carrelati-960.webp`;
 export const gestioneCarrellatiImageSmall = `${basePath}/gestione-carrelati-640.webp`;
@@ -57,9 +59,12 @@ export const serviceImagesBySlug: Record<string, string> = {
   'pulizie-uffici': serviceImageMeta.uffici.src,
   'pulizie-industriali': serviceImageMeta.industriale.src,
   'pulizie-post-cantiere': serviceImageMeta['post-cantiere'].src,
+  'pulizia-vetri': serviceImageMeta.vetri.src,
   'pulizie-vetri': serviceImageMeta.vetri.src,
   'pulizie-condomini': serviceImageMeta.condomini.src,
-  'gestione-carrellati': serviceImageMeta.carrellati.src
+  'gestione-carrellati': serviceImageMeta.carrellati.src,
+  'sanificazione-ambienti': sanificazioneHeroImage,
+  giardinaggio: giardinaggioHeroImage
 };
 
 export const serviceImagesById: Record<string, string> = {
