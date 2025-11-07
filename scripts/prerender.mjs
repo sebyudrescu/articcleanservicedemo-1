@@ -17,6 +17,7 @@ const BLOG_POSTS_FILE = path.resolve(__dirname, '../content/blog/posts.json');
 const VERCEL_OUTPUT_DIR = path.resolve(__dirname, '../.vercel/output');
 const VERCEL_STATIC_DIR = path.join(VERCEL_OUTPUT_DIR, 'static');
 const VERCEL_CONFIG_PATH = path.join(VERCEL_OUTPUT_DIR, 'config.json');
+const GENERATE_VERCEL_OUTPUT = process.env.GENERATE_VERCEL_OUTPUT === 'true';
 
 function normaliseRoute(route) {
   if (!route) {
@@ -168,8 +169,12 @@ async function main() {
 
   console.log('🏁  Pre-rendering completato.');
 
-  await prepareVercelOutput();
-  console.log(`📦  Static bundle copiato in ${path.relative(process.cwd(), VERCEL_STATIC_DIR)} per il deploy su Vercel.`);
+  if (GENERATE_VERCEL_OUTPUT) {
+    await prepareVercelOutput();
+    console.log(`📦  Static bundle copiato in ${path.relative(process.cwd(), VERCEL_STATIC_DIR)} per il deploy su Vercel.`);
+  } else {
+    console.log('⚙️  Modalità Zero-Config: generazione di .vercel/output disattivata (imposta GENERATE_VERCEL_OUTPUT=true per riattivarla).');
+  }
 }
 
 main().catch((error) => {
