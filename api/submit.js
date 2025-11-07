@@ -21,44 +21,70 @@ export default async function handler(req, res) {
     if (data.website) return res.status(200).json({ ok: true });
 
     const FIELD_MAP = {
-      nome: 'Nome',
-      cognome: 'Cognome',
-      nomeAzienda: 'Nome Azienda',
-      email: 'Email',
-      telefono: 'Numero di Telefono',
-      superficie: 'Superficie in m²',
-      tipoServizio: 'Tipo di Servizio',
-      frequenza: 'Frequenza',
-      azienda: 'Azienda',
-      indirizzo: 'Indirizzo',
-      messaggio: 'Messaggio'
+      nome: process.env.AIRTABLE_FIELD_NOME || 'Nome',
+      email: process.env.AIRTABLE_FIELD_EMAIL || 'Email',
+      telefono: process.env.AIRTABLE_FIELD_TELEFONO || 'Numero di Telefono',
+      nomeAzienda: process.env.AIRTABLE_FIELD_NOME_AZIENDA || 'Nome Azienda'
     };
 
     const fields = {};
-    for (const key in FIELD_MAP) {
+    (Object.keys(FIELD_MAP)).forEach((key) => {
       if (data[key] && data[key].trim() !== '') {
         fields[FIELD_MAP[key]] = data[key].trim();
       }
-    }
+    });
 
-    if (!fields['Nome'] || !fields['Email']) {
+    if (!fields[FIELD_MAP.nome] || !fields[FIELD_MAP.email]) {
       return res.status(400).json({ error: 'Nome ed Email sono obbligatori.' });
     }
 
-    const url = `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE_ID}/${encodeURIComponent(process.env.AIRTABLE_TABLE)}`;
+    const baseId = process.env.AIRTABLE_BASE_ID;
+    const table = process.env.AIRTABLE_TABLE;
+    const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}`;
+    const useFieldIds = process.env.AIRTABLE_USE_FIELD_IDS === 'true';
+    const payload = { records: [{ fields }] };
     const atRes = await fetch(url, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${process.env.AIRTABLE_PAT}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        ...(useFieldIds ? { 'X-Airtable-Use-Field-Ids': 'true' } : {})
       },
-      body: JSON.stringify({ records: [{ fields }] })
+      body: JSON.stringify(payload)
     });
 
     if (!atRes.ok) {
       const text = await atRes.text();
-      console.error('Airtable error:', text);
-      return res.status(500).json({ error: 'Errore Airtable', detail: text });
+      let parsed;
+      try {
+        parsed = JSON.parse(text);
+      } catch {
+        parsed = null;
+      }
+
+      const errorContext = {
+        base: baseId,
+        table,
+        fieldMapUsed: FIELD_MAP,
+        payload
+      };
+      console.error('Airtable error:', { ...errorContext, response: parsed ?? text });
+
+      const isFieldMismatch =
+        atRes.status === 422 ||
+        parsed?.error?.type === 'UNKNOWN_FIELD_NAME';
+
+      if (isFieldMismatch) {
+        return res.status(422).json({
+          error: 'Airtable field mismatch',
+          hint: 'Controlla AIRTABLE_TABLE e i valori AIRTABLE_FIELD_*',
+          table,
+          base: baseId,
+          fieldsUsed: FIELD_MAP
+        });
+      }
+
+      return res.status(500).json({ error: 'Errore Airtable', detail: parsed ?? text });
     }
 
     const redirect = process.env.REDIRECT_URL;
