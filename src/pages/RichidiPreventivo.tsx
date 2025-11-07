@@ -23,45 +23,6 @@ const RichidiPreventivo = () => {
     }
   }, [showThankYou]);
 
-  const ThankYouPanel = () => (
-    <div className="relative mb-10">
-      <div className="absolute inset-0 bg-emerald-200/40 blur-3xl opacity-60" aria-hidden="true" />
-      <div className="relative rounded-2xl border border-emerald-100/70 bg-gradient-to-r from-emerald-50 via-white to-emerald-50 p-8 shadow-2xl transition-all duration-500 ease-out">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <div className="flex items-start gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-600 shadow-inner">
-              <CheckCircle className="w-8 h-8" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.35em] text-emerald-600">
-                Richiesta inviata
-              </p>
-              <h3 className="text-2xl font-bold text-slate-900 mt-2">
-                Ti ricontattiamo entro 24 ore
-              </h3>
-              <p className="text-slate-600 mt-2">
-                Grazie per averci scritto. Il nostro team sta già elaborando il tuo preventivo personalizzato.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 lg:items-center">
-            <div className="bg-white/90 rounded-2xl p-4 shadow-md w-full sm:w-auto">
-              <p className="text-sky-900 font-semibold">📞 +39 030 52 31 285</p>
-              <p className="text-slate-600">info@articpulizie.it</p>
-              <p className="text-slate-600">Via Carpaccio 10, Brescia</p>
-            </div>
-            <a
-              href="/"
-              className="inline-flex items-center justify-center space-x-2 rounded-xl border border-emerald-200 bg-white/80 px-6 py-3 font-semibold text-emerald-700 shadow-md hover:shadow-lg transition-all duration-300"
-            >
-              <span>Torna alla Home</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
   const canonicalUrl = buildCanonicalUrl('/richiedi-preventivo');
   const seoConfig = {
     title: 'Richiedi Preventivo Pulizie a Brescia | Artic Pulizie',
@@ -81,6 +42,44 @@ const RichidiPreventivo = () => {
       buildBreadcrumbSchema([{ name: 'Richiedi Preventivo', path: '/richiedi-preventivo' }])
     ].filter(Boolean) as Record<string, unknown>[]
   };
+
+  if (showThankYou) {
+    return (
+      <>
+        <SEO {...seoConfig} />
+        <div className="pt-24 pb-20 min-h-screen bg-gradient-to-br from-emerald-50 via-white to-sky-50">
+          <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white/90 rounded-2xl shadow-2xl p-10 text-center border border-emerald-100">
+              <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <CheckCircle className="w-8 h-8 text-emerald-600" />
+              </div>
+              <p className="text-sm font-semibold uppercase tracking-[0.4em] text-emerald-600 mb-2">
+                Richiesta inviata
+              </p>
+              <h1 className="text-3xl font-bold text-slate-900 mb-4">
+                Ti contattiamo entro 24 ore
+              </h1>
+              <p className="text-lg text-slate-600 mb-6">
+                Grazie! Il nostro team sta preparando il tuo preventivo personalizzato. Nel frattempo puoi contattarci
+                direttamente ai recapiti qui sotto.
+              </p>
+              <div className="bg-gradient-to-r from-sky-50 to-cyan-50 rounded-2xl p-5 text-left shadow-inner mb-6">
+                <p className="text-sky-900 font-semibold">📞 +39 030 52 31 285</p>
+                <p className="text-slate-600">📧 info@articpulizie.it</p>
+                <p className="text-slate-600">📍 Via Carpaccio 10, Brescia</p>
+              </div>
+              <a
+                href="/"
+                className="inline-flex items-center justify-center space-x-2 rounded-xl bg-gradient-to-r from-sky-500 to-cyan-500 text-white px-6 py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
+                <span>Torna alla Home</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -103,8 +102,6 @@ const RichidiPreventivo = () => {
               Ti contatteremo entro 24 ore per discutere le tue esigenze.
             </p>
           </div>
-
-          {showThankYou && <ThankYouPanel />}
 
           {/* Form */}
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
