@@ -64,9 +64,6 @@ export default async function handler(req, res) {
 
     const url = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(table)}`;
     const payload = { records: [{ fields }] };
-    console.log('DEBUG - Fields being sent to Airtable:', fields);
-    console.log('DEBUG - Field map:', fieldMap);
-    console.log('DEBUG - Table:', table);
     const atRes = await fetch(url, {
       method: 'POST',
       headers: {
